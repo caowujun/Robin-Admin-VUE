@@ -4,8 +4,8 @@ import { Form } from '@/components/Form'
 import { useI18n } from '@/hooks/web/useI18n'
 import { ElButton, ElCheckbox, ElLink } from 'element-plus'
 import { useForm } from '@/hooks/web/useForm'
-import { loginApi, getTestRoleApi, getAdminRoleApi } from '@/api/login'
-import { useCache } from '@/hooks/web/useCache'
+import { loginApi } from '@/api/login'
+import { useCache, useCache_local } from '@/hooks/web/useCache'
 import { useAppStore } from '@/store/modules/app'
 import { usePermissionStore } from '@/store/modules/permission'
 import { useRouter } from 'vue-router'
@@ -13,6 +13,7 @@ import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 import { UserType } from '@/api/login/types'
 import { useValidator } from '@/hooks/web/useValidator'
 import { FormSchema } from '@/types/form'
+import filterRouter from '@/router/permissionAssign'
 
 const { required } = useValidator()
 
@@ -25,7 +26,7 @@ const permissionStore = usePermissionStore()
 const { currentRoute, addRoute, push } = useRouter()
 
 const { wsCache } = useCache()
-
+const { wsCache_local } = useCache_local()
 const { t } = useI18n()
 
 const rules = {
@@ -130,10 +131,20 @@ const signIn = async () => {
         const res = await loginApi(formData)
 
         if (res) {
-          wsCache.set(appStore.getUserInfo, res.data)
+          // wsCache.set(appStore.getUserInfo, res.data)
+          appStore.setUserDisplayName(res.data?.userDisplayName)
+
+          //選出されると、保存状況はローカルに保存され、有効期間は1か月です
+          if (remember?.value === true) {
+            wsCache_local.set('remember', remember.value)
+            wsCache_local.set(appStore.getUserInfo, res.data)
+          } else {
+            wsCache.set(appStore.getUserInfo, res.data)
+          }
+          console.log('appStore.getDynamicRouter', appStore.getDynamicRouter)
           // 是否使用动态路由
           if (appStore.getDynamicRouter) {
-            getRole()
+            getRole(res.data.roleId)
           } else {
             await permissionStore.generateRoutes('none').catch(() => {})
             permissionStore.getAddRouters.forEach((route) => {
@@ -151,29 +162,30 @@ const signIn = async () => {
 }
 
 // 获取角色信息
-const getRole = async () => {
-  const { getFormData } = methods
-  const formData = await getFormData<UserType>()
-  const params = {
-    roleName: formData.username
-  }
-  // admin - 模拟后端过滤菜单
-  // test - 模拟前端过滤菜单
-  const res =
-    formData.username === 'admin' ? await getAdminRoleApi(params) : await getTestRoleApi(params)
+const getRole = async (accountRoleType: string) => {
+  //前端过滤用不到这个地方
+  // const { getFormData } = methods
+  // const formData = await getFormData<UserType>()
+  // const params = {
+  //   roleName: formData.username
+  // }
+  // admin - 模拟前端过滤菜单，roleid=1
+  // test - 模拟后端过滤菜单，roleid=2
+  const res = filterRouter(accountRoleType) //: await getTestRoleApi(params)
+  console.log(res)
   if (res) {
-    const { wsCache } = useCache()
-    const routers = res.data || []
+    // const { wsCache } = useCache()
+    const routers = res || []
     wsCache.set('roleRouters', routers)
+    remember.value && wsCache_local.set('roleRouters', routers)
 
-    formData.username === 'admin'
-      ? await permissionStore.generateRoutes('admin', routers).catch(() => {})
-      : await permissionStore.generateRoutes('test', routers).catch(() => {})
+    await permissionStore.generateRoutes(1, routers).catch(() => {})
 
     permissionStore.getAddRouters.forEach((route) => {
       addRoute(route as RouteRecordRaw) // 动态添加可访问路由表
     })
     permissionStore.setIsAddRouters(true)
+    console.log(redirect.value || permissionStore.addRouters[0].path)
     push({ path: redirect.value || permissionStore.addRouters[0].path })
   }
 }

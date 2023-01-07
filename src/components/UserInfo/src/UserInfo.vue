@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessageBox } from 'element-plus'
 import { useI18n } from '@/hooks/web/useI18n'
-import { useCache } from '@/hooks/web/useCache'
+import { cacheClear, getCache } from '@/hooks/web/useCache'
 import { resetRouter } from '@/router'
 import { useRouter } from 'vue-router'
 import { loginOutApi } from '@/api/login'
 import { useDesign } from '@/hooks/web/useDesign'
 import { useTagsViewStore } from '@/store/modules/tagsView'
+import { useAppStore } from '@/store/modules/app'
 
 const tagsViewStore = useTagsViewStore()
 
@@ -16,9 +17,11 @@ const prefixCls = getPrefixCls('user-info')
 
 const { t } = useI18n()
 
-const { wsCache } = useCache()
+// const { wsCache } = useCache()
 
-const { replace } = useRouter()
+const { replace, push } = useRouter()
+
+const appStore = useAppStore()
 
 const loginOut = () => {
   ElMessageBox.confirm(t('common.loginOutMessage'), t('common.reminder'), {
@@ -29,7 +32,7 @@ const loginOut = () => {
     .then(async () => {
       const res = await loginOutApi().catch(() => {})
       if (res) {
-        wsCache.clear()
+        cacheClear()
         tagsViewStore.delAllViews()
         resetRouter() // 重置静态路由表
         replace('/login')
@@ -37,7 +40,12 @@ const loginOut = () => {
     })
     .catch(() => {})
 }
-
+const changePwd = () => {
+  push({ name: 'modifyPwd' })
+}
+const changeUserInfo = () => {
+  push({ name: 'modifyUserInfo' })
+}
 const toDocument = () => {
   window.open('https://element-plus-admin-doc.cn/')
 }
@@ -51,11 +59,19 @@ const toDocument = () => {
         alt=""
         class="w-[calc(var(--logo-height)-25px)] rounded-[50%]"
       />
-      <span class="<lg:hidden text-14px pl-[5px] text-[var(--top-header-text-color)]">Archer</span>
+      <span class="<lg:hidden text-14px pl-[5px] text-[var(--top-header-text-color)]">
+        {{ appStore.getUserDisplayName || getCache(appStore.getUserInfo)?.UserDisplayName }}</span
+      >
     </div>
     <template #dropdown>
       <ElDropdownMenu>
         <ElDropdownItem>
+          <ElDropdownItem>
+            <div @click="changePwd"> {{ t('login.modifyPwd') }}</div>
+          </ElDropdownItem>
+          <ElDropdownItem>
+            <div @click="changeUserInfo"> {{ t('login.modifyUserInfo') }}</div>
+          </ElDropdownItem>
           <div @click="toDocument">{{ t('common.document') }}</div>
         </ElDropdownItem>
         <ElDropdownItem divided>

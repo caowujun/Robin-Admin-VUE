@@ -48,6 +48,7 @@ export default {
     networkError: '抱歉，服务器报告错误。',
     returnToHome: '返回首页'
   },
+
   setting: {
     projectSetting: '项目配置',
     theme: '主题',
@@ -99,7 +100,9 @@ export default {
     usernamePlaceholder: '请输入用户名',
     passwordPlaceholder: '请输入密码',
     code: '验证码',
-    codePlaceholder: '请输入验证码'
+    codePlaceholder: '请输入验证码',
+    modifyPwd: '修改密码',
+    modifyUserInfo: '修改用户信息'
   },
   router: {
     login: '登录',
@@ -434,5 +437,22 @@ export default {
   inputPasswordDemo: {
     title: '密码输入框',
     inputPasswordDes: '基于 ElementPlus 的 Input 组件二次封装'
+  },
+  menu: {
+    home: '面板',
+    personTools: '个人管理',
+    life: '生活记录',
+    schedule: '日程管理',
+    income: '收支记录',
+    gasoline: '加油记录',
+    sysSetting: '系统设置',
+    userManage: '用户管理',
+    roleManage: '权限管理',
+    menuManage: '菜单管理',
+    enumType: '枚举配置',
+    logManage: '操作日志'
+  },
+  app: {
+    appTitle: '天空有座城'
   }
 }

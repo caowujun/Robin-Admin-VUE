@@ -3,8 +3,9 @@ import { computed, unref } from 'vue'
 import { useLocaleStoreWithOut } from '@/store/modules/locale'
 
 const TIME_AGO_MESSAGE_MAP: {
-  'zh-CN': UseTimeAgoMessages
-  en: UseTimeAgoMessages
+  'zh-CN': UseTimeAgoMessages | any
+  en: UseTimeAgoMessages | any
+  ja: UseTimeAgoMessages | any
 } = {
   'zh-CN': {
     justNow: '刚刚',
@@ -32,6 +33,18 @@ const TIME_AGO_MESSAGE_MAP: {
     hour: (n) => `${n} hour${n > 1 ? 's' : ''}`,
     minute: (n) => `${n} minute${n > 1 ? 's' : ''}`,
     second: (n) => `${n} second${n > 1 ? 's' : ''}`
+  },
+  ja: {
+    justNow: 'ただ',
+    past: (n) => (n.match(/\d/) ? `${n}前` : n),
+    future: (n) => (n.match(/\d/) ? `${n}后` : n),
+    month: (n, past) => (n === 1 ? (past ? '先月' : '来月') : `${n} ヶ月`),
+    year: (n, past) => (n === 1 ? (past ? '去年' : '来年') : `${n} 年`),
+    day: (n, past) => (n === 1 ? (past ? '昨日' : '明日') : `${n} 日`),
+    week: (n, past) => (n === 1 ? (past ? '先週' : '次の週') : `${n} 周`),
+    hour: (n) => `${n} 時間`,
+    minute: (n) => `${n} 分`,
+    second: (n) => `${n} 秒`
   }
 }
 

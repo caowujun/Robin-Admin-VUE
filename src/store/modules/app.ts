@@ -10,6 +10,7 @@ import { ThemeTypes } from '@/types/theme'
 const { wsCache } = useCache()
 
 interface AppState {
+  userDisplayName: string
   breadcrumb: boolean
   breadcrumbIcon: boolean
   collapse: boolean
@@ -40,6 +41,7 @@ interface AppState {
 export const useAppStore = defineStore('app', {
   state: (): AppState => {
     return {
+      userDisplayName: '',
       userInfo: 'userInfo', // 登录信息存储字段-建议每个项目换一个字段，避免与其他项目冲突
       sizeMap: ['default', 'large', 'small'],
       mobile: false, // 是否是移动端
@@ -60,7 +62,7 @@ export const useAppStore = defineStore('app', {
       fixedHeader: true, // 固定toolheader
       footer: true, // 显示页脚
       greyMode: false, // 是否开始灰色模式，用于特殊悼念日
-      dynamicRouter: wsCache.get('dynamicRouter') || false, // 是否动态路由
+      dynamicRouter: wsCache.get('dynamicRouter') || true, // 是否动态路由
       fixedMenu: wsCache.get('fixedMenu') || false, // 是否固定菜单
 
       layout: wsCache.get('layout') || 'classic', // layout布局
@@ -99,6 +101,9 @@ export const useAppStore = defineStore('app', {
     }
   },
   getters: {
+    getUserDisplayName(): string {
+      return this.userDisplayName
+    },
     getBreadcrumb(): boolean {
       return this.breadcrumb
     },
@@ -176,6 +181,9 @@ export const useAppStore = defineStore('app', {
     }
   },
   actions: {
+    setUserDisplayName(userDisplayName: string) {
+      this.userDisplayName = userDisplayName
+    },
     setBreadcrumb(breadcrumb: boolean) {
       this.breadcrumb = breadcrumb
     },

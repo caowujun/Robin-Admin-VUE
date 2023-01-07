@@ -7,6 +7,7 @@ const timeout = 1000
 
 const List: {
   username: string
+  userDisplayName: string
   password: string
   role: string
   roleId: string
@@ -14,6 +15,7 @@ const List: {
 }[] = [
   {
     username: 'admin',
+    userDisplayName: '管理员',
     password: 'admin',
     role: 'admin',
     roleId: '1',
@@ -21,6 +23,7 @@ const List: {
   },
   {
     username: 'test',
+    userDisplayName: '普通用户',
     password: 'test',
     role: 'test',
     roleId: '2',

@@ -99,7 +99,9 @@ export default {
     usernamePlaceholder: 'Please input username',
     passwordPlaceholder: 'Please input password',
     code: 'Verification code',
-    codePlaceholder: 'Please input verification code'
+    codePlaceholder: 'Please input verification code',
+    modifyPwd: 'Change password',
+    modifyUserInfo: 'Modify user information'
   },
   router: {
     login: 'Login',
@@ -438,5 +440,22 @@ export default {
   inputPasswordDemo: {
     title: 'InputPassword',
     inputPasswordDes: 'Secondary packaging of Input components based on ElementPlus'
+  },
+  menu: {
+    home: 'Dashboard',
+    personTools: 'Personal management',
+    life: 'Life record',
+    schedule: 'Schedule management',
+    income: 'Revenue record',
+    gasoline: 'Refueling record',
+    sysSetting: 'System settings',
+    userManage: 'User management',
+    roleManage: 'Permission management',
+    menuManage: 'Menu management',
+    enumType: 'Enum Configuration',
+    logManage: 'Operation log'
+  },
+  app: {
+    appTitle: 'There is a city in the sky'
   }
 }

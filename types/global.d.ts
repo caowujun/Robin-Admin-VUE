@@ -12,7 +12,7 @@ declare global {
 
   declare type ComponentRef<T> = InstanceType<T>
 
-  declare type LocaleType = 'zh-CN' | 'en'
+  declare type LocaleType = 'zh-CN' | 'en' | 'ja'
 
   declare type AxiosHeaders =
     | 'application/json'

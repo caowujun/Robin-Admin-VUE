@@ -34,17 +34,18 @@ export const usePermissionStore = defineStore('permission', {
   },
   actions: {
     generateRoutes(
-      type: 'admin' | 'test' | 'none',
+      type: 'admin' | 'test' | 'none' | any, //这里改过了，caowujun，2022.11.16，通过type来过滤，1（admin）2（test）。现在设置admin（1）的时候前端过滤，展示所有菜单,。
       routers?: AppCustomRouteRecordRaw[] | string[]
     ): Promise<unknown> {
       return new Promise<void>((resolve) => {
         let routerMap: AppRouteRecordRaw[] = []
-        if (type === 'admin') {
+        if (type === 2) {
           // 模拟后端过滤菜单
           routerMap = generateRoutesFn2(routers as AppCustomRouteRecordRaw[])
-        } else if (type === 'test') {
+        } else if (type === 1) {
           // 模拟前端过滤菜单
           routerMap = generateRoutesFn1(cloneDeep(asyncRouterMap), routers as string[])
+          console.log('routerMap', routerMap)
         } else {
           // 直接读取静态路由表
           routerMap = cloneDeep(asyncRouterMap)

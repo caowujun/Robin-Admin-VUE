@@ -86,8 +86,8 @@ export default {
     small: '小'
   },
   login: {
-    welcome: '欢迎使用本系统',
-    message: '开箱即用的中后台管理系统',
+    welcome: '一个二次扩展的个人管理工具',
+    message: '来源于vue-element-plus-admin',
     username: '用户名',
     password: '密码',
     register: '注册',

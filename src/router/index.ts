@@ -66,7 +66,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
       {
         path: 'index',
         name: 'home-index',
-        component: () => import('@/views/Guide/Guide.vue'),
+        component: () => import('@/views/Dashboard/Workplace.vue'),
         meta: {
           title: t('menu.home'),
           icon: 'clarity:dashboard-line'

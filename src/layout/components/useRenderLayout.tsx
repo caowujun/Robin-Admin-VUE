@@ -8,6 +8,7 @@ import AppView from './AppView.vue'
 import ToolHeader from './ToolHeader.vue'
 import { ElScrollbar } from 'element-plus'
 import { useDesign } from '@/hooks/web/useDesign'
+import { setCssVar } from '@/utils'
 
 const { getPrefixCls } = useDesign()
 
@@ -34,6 +35,8 @@ const mobile = computed(() => appStore.getMobile)
 
 // 固定菜单
 const fixedMenu = computed(() => appStore.getFixedMenu)
+
+setCssVar('--tags-view-height', tagsView.value == true ? '35px' : '0px')
 
 export const useRenderLayout = () => {
   const renderClassic = () => {

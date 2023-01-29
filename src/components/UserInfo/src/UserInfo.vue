@@ -46,9 +46,9 @@ const changePwd = () => {
 const changeUserInfo = () => {
   push({ name: 'modifyUserInfo' })
 }
-const toDocument = () => {
-  window.open('https://element-plus-admin-doc.cn/')
-}
+// const toDocument = () => {
+//   window.open('https://element-plus-admin-doc.cn/')
+// }
 </script>
 
 <template>
@@ -66,14 +66,13 @@ const toDocument = () => {
     <template #dropdown>
       <ElDropdownMenu>
         <ElDropdownItem>
-          <ElDropdownItem>
-            <div @click="changePwd"> {{ t('login.modifyPwd') }}</div>
-          </ElDropdownItem>
-          <ElDropdownItem>
-            <div @click="changeUserInfo"> {{ t('login.modifyUserInfo') }}</div>
-          </ElDropdownItem>
-          <div @click="toDocument">{{ t('common.document') }}</div>
+          <div @click="changePwd"> {{ t('login.modifyPwd') }}</div>
         </ElDropdownItem>
+        <ElDropdownItem>
+          <div @click="changeUserInfo"> {{ t('login.modifyUserInfo') }}</div>
+        </ElDropdownItem>
+        <!-- <div @click="toDocument">{{ t('common.document') }}</div> -->
+
         <ElDropdownItem divided>
           <div @click="loginOut">{{ t('common.loginOut') }}</div>
         </ElDropdownItem>

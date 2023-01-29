@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, unref, watch } from 'vue'
+import { ref, unref, watch } from 'vue'
 import { Form } from '@/components/Form'
 import { useI18n } from '@/hooks/web/useI18n'
 import { ElButton, ElCheckbox, ElLink } from 'element-plus'
@@ -11,13 +11,10 @@ import { usePermissionStore } from '@/store/modules/permission'
 import { useRouter } from 'vue-router'
 import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 import { UserType } from '@/api/login/types'
-import { useValidator } from '@/hooks/web/useValidator'
-import { FormSchema } from '@/types/form'
+import { schema_login as schema, rules_login as rules } from './index'
 import filterRouter from '@/router/permissionAssign'
 
-const { required } = useValidator()
-
-const emit = defineEmits(['to-register'])
+// const emit = defineEmits(['to-register'])
 
 const appStore = useAppStore()
 
@@ -29,74 +26,7 @@ const { wsCache } = useCache()
 const { wsCache_local } = useCache_local()
 const { t } = useI18n()
 
-const rules = {
-  username: [required()],
-  password: [required()]
-}
-
-const schema = reactive<FormSchema[]>([
-  {
-    field: 'title',
-    colProps: {
-      span: 24
-    }
-  },
-  {
-    field: 'username',
-    label: t('login.username'),
-    value: 'admin',
-    component: 'Input',
-    colProps: {
-      span: 24
-    },
-    componentProps: {
-      placeholder: t('login.usernamePlaceholder')
-    }
-  },
-  {
-    field: 'password',
-    label: t('login.password'),
-    value: 'admin',
-    component: 'InputPassword',
-    colProps: {
-      span: 24
-    },
-    componentProps: {
-      style: {
-        width: '100%'
-      },
-      placeholder: t('login.passwordPlaceholder')
-    }
-  },
-  {
-    field: 'tool',
-    colProps: {
-      span: 24
-    }
-  },
-  {
-    field: 'login',
-    colProps: {
-      span: 24
-    }
-  },
-  {
-    field: 'other',
-    component: 'Divider',
-    label: t('login.otherLogin'),
-    componentProps: {
-      contentPosition: 'center'
-    }
-  },
-  {
-    field: 'otherIcon',
-    colProps: {
-      span: 24
-    }
-  }
-])
-
-const iconSize = 30
+// const iconSize = 30
 
 const remember = ref(false)
 
@@ -104,7 +34,7 @@ const { register, elFormRef, methods } = useForm()
 
 const loading = ref(false)
 
-const iconColor = '#999'
+// const iconColor = '#999'
 
 const redirect = ref<string>('')
 
@@ -191,9 +121,9 @@ const getRole = async (accountRoleType: string) => {
 }
 
 // 去注册页面
-const toRegister = () => {
-  emit('to-register')
-}
+// const toRegister = () => {
+//   emit('to-register')
+// }
 </script>
 
 <template>
@@ -223,14 +153,14 @@ const toRegister = () => {
           {{ t('login.login') }}
         </ElButton>
       </div>
-      <div class="w-[100%] mt-15px">
+      <!-- <div class="w-[100%] mt-15px">
         <ElButton class="w-[100%]" @click="toRegister">
           {{ t('login.register') }}
         </ElButton>
-      </div>
+      </div> -->
     </template>
 
-    <template #otherIcon>
+    <!-- <template #otherIcon>
       <div class="flex justify-between w-[100%]">
         <Icon
           icon="ant-design:github-filled"
@@ -257,7 +187,7 @@ const toRegister = () => {
           class="cursor-pointer anticon"
         />
       </div>
-    </template>
+    </template> -->
   </Form>
 </template>
 

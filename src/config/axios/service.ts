@@ -24,7 +24,7 @@ const service: AxiosInstance = axios.create({
 
 // request拦截器
 service.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: AxiosRequestConfig | any) => {
     if (
       config.method === 'post' &&
       (config.headers as AxiosRequestHeaders)['Content-Type'] ===

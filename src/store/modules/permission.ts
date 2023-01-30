@@ -45,7 +45,7 @@ export const usePermissionStore = defineStore('permission', {
         } else if (type === 1) {
           // 模拟前端过滤菜单
           routerMap = generateRoutesFn1(cloneDeep(asyncRouterMap), routers as string[])
-          console.log('routerMap', routerMap)
+          // console.log('routerMap', routerMap)
         } else {
           // 直接读取静态路由表
           routerMap = cloneDeep(asyncRouterMap)

@@ -3,12 +3,13 @@ import { computed, unref } from 'vue'
 import { useLocaleStoreWithOut } from '@/store/modules/locale'
 
 const TIME_AGO_MESSAGE_MAP: {
-  'zh-CN': UseTimeAgoMessages | any
-  en: UseTimeAgoMessages | any
-  ja: UseTimeAgoMessages | any
+  'zh-CN': UseTimeAgoMessages
+  en: UseTimeAgoMessages
+  ja: UseTimeAgoMessages
 } = {
   'zh-CN': {
     justNow: '刚刚',
+    invalid: '无效时间',
     past: (n) => (n.match(/\d/) ? `${n}前` : n),
     future: (n) => (n.match(/\d/) ? `${n}后` : n),
     month: (n, past) => (n === 1 ? (past ? '上个月' : '下个月') : `${n} 个月`),
@@ -21,6 +22,7 @@ const TIME_AGO_MESSAGE_MAP: {
   },
   en: {
     justNow: '刚刚',
+    invalid: 'Invalid Date',
     past: (n) => (n.match(/\d/) ? `${n} ago` : n),
     future: (n) => (n.match(/\d/) ? `in ${n}` : n),
     month: (n, past) =>
@@ -36,6 +38,7 @@ const TIME_AGO_MESSAGE_MAP: {
   },
   ja: {
     justNow: 'ただ',
+    invalid: 'Invalid Date',
     past: (n) => (n.match(/\d/) ? `${n}前` : n),
     future: (n) => (n.match(/\d/) ? `${n}后` : n),
     month: (n, past) => (n === 1 ? (past ? '先月' : '来月') : `${n} ヶ月`),

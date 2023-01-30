@@ -16,7 +16,7 @@ export default defineComponent({
     // 是否多选
     selection: propTypes.bool.def(true),
     // 是否所有的超出隐藏，优先级低于schema中的showOverflowTooltip,
-    showOverflowTooltip: propTypes.bool.def(true),
+    showOverflowTooltip: propTypes.bool.def(false),
     // 表头
     columns: {
       type: Array as PropType<TableColumn[]>,
@@ -108,7 +108,7 @@ export default defineComponent({
       return Object.assign(
         {
           small: false,
-          background: false,
+          background: true,
           pagerCount: 7,
           layout: 'sizes, prev, pager, next, jumper, ->, total',
           pageSizes: [10, 20, 30, 40, 50, 100],
@@ -271,6 +271,8 @@ export default defineComponent({
     return () => (
       <div v-loading={unref(getProps).loading}>
         <ElTable
+          stripe
+          border
           // @ts-ignore
           ref={elTableRef}
           data={unref(getProps).data}
@@ -296,3 +298,54 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped lang="less">
+:deep(.el-table) {
+  // border: solid 1px #efefef;
+
+  .el-table__header {
+    height: 50px;
+  }
+
+  .el-table__header-wrapper thead tr th {
+    background: #fafafa;
+  }
+
+  thead {
+    color: black;
+  }
+
+  .actionBtn {
+    margin: 0 15px;
+    color: rgb(24, 144, 255);
+    cursor: pointer;
+  }
+
+  .cell {
+    white-space: nowrap;
+  }
+}
+
+:deep(.el-pagination) {
+  display: flex;
+  justify-content: flex-end;
+
+  &.is-background {
+    .el-pager li {
+      background: #fff;
+      border: var(--el-pagination-button-bg-color) 1px solid;
+    }
+
+    .el-pager li.is-active {
+      background: #409eff;
+      border: var(--el-pagination-button-bg-color) 1px solid;
+    }
+
+    .btn-prev,
+    .btn-next {
+      background: #fff;
+      border: var(--el-pagination-button-bg-color) 1px solid;
+    }
+  }
+}
+</style>

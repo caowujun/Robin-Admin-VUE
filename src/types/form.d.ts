@@ -9,7 +9,15 @@ export type FormSetPropsType = {
   value: any
 }
 
-export type FormValueType = string | number | string[] | number[] | boolean | undefined | null
+export type FormValueType =
+  | string
+  | number
+  | string[]
+  | number[]
+  | boolean
+  | undefined
+  | null
+  | Date[]
 
 export type FormItemProps = {
   labelWidth?: string | number

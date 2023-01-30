@@ -19,6 +19,16 @@ const dictObj: Recordable = {
       value: 2,
       label: 'tableDemo.important'
     }
+  ],
+  moneyCategory: [
+    {
+      value: 0,
+      label: 'app_dic.income'
+    },
+    {
+      value: 1,
+      label: 'app_dic.expenditure'
+    }
   ]
 }
 

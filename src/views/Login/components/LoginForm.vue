@@ -71,7 +71,6 @@ const signIn = async () => {
           } else {
             wsCache.set(appStore.getUserInfo, res.data)
           }
-          console.log('appStore.getDynamicRouter', appStore.getDynamicRouter)
           // 是否使用动态路由
           if (appStore.getDynamicRouter) {
             getRole(res.data.roleId)
@@ -102,22 +101,19 @@ const getRole = async (accountRoleType: string) => {
   // admin - 模拟前端过滤菜单，roleid=1
   // test - 模拟后端过滤菜单，roleid=2
   const res = filterRouter(accountRoleType) //: await getTestRoleApi(params)
-  console.log(res)
-  if (res) {
-    // const { wsCache } = useCache()
-    const routers = res || []
-    wsCache.set('roleRouters', routers)
-    remember.value && wsCache_local.set('roleRouters', routers)
 
-    await permissionStore.generateRoutes(1, routers).catch(() => {})
+  // const { wsCache } = useCache()
+  const routers = res || []
+  wsCache.set('roleRouters', routers)
+  remember.value && wsCache_local.set('roleRouters', routers)
 
-    permissionStore.getAddRouters.forEach((route) => {
-      addRoute(route as RouteRecordRaw) // 动态添加可访问路由表
-    })
-    permissionStore.setIsAddRouters(true)
-    console.log(redirect.value || permissionStore.addRouters[0].path)
-    push({ path: redirect.value || permissionStore.addRouters[0].path })
-  }
+  await permissionStore.generateRoutes(1, routers).catch(() => {})
+
+  permissionStore.getAddRouters.forEach((route) => {
+    addRoute(route as RouteRecordRaw) // 动态添加可访问路由表
+  })
+  permissionStore.setIsAddRouters(true)
+  push({ path: redirect.value || permissionStore.addRouters[0].path })
 }
 
 // 去注册页面

@@ -162,6 +162,28 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_menu.gasoline'),
           icon: 'clarity:hourglass-outline-alerted'
         }
+      },
+      {
+        path: 'gasoline/add/index',
+        name: 'gasolineAdd',
+        component: () => import('@/views/Gasoline/Edit/index.vue'),
+        meta: {
+          title: t('app_common.add'),
+          hidden: true,
+          showMainRoute: true,
+          activeMenu: '/personTools/gasoline/add/index'
+        }
+      },
+      {
+        path: 'gasoline/edit/index',
+        name: 'gasolineEdit',
+        component: () => import('@/views/Gasoline/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          showMainRoute: true,
+          activeMenu: '/personTools/gasoline/edit/index'
+        }
       }
     ]
   },
@@ -181,6 +203,28 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_menu.userManage'),
           icon: 'clarity:user-line'
+        }
+      },
+      {
+        path: 'gasoline/add/index',
+        name: 'gasolineAdd',
+        component: () => import('@/views/Gasoline/Edit/index.vue'),
+        meta: {
+          title: t('app_common.add'),
+          hidden: true,
+          showMainRoute: true,
+          activeMenu: '/personTools/gasoline/add/index'
+        }
+      },
+      {
+        path: 'gasoline/edit/index',
+        name: 'gasolineEdit',
+        component: () => import('@/views/Gasoline/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          showMainRoute: true,
+          activeMenu: '/personTools/gasoline/edit/index'
         }
       },
       {

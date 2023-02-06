@@ -11,23 +11,23 @@ const List: {
   password: string
   role: string
   roleId: string
-  permissions: string | string[]
+  // permissions: string | string[]
 }[] = [
   {
     username: 'admin',
     userDisplayName: '管理员',
     password: 'admin',
     role: 'admin',
-    roleId: '1',
-    permissions: ['*.*.*']
+    roleId: '1'
+    // permissions: ['*.*.*']
   },
   {
     username: 'test',
     userDisplayName: '普通用户',
     password: 'test',
     role: 'test',
-    roleId: '2',
-    permissions: ['example:dialog:create', 'example:dialog:delete']
+    roleId: '2'
+    // permissions: ['example:dialog:create', 'example:dialog:delete']
   }
 ]
 

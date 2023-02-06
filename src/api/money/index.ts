@@ -1,6 +1,5 @@
 import apiList from '../apiList'
 import request from '@/config/axios'
-// import { Life } from '../types'
 
 export const getTableListApi = async (params: any): Promise<IResponse> => {
   return request.get({ url: apiList.money.page, params })

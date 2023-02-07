@@ -8,5 +8,5 @@ export type Money = {
   amount: number
   recordDate: string
   category: string
-  note: string
+  notes: string
 }

@@ -24,6 +24,7 @@ const whiteList = ['/login'] // 不重定向白名单
 router.beforeEach(async (to, from, next) => {
   start()
   loadStart()
+  console.log(to.path)
   const userInfo = getCache(appStore.getUserInfo) // wsCache.get(appStore.getUserInfo)
   if (userInfo && userInfo.username) {
     if (to.path === '/login') {
@@ -50,9 +51,10 @@ router.beforeEach(async (to, from, next) => {
 
       // 是否使用动态路由
       if (appStore.getDynamicRouter) {
-        userInfo.role === 2
-          ? await permissionStore.generateRoutes(2, roleRouters as AppCustomRouteRecordRaw[])
-          : await permissionStore.generateRoutes(1, roleRouters as string[])
+        // userInfo.role === 2
+        //   ? await permissionStore.generateRoutes(2, roleRouters as AppCustomRouteRecordRaw[])
+        //   :
+        await permissionStore.generateRoutes(1, roleRouters as string[])
       } else {
         await permissionStore.generateRoutes('none')
       }

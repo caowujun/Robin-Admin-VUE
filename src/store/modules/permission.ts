@@ -44,6 +44,7 @@ export const usePermissionStore = defineStore('permission', {
           routerMap = generateRoutesFn2(routers as AppCustomRouteRecordRaw[])
         } else if (type === 1) {
           // 模拟前端过滤菜单
+
           routerMap = generateRoutesFn1(cloneDeep(asyncRouterMap), routers as string[])
           // console.log('routerMap', routerMap)
         } else {

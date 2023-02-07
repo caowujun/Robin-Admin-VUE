@@ -4,8 +4,9 @@ const routes = new Map([
   ['/personTools/life/index', '1,2'],
   ['/personTools/schedule/index', '1,2'],
   ['/personTools/income/index', '1,2'],
+  ['/personTools/income/add/index', '1,2'],
+  ['/personTools/income/edit/index', '1,2'],
   ['/personTools/gasoline/index', '1,2'],
-  ['/personTools/sex/index', '1,2'],
 
   ['/sysSetting', '1'],
   ['/sysSetting/user/index', '1'],

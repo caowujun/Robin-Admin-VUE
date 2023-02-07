@@ -99,8 +99,8 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.add'),
           hidden: true,
-          showMainRoute: true,
-          activeMenu: '/personTools/income/add/index'
+          canTo: true,
+          activeMenu: '/personTools/income/index'
         }
       },
       {
@@ -110,8 +110,8 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.edit'),
           hidden: true,
-          showMainRoute: true,
-          activeMenu: '/personTools/income/edit/index'
+          canTo: true,
+          activeMenu: '/personTools/income/index'
         }
       },
       {
@@ -130,7 +130,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.add'),
           hidden: true,
-          showMainRoute: true,
+          canTo: true,
           activeMenu: '/personTools/life/add/index'
         }
       },
@@ -141,7 +141,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.edit'),
           hidden: true,
-          showMainRoute: true,
+          canTo: true,
           activeMenu: '/personTools/life/edit/index'
         }
       },
@@ -170,7 +170,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.add'),
           hidden: true,
-          showMainRoute: true,
+          canTo: true,
           activeMenu: '/personTools/gasoline/add/index'
         }
       },
@@ -181,7 +181,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.edit'),
           hidden: true,
-          showMainRoute: true,
+          canTo: true,
           activeMenu: '/personTools/gasoline/edit/index'
         }
       }
@@ -212,7 +212,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.add'),
           hidden: true,
-          showMainRoute: true,
+          canTo: true,
           activeMenu: '/personTools/gasoline/add/index'
         }
       },
@@ -223,7 +223,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_common.edit'),
           hidden: true,
-          showMainRoute: true,
+          canTo: true,
           activeMenu: '/personTools/gasoline/edit/index'
         }
       },

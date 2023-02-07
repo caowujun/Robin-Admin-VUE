@@ -11,6 +11,7 @@ import { getTableListApi, delTableListApi } from '@/api/money'
 import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
+import { getCache } from '@/hooks/web/useCache'
 
 const { t } = useI18n()
 const isGrid = ref(false)
@@ -29,17 +30,17 @@ const { register, tableObject, methods } = useTable<TableData>({
     total: 'total'
   },
   defaultParams: {
-    category: 1
+    category: 1 //查询表单默认值
   }
 })
 const { getList, setSearchParams } = methods
 
 getList()
 //to edit page
-const editFn = (data: TableSlotDefault) => {
-  push({ name: 'moneyEdit', query: { id: data.row.id } })
+const editFn = (row: TableSlotDefault) => {
+  push({ name: 'incomeEdit', query: { id: row.id } })
 }
-
+//delete，适配全部删除和单个删除
 const delData = async (row: TableData | null, multiple: boolean) => {
   tableObject.currentRow = row
   const { delList, getSelections } = methods
@@ -55,23 +56,14 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  push({ name: 'money' })
+  console.log(getCache('roleRouters'))
+  push({ name: 'incomeAdd' })
 }
-//一括削除ボタンを表示するかどうかを判断する
-// const selectionChanges = (selection: Recordable[]) => {
-//   alert(1)
-//   console.log('sdfsdf')
-//   deleteAllBtn.value = selection?.length > 0 ? true : false
-//   selectionsArray.value = selection
-// }
 
 //override the search method
 const search = (model) => {
   setSearchParams(model)
 }
-// const action = (row: TableData, type: string) => {
-//   push(`/example/example-${type}?id=${row.id}`)
-// }
 </script>
 
 <template>

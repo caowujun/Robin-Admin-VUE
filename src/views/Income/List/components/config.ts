@@ -50,8 +50,8 @@ export const columns = reactive<TableColumn[]>([
     }
   },
   {
-    field: 'note',
-    label: t('app_common.note'),
+    field: 'notes',
+    label: t('app_common.notes'),
     sortable: true
   },
   {

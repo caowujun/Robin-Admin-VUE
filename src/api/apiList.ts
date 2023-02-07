@@ -9,7 +9,9 @@ const apiList = {
   },
   money: {
     page: '/money/page',
-    delAll: '/money/delete'
+    delAll: '/money/delete',
+    save: '/money/save',
+    getById: '/money/getById'
   }
 }
 

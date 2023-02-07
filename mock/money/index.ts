@@ -16,7 +16,7 @@ let List: {
   recordDate: string
   categoryTitle: string
   category: number
-  note: string
+  notes: string
 }[] = []
 
 for (let i = 0; i < count; i++) {
@@ -27,7 +27,7 @@ for (let i = 0; i < count; i++) {
       amount: random(1, 1000),
       category: i % 2,
       categoryTitle: i % 2 == 0 ? 'app_dic.income' : 'app_dic.expenditure',
-      note: 'test'
+      notes: 'test'
     })
   )
 }
@@ -49,7 +49,6 @@ export default [
           return true
         return false
       })
-      debugger
 
       const pageList = mockList.filter(
         (_, index) => index < pageSize * pageIndex && index >= pageSize * (pageIndex - 1)
@@ -65,7 +64,7 @@ export default [
   },
   // 保存接口
   {
-    url: '/life/save',
+    url: '/money/save',
     method: 'post',
     timeout,
     response: ({ body }) => {
@@ -96,7 +95,7 @@ export default [
   },
   // 详情接口
   {
-    url: '/life/detail',
+    url: '/money/getById',
     method: 'get',
     response: ({ query }) => {
       const { id } = query

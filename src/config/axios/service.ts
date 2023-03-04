@@ -1,6 +1,6 @@
 import axios, {
   AxiosInstance,
-  AxiosRequestConfig,
+  InternalAxiosRequestConfig,
   AxiosRequestHeaders,
   AxiosResponse,
   AxiosError
@@ -24,7 +24,7 @@ const service: AxiosInstance = axios.create({
 
 // request拦截器
 service.interceptors.request.use(
-  (config: AxiosRequestConfig | any) => {
+  (config: InternalAxiosRequestConfig | any) => {
     if (
       config.method === 'post' &&
       (config.headers as AxiosRequestHeaders)['Content-Type'] ===

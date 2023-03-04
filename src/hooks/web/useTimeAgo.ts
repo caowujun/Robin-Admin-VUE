@@ -38,7 +38,7 @@ const TIME_AGO_MESSAGE_MAP: {
   },
   ja: {
     justNow: 'ただ',
-    invalid: 'Invalid Date',
+    invalid: '無効な時間',
     past: (n) => (n.match(/\d/) ? `${n}前` : n),
     future: (n) => (n.match(/\d/) ? `${n}后` : n),
     month: (n, past) => (n === 1 ? (past ? '先月' : '来月') : `${n} ヶ月`),

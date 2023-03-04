@@ -412,7 +412,10 @@ watch(
         {
           icon: 'ant-design:close-outlined',
           label: t('common.closeTab'),
-          disabled: !!visitedViews?.length && selectedTag?.meta.affix
+          disabled: !!visitedViews?.length && selectedTag?.meta.affix,
+          command: () => {
+            closeSelectedTag(selectedTag!)
+          }
         },
         {
           divided: true,
@@ -480,7 +483,7 @@ watch(
       }
     }
 
-    &:after {
+    &::after {
       position: absolute;
       top: 1px;
       left: 0;
@@ -543,7 +546,7 @@ watch(
         }
       }
 
-      &:after {
+      &::after {
         border-right: 1px solid var(--el-border-color);
         border-left: 1px solid var(--el-border-color);
       }

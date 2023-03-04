@@ -95,22 +95,17 @@ const getRole = async (accountRoleType: string) => {
   // admin - 模拟前端过滤菜单，roleid=1
   // test - 模拟前端过滤菜单，roleid=2
   const res = filterRouter(accountRoleType) //: await getTestRoleApi(params)
-
   // const { wsCache } = useCache()
   const routers = res || []
-
-  //1代表是前端过滤，2代表是后端过滤
-  await permissionStore.generateRoutes(1, routers).catch(() => {})
-  console.log(routers)
-  permissionStore.getAddRouters.forEach((route) => {
-    console.log(route)
-    addRoute(route as RouteRecordRaw) // 动态添加可访问路由表
-  })
-  permissionStore.setIsAddRouters(true)
   //路由加到缓存
   wsCache.set('roleRouters', routers)
   remember.value && wsCache_local.set('roleRouters', routers)
-
+  //1代表是前端过滤，2代表是后端过滤
+  await permissionStore.generateRoutes(1, routers).catch(() => {})
+  permissionStore.getAddRouters.forEach((route) => {
+    addRoute(route as RouteRecordRaw) // 动态添加可访问路由表
+  })
+  permissionStore.setIsAddRouters(true)
   push({ path: redirect.value || permissionStore.addRouters[0].path })
 }
 

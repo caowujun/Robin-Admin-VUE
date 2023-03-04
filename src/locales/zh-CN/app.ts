@@ -92,7 +92,7 @@ export default {
   app_menu: {
     home: '面板',
     personTools: '个人管理',
-    life: '生活记录',
+    life: '运动记录',
     schedule: '日程管理',
     income: '收支记录',
     gasoline: '加油记录',

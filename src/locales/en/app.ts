@@ -19,7 +19,7 @@ export default {
     selectText: '请选择',
     startTimeText: '开始时间',
     endTimeText: '结束时间',
-    login: '登录',
+
     required: '该项为必填项',
     loginOut: '退出系统',
     document: '项目文档',
@@ -46,6 +46,7 @@ export default {
     delSuccess: '删除成功'
   },
   app_login: {
+    login: 'Login',
     appTitle: '睡眠アプリ管理サイト',
     loginSubTitle: 'ユーザーIDとパスワード登録',
     accountId: 'ユーザーID',

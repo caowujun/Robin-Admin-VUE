@@ -7,7 +7,7 @@ import { CountTo } from '@/components/CountTo'
 import { formatTime } from '@/utils'
 import { Echart } from '@/components/Echart'
 import { EChartsOption } from 'echarts'
-import { radarOption } from './echarts-data'
+import { radarOption, barOptions, lineOptions } from './echarts-data'
 import { Highlight } from '@/components/Highlight'
 import {
   getCountApi,
@@ -16,6 +16,7 @@ import {
   getTeamApi,
   getRadarApi
 } from '@/api/dashboard/workplace'
+import { getWeeklyUserActivityApi, getMonthlySalesApi } from '@/api/dashboard/analysis'
 import type { WorkplaceTotal, Project, Dynamic, Team } from '@/api/dashboard/workplace/types'
 import { set } from 'lodash-es'
 
@@ -99,9 +100,68 @@ const getRadar = async () => {
     ])
   }
 }
+const barOptionsData = reactive<EChartsOption>(barOptions) as EChartsOption
 
+// 周活跃量
+const getWeeklyUserActivity = async () => {
+  const res = await getWeeklyUserActivityApi().catch(() => {})
+  if (res) {
+    set(
+      barOptionsData,
+      'xAxis.data',
+      res.data.map((v) => t(v.name))
+    )
+    set(barOptionsData, 'series', [
+      {
+        name: t('analysis.activeQuantity'),
+        data: res.data.map((v) => v.value),
+        type: 'bar'
+      }
+    ])
+  }
+}
+const lineOptionsData = reactive<EChartsOption>(lineOptions) as EChartsOption
+
+// 每月销售总额
+const getMonthlySales = async () => {
+  const res = await getMonthlySalesApi().catch(() => {})
+  if (res) {
+    set(
+      lineOptionsData,
+      'xAxis.data',
+      res.data.map((v) => t(v.name))
+    )
+    set(lineOptionsData, 'series', [
+      {
+        name: t('analysis.estimate'),
+        smooth: true,
+        type: 'line',
+        data: res.data.map((v) => v.estimate),
+        animationDuration: 2800,
+        animationEasing: 'cubicInOut'
+      },
+      {
+        name: t('analysis.actual'),
+        smooth: true,
+        type: 'line',
+        itemStyle: {},
+        data: res.data.map((v) => v.actual),
+        animationDuration: 2800,
+        animationEasing: 'quadraticOut'
+      }
+    ])
+  }
+}
 const getAllApi = async () => {
-  await Promise.all([getCount(), getProject(), getDynamic(), getTeam(), getRadar()])
+  await Promise.all([
+    getCount(),
+    getProject(),
+    getWeeklyUserActivity(),
+    getMonthlySales(),
+    getTeam(),
+    getRadar(),
+    getDynamic
+  ])
   loading.value = false
 }
 
@@ -205,7 +265,6 @@ const { t } = useI18n()
           </ElRow>
         </ElSkeleton>
       </ElCard>
-
       <ElCard shadow="never" class="mt-20px">
         <template #header>
           <div class="flex justify-between">
@@ -234,6 +293,29 @@ const { t } = useI18n()
             </div>
             <ElDivider />
           </div>
+        </ElSkeleton>
+      </ElCard>
+      <ElCard shadow="never" class="mt-20px">
+        <template #header>
+          <div class="flex justify-between">
+            <span>{{ t('app_menu.life') }}</span>
+            <!-- <ElLink type="primary" :underline="false">{{ t('workplace.more') }}</ElLink> -->
+          </div>
+        </template>
+        <ElSkeleton :loading="loading" animated>
+          <Echart :options="barOptionsData" :height="300" />
+        </ElSkeleton>
+      </ElCard>
+
+      <ElCard shadow="never" class="mt-20px">
+        <template #header>
+          <div class="flex justify-between">
+            <span>{{ t('app_menu.gasoline') }}</span>
+            <!-- <ElLink type="primary" :underline="false">{{ t('workplace.more') }}</ElLink> -->
+          </div>
+        </template>
+        <ElSkeleton :loading="loading" animated>
+          <Echart :options="lineOptionsData" :height="350" />
         </ElSkeleton>
       </ElCard>
     </ElCol>

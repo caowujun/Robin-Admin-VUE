@@ -128,7 +128,7 @@ const search = (model) => {
 </template>
 
 <style lang="less" scoped>
-.primaryBtn {
-  margin-bottom: 20px;
-}
+// .primaryBtn {
+//   margin-bottom: 20px;
+// }
 </style>

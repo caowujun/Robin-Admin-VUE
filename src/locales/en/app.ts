@@ -43,7 +43,18 @@ export default {
     delOk: '确定',
     delCancel: '取消',
     delNoData: '请选择需要删除的数据',
-    delSuccess: '删除成功'
+    delSuccess: '删除成功',
+    recordDate: '发生日期',
+    yes: 'はい',
+    no: 'いいえ'
+  },
+  app_dashboard: {
+    am: 'Good mornning',
+    pm: 'Good afternoon',
+    today: 'Today',
+    yesterday: 'Yesterday',
+    now: 'Now',
+    happyDay: 'Wish you happy every day!'
   },
   app_login: {
     login: 'Login',
@@ -109,12 +120,18 @@ export default {
     expenditure: '支出'
   },
   app_money: {
-    recordDate: '发生日期',
     amount: '金额',
     category: '类别'
   },
   app_life: {
     triggerTime: '触发时间',
     triggerNumber: '触发次数'
+  },
+  app_gasoline: {
+    amount: '金额',
+    litre: '容积（升）',
+    unitPrice: '单价',
+    isFillUp: '是否加满',
+    kilometers: 'Kilometers'
   }
 }

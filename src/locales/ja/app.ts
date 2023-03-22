@@ -40,7 +40,18 @@ export default {
     delOk: '確認',
     delCancel: 'キャンセル',
     delNoData: '削除するデータを選択してください',
-    delSuccess: '削除に成功しました'
+    delSuccess: '削除に成功しました',
+    recordDate: '発生日',
+    yes: 'はい',
+    no: 'いいえ'
+  },
+  app_dashboard: {
+    am: 'おはようございます',
+    pm: 'こんにちは',
+    today: '今日',
+    yesterday: '昨日',
+    now: '現在',
+    happyDay: '毎日楽しんでね!'
   },
   app_login: {
     login: 'ログイン',
@@ -96,12 +107,18 @@ export default {
     expenditure: '支出'
   },
   app_money: {
-    recordDate: '発生日',
     amount: '金額',
     category: 'カテゴリ'
   },
   app_life: {
     triggerTime: 'トリガ時間',
     triggerNumber: 'トリガ回数'
+  },
+  app_gasoline: {
+    amount: '金額',
+    litre: '容積（リットル）',
+    unitPrice: '単価',
+    isFillUp: '満タンかどうか',
+    kilometers: 'キロすう'
   }
 }

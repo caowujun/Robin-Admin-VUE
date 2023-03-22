@@ -2,21 +2,20 @@ import { config } from '@/config/axios/config'
 import { MockMethod } from 'vite-plugin-mock'
 import { toAnyString } from '@/utils'
 import Mock from 'mockjs'
-import { random } from 'lodash-es'
 
 const { result_code } = config
 
 const timeout = 1000
 
-const count = 91
+const count = 19
 
 let List: {
   id: string
-  amount: number
   recordDate: string
-  // categoryTitle: string
-  category: number
-  notes: string
+  amount: number
+  litre: number
+  isFillUp: number
+  kilometers: number
 }[] = []
 
 for (let i = 0; i < count; i++) {
@@ -24,10 +23,10 @@ for (let i = 0; i < count; i++) {
     Mock.mock({
       id: toAnyString(),
       recordDate: '@datetime',
-      amount: random(1, 1000),
-      category: i % 2,
-      // categoryTitle: i % 2 == 0 ? 'app_dic.income' : 'app_dic.expenditure',
-      notes: 'test'
+      amount: 100,
+      litre: 33,
+      isFillUp: i % 2,
+      kilometers: 333
     })
   )
 }
@@ -35,27 +34,21 @@ for (let i = 0; i < count; i++) {
 export default [
   // 列表接口
   {
-    url: '/money/page',
+    url: '/gasoline/page',
     method: 'get',
     timeout,
     response: ({ query }) => {
-      const { category, pageIndex, pageSize } = query
-
-      const mockList = List.filter((item) => {
-        return category
-          ? Number.parseInt(item.category.toString()) == Number.parseInt(category.toString())
-            ? true
-            : false
-          : true
-      })
-
-      const pageList = mockList.filter(
+      const { pageIndex, pageSize } = query
+      // const mockList = List.filter(() => {
+      //   return true
+      // })
+      const pageList = List.filter(
         (_, index) => index < pageSize * pageIndex && index >= pageSize * (pageIndex - 1)
       )
       return {
         code: result_code,
         data: {
-          total: mockList.length,
+          total: List.length,
           list: pageList
         }
       }
@@ -63,7 +56,7 @@ export default [
   },
   // 保存接口
   {
-    url: '/money/save',
+    url: '/gasoline/save',
     method: 'post',
     timeout,
     response: ({ body }) => {
@@ -94,7 +87,7 @@ export default [
   },
   // 详情接口
   {
-    url: '/money/getById',
+    url: '/gasoline/detail',
     method: 'get',
     response: ({ query }) => {
       const { id } = query
@@ -110,7 +103,7 @@ export default [
   },
   // 删除接口
   {
-    url: '/money/delete',
+    url: '/gasoline/delete',
     method: 'post',
     response: ({ body }) => {
       const ids = body.ids

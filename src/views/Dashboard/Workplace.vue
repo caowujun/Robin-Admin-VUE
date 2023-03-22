@@ -9,6 +9,8 @@ import { Echart } from '@/components/Echart'
 import { EChartsOption } from 'echarts'
 import { radarOption, barOptions, lineOptions } from './echarts-data'
 import { Highlight } from '@/components/Highlight'
+import { cacheQuery } from '@/hooks/web/useCache'
+
 import {
   getCountApi,
   getProjectApi,
@@ -16,12 +18,27 @@ import {
   getTeamApi,
   getRadarApi
 } from '@/api/dashboard/workplace'
-import { getWeeklyUserActivityApi, getMonthlySalesApi } from '@/api/dashboard/analysis'
+import {
+  getWeeklyUserActivityApi,
+  getMonthlySalesApi,
+  getWeatherApi
+} from '@/api/dashboard/analysis'
 import type { WorkplaceTotal, Project, Dynamic, Team } from '@/api/dashboard/workplace/types'
 import { set } from 'lodash-es'
-
+import { useAppStore } from '@/store/modules/app'
+const { t } = useI18n()
+// const { wsCache } = useCache()
+const appStore = useAppStore()
 const loading = ref(true)
-
+//判定早上，中午，晚上
+const hello = ref('')
+debugger
+hello.value =
+  (new Date().getHours() < 12 ? t('app_dashboard.am') : t('app_dashboard.pm')) +
+  '，' +
+  cacheQuery(appStore.getUserInfo)?.userDisplayName
+//当前天气
+const weather = ref('')
 // 获取统计数
 let totalSate = reactive<WorkplaceTotal>({
   project: 0,
@@ -35,10 +52,8 @@ const getCount = async () => {
     totalSate = Object.assign(totalSate, res.data)
   }
 }
-
-let projects = reactive<Project[]>([])
-
 // 获取项目数
+let projects = reactive<Project[]>([])
 const getProject = async () => {
   const res = await getProjectApi().catch(() => {})
   if (res) {
@@ -48,7 +63,6 @@ const getProject = async () => {
 
 // 获取动态
 let dynamics = reactive<Dynamic[]>([])
-
 const getDynamic = async () => {
   const res = await getDynamicApi().catch(() => {})
   if (res) {
@@ -58,7 +72,6 @@ const getDynamic = async () => {
 
 // 获取团队
 let team = reactive<Team[]>([])
-
 const getTeam = async () => {
   const res = await getTeamApi().catch(() => {})
   if (res) {
@@ -68,7 +81,6 @@ const getTeam = async () => {
 
 // 获取指数
 let radarOptionData = reactive<EChartsOption>(radarOption) as EChartsOption
-
 const getRadar = async () => {
   const res = await getRadarApi().catch(() => {})
   if (res) {
@@ -100,9 +112,9 @@ const getRadar = async () => {
     ])
   }
 }
-const barOptionsData = reactive<EChartsOption>(barOptions) as EChartsOption
 
 // 周活跃量
+const barOptionsData = reactive<EChartsOption>(barOptions) as EChartsOption
 const getWeeklyUserActivity = async () => {
   const res = await getWeeklyUserActivityApi().catch(() => {})
   if (res) {
@@ -120,9 +132,9 @@ const getWeeklyUserActivity = async () => {
     ])
   }
 }
-const lineOptionsData = reactive<EChartsOption>(lineOptions) as EChartsOption
 
 // 每月销售总额
+const lineOptionsData = reactive<EChartsOption>(lineOptions) as EChartsOption
 const getMonthlySales = async () => {
   const res = await getMonthlySalesApi().catch(() => {})
   if (res) {
@@ -152,6 +164,29 @@ const getMonthlySales = async () => {
     ])
   }
 }
+
+// 获取天气
+const getWeather = async () => {
+  const res = await getWeatherApi(cacheQuery(appStore.getUserInfo)?.areaCode).catch(() => {})
+  console.log(res)
+  if (res) {
+    // weatherObj.time = res?.time
+    // weatherObj.city = res?.cityInfo?.city
+    // weatherObj.updateTime = res?.cityInfo?.updateTime
+    // weatherObj.parent = res?.cityInfo?.parent
+    // weatherObj.low = res?.data?.forecast[0]?.low?.split(' ')[1]
+    // weatherObj.high = res?.data?.forecast[0]?.high?.split(' ')[1]
+    // weatherObj.wendu = res?.data?.wendu + '℃'
+    // weatherObj.type = res?.data?.forecast[0]?.type
+
+    weather.value = `${res?.cityInfo?.parent}${res?.cityInfo?.city}，${t('app_dashboard.today')}${
+      res?.data?.forecast[0]?.type
+    }，${t('app_dashboard.now')}${res?.data?.wendu}℃，${
+      res?.data?.forecast[0]?.low?.split(' ')[1]
+    }-${res?.data?.forecast[0]?.high?.split(' ')[1]}。`
+  }
+}
+
 const getAllApi = async () => {
   await Promise.all([
     getCount(),
@@ -160,14 +195,13 @@ const getAllApi = async () => {
     getMonthlySales(),
     getTeam(),
     getRadar(),
-    getDynamic
+    getDynamic(),
+    getWeather()
   ])
   loading.value = false
 }
 
 getAllApi()
-
-const { t } = useI18n()
 </script>
 
 <template>
@@ -184,10 +218,10 @@ const { t } = useI18n()
               />
               <div>
                 <div class="text-20px text-700">
-                  {{ t('workplace.goodMorning') }}，Archer，{{ t('workplace.happyDay') }}
+                  {{ hello }}， {{ t('app_dashboard.happyDay') }}
                 </div>
                 <div class="mt-10px text-14px text-gray-500">
-                  {{ t('workplace.toady') }}，20℃ - 32℃！
+                  {{ weather }}
                 </div>
               </div>
             </div>

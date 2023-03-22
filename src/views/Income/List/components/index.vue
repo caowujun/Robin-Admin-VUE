@@ -11,7 +11,7 @@ import { getTableListApi, delTableListApi } from '@/api/money'
 import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
-import { getCache } from '@/hooks/web/useCache'
+// import { cacheQuery } from '@/hooks/web/useCache'
 
 const { t } = useI18n()
 const isGrid = ref(false)
@@ -56,7 +56,7 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  console.log(getCache('roleRouters'))
+  // console.log(cacheQuery('roleRouters'))
   push({ name: 'incomeAdd' })
 }
 
@@ -119,7 +119,7 @@ const search = (model) => {
 </template>
 
 <style lang="less" scoped>
-.primaryBtn {
-  margin-bottom: 20px;
-}
+// .primaryBtn {
+//   margin-bottom: 20px;
+// }
 </style>

@@ -28,3 +28,14 @@ export type RadarData = {
   max: number
   name: string
 }
+
+// export type Weather = {
+//   time: string
+//   city: string
+//   parent: string
+//   updateTime: string
+//   low: string
+//   high: string
+//   wendu: string
+//   type: string
+// }

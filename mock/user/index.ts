@@ -11,6 +11,7 @@ const List: {
   password: string
   role: string
   roleId: string
+  areaCode: string
   // permissions: string | string[]
 }[] = [
   {
@@ -18,7 +19,8 @@ const List: {
     userDisplayName: '管理员',
     password: 'admin',
     role: 'admin',
-    roleId: '1'
+    roleId: '1',
+    areaCode: '101120601'
     // permissions: ['*.*.*']
   },
   {
@@ -26,7 +28,8 @@ const List: {
     userDisplayName: '普通用户',
     password: 'test',
     role: 'test',
-    roleId: '2'
+    roleId: '2',
+    areaCode: '101120601'
     // permissions: ['example:dialog:create', 'example:dialog:delete']
   }
 ]

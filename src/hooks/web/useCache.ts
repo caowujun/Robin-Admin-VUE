@@ -32,7 +32,7 @@ export const cacheClear = () => {
   useCache_local().wsCache_local.clear()
 }
 
-export const getCache = (key: string): any => {
+export const cacheQuery = (key: string): any => {
   return (
     useCache().wsCache.get(key) ??
     (useCache_local().wsCache_local.get('remember') === true

@@ -21,3 +21,6 @@ export const getWeeklyUserActivityApi = (): Promise<IResponse<WeeklyUserActivity
 export const getMonthlySalesApi = (): Promise<IResponse<MonthlySales[]>> => {
   return request.get({ url: '/analysis/monthlySales' })
 }
+export const getWeatherApi = (code): Promise<IResponse<any>> => {
+  return request.get({ url: '/weather/api/weather/city/' + code })
+}

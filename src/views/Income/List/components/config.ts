@@ -3,7 +3,8 @@ import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
 import { useDictStoreWithOut } from '@/store/modules/dict'
-
+import { ElTag } from 'element-plus'
+import { h } from 'vue'
 const { t } = useI18n()
 const dictStore = useDictStoreWithOut()
 
@@ -14,7 +15,7 @@ const categoryStatus: any = dictStore.getDictObj['moneyCategory'].map((v) => {
 export const columns = reactive<TableColumn[]>([
   {
     field: 'recordDate',
-    label: t('app_money.recordDate'),
+    label: t('app_common.recordDate'),
     sortable: true,
     form: {
       component: 'DatePicker',
@@ -30,23 +31,19 @@ export const columns = reactive<TableColumn[]>([
     sortable: true
   },
   {
-    field: 'categoryTitle',
+    field: 'category',
     label: t('app_money.category'),
     sortable: true,
-    formatter: (_: Recordable, __: TableColumn, cellValue: string) => {
-      return t(cellValue)
-      // return h(
-      //   ElTag,
-      //   {
-      //     type: cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'
-      //   },
-      //   () =>
-      //     cellValue === 1
-      //       ? t('tableDemo.important')
-      //       : cellValue === 2
-      //       ? t('tableDemo.good')
-      //       : t('tableDemo.commonly')
-      // )
+    formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
+      // return cellValue === '1' ? t('app_dic.income') : t('app_dic.expenditure')
+
+      return h(
+        ElTag,
+        {
+          type: cellValue === 0 ? 'success' : 'warning'
+        },
+        () => (cellValue === 0 ? t('app_dic.income') : t('app_dic.expenditure'))
+      )
     }
   },
   {

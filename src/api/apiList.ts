@@ -12,6 +12,12 @@ const apiList = {
     delAll: '/money/delete',
     save: '/money/save',
     getById: '/money/getById'
+  },
+  gasoline: {
+    page: '/gasoline/page',
+    delAll: '/gasoline/delete',
+    save: '/gasoline/save',
+    getById: '/gasoline/getById'
   }
 }
 

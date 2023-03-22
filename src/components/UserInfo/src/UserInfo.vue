@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessageBox } from 'element-plus'
 import { useI18n } from '@/hooks/web/useI18n'
-import { cacheClear, getCache } from '@/hooks/web/useCache'
+import { cacheClear, cacheQuery } from '@/hooks/web/useCache'
 import { resetRouter } from '@/router'
 import { useRouter } from 'vue-router'
 import { loginOutApi } from '@/api/login'
@@ -60,7 +60,7 @@ const changeUserInfo = () => {
         class="w-[calc(var(--logo-height)-25px)] rounded-[50%]"
       />
       <span class="<lg:hidden text-14px pl-[5px] text-[var(--top-header-text-color)]">
-        {{ appStore.getUserDisplayName || getCache(appStore.getUserInfo)?.UserDisplayName }}</span
+        {{ appStore.getUserDisplayName || cacheQuery(appStore.getUserInfo)?.UserDisplayName }}</span
       >
     </div>
     <template #dropdown>

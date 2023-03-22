@@ -33,6 +33,8 @@ declare global {
   }
 
   declare interface IResponse<T = any> {
+    cityInfo: any
+    time: string
     code: string
     data: T extends any ? T : T & any
   }

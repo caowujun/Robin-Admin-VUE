@@ -119,6 +119,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           target: 'http://127.0.0.1:8000',
           changeOrigin: true,
           rewrite: path => path.replace(/^\/api/, '')
+        },
+        '/weather': {
+          target: 'http://t.weather.sojson.com/',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/weather/, '')
         }
       },
       hmr: {

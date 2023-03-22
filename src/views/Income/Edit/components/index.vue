@@ -19,12 +19,12 @@ const { setValues, getFormData } = methods
 const loading = ref(false)
 
 onMounted(async () => {
-  console.log('query.id', query.id)
+  // console.log('query.id', query.id)
 
   if (query.id) {
     const res: any = await getMoneyApi(query.id as string)
     res ? setValues(res.data) : noMessageAlert()
-    console.log(res)
+    // console.log(res)
   }
 })
 const save = async () => {

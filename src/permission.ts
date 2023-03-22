@@ -7,7 +7,7 @@ import { usePermissionStoreWithOut } from '@/store/modules/permission'
 import { useDictStoreWithOut } from '@/store/modules/dict'
 import { usePageLoading } from '@/hooks/web/usePageLoading'
 import { getDictApi } from '@/api/common'
-import { getCache } from '@/hooks/web/useCache'
+import { cacheQuery } from '@/hooks/web/useCache'
 
 const permissionStore = usePermissionStoreWithOut()
 
@@ -25,7 +25,7 @@ router.beforeEach(async (to, from, next) => {
   start()
   loadStart()
   console.log(to.path)
-  const userInfo = getCache(appStore.getUserInfo) // wsCache.get(appStore.getUserInfo)
+  const userInfo = cacheQuery(appStore.getUserInfo) // wsCache.get(appStore.getUserInfo)
   if (userInfo && userInfo.username) {
     if (to.path === '/login') {
       next({ path: '/' })
@@ -43,7 +43,7 @@ router.beforeEach(async (to, from, next) => {
         return
       }
       // 开发者可根据实际情况进行修改
-      const roleRouters = getCache('roleRouters') || []
+      const roleRouters = cacheQuery('roleRouters') || []
       // const roleRouters = wsCache.get('roleRouters') || []
       // const userInfo = wsCache.get(appStore.getUserInfo)
 

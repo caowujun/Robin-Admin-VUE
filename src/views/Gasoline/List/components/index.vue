@@ -11,7 +11,7 @@ import { getTableListApi, delTableListApi } from '@/api/gasoline'
 import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
-// import { cacheQuery } from '@/hooks/web/useCache'
+import { dateFormat, dateFormatToGreenwich } from '@/utils/dateFormat'
 
 const { t } = useI18n()
 const isGrid = ref(false)
@@ -19,7 +19,6 @@ const layout = ref('inline')
 const buttonPosition = ref('left')
 const { push } = useRouter()
 const deleteAllBtn = ref(true)
-// const selectionsArray = ref<Recordable[]>([])
 const delLoading = ref(false)
 
 const { register, tableObject, methods } = useTable<TableData>({
@@ -28,17 +27,18 @@ const { register, tableObject, methods } = useTable<TableData>({
   response: {
     list: 'list',
     total: 'total'
+  },
+  defaultParams: {
+    startTimeText: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
+    endTimeText: dateFormat(new Date(), false)
   }
-  // defaultParams: {
-  //   category: 1 //查询表单默认值
-  // }
 })
 const { getList, setSearchParams } = methods
 
 getList()
 //to edit page
 const editFn = (row: TableSlotDefault) => {
-  push({ name: 'incomeEdit', query: { id: row.id } })
+  push({ name: 'gasolineEdit', query: { id: row.id } })
 }
 //delete，适配全部删除和单个删除
 const delData = async (row: TableData | null, multiple: boolean) => {
@@ -56,12 +56,17 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  // console.log(cacheQuery('roleRouters'))
   push({ name: 'gasolineAdd' })
 }
 
 //override the search method
 const search = (model) => {
+  model['startTimeText'] = model.recordDate
+    ? dateFormatToGreenwich([model.recordDate[0], model.recordDate[1]], false).value[0]
+    : ''
+  model['endTimeText'] = model.notifyTime
+    ? dateFormatToGreenwich([model.recordDate[0], model.recordDate[1]], false).value[1]
+    : ''
   setSearchParams(model)
 }
 </script>

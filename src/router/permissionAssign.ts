@@ -2,19 +2,37 @@ const routes = new Map([
   ['/home/index', '1,2'],
   ['/personTools', '1,2'],
   ['/personTools/life/index', '1,2'],
+  ['/personTools/life/add/index', '1,2'],
+  ['/personTools/life/edit/index', '1,2'],
+
   ['/personTools/schedule/index', '1,2'],
+  ['/personTools/schedule/add/index', '1,2'],
+  ['/personTools/schedule/edit/index', '1,2'],
+
   ['/personTools/income/index', '1,2'],
   ['/personTools/income/add/index', '1,2'],
   ['/personTools/income/edit/index', '1,2'],
+
   ['/personTools/gasoline/index', '1,2'],
+  ['/personTools/gasoline/add/index', '1,2'],
+  ['/personTools/gasoline/edit/index', '1,2'],
 
   ['/sysSetting', '1'],
   ['/sysSetting/user/index', '1'],
-  ['/sysSetting/role/index', '1'],
-  ['/sysSetting/menu/index', '1'],
-  ['/sysSetting/enum/index', '1'],
+  ['/sysSetting/user/add/index', '1'],
+  ['/sysSetting/user/edit/index', '1'],
 
-  ['/log/index', '1']
+  ['/sysSetting/role/index', '1'],
+  ['/sysSetting/role/add/index', '1'],
+  ['/sysSetting/role/edit/index', '1'],
+
+  ['/sysSetting/enumType/index', '1'],
+  ['/sysSetting/enumType/add/index', '1'],
+  ['/sysSetting/enumType/edit/index', '1'],
+
+  ['/log', '1'],
+  ['/log/sysLog/index', '1'],
+  ['/log/operateLog/index', '1']
 ])
 
 const filterRouter = (role: string): Array<string> => {

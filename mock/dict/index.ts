@@ -29,6 +29,26 @@ const dictObj: Recordable = {
       value: 1,
       label: 'app_dic.expenditure'
     }
+  ],
+  cityCode: [
+    {
+      value: '101120601',
+      label: '潍坊'
+    },
+    {
+      value: '101010100',
+      label: '北京'
+    }
+  ],
+  roleType: [
+    {
+      value: '1',
+      label: '管理员'
+    },
+    {
+      value: '2',
+      label: '普通用户'
+    }
   ]
 }
 

@@ -137,3 +137,7 @@ export const getMonthDays = (date: Date) => {
   const day = new Date(year, month, 0)
   return day.getDate()
 }
+//在date的基础上加减天数
+export const addDays = (date: Date, days: number) => {
+  return dateFormat(new Date(date.setDate(date.getDate() + days)), true)
+}

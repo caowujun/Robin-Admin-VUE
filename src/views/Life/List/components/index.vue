@@ -11,6 +11,7 @@ import { getTableListApi, delTableListApi } from '@/api/life'
 import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
+import { dateFormat, dateFormatToGreenwich } from '@/utils/dateFormat'
 
 const { t } = useI18n()
 const isGrid = ref(false)
@@ -18,7 +19,6 @@ const layout = ref('inline')
 const buttonPosition = ref('left')
 const { push } = useRouter()
 const deleteAllBtn = ref(true)
-// const selectionsArray = ref<Recordable[]>([])
 const delLoading = ref(false)
 
 const { register, tableObject, methods } = useTable<TableData>({
@@ -27,11 +27,13 @@ const { register, tableObject, methods } = useTable<TableData>({
   response: {
     list: 'list',
     total: 'total'
+  },
+  defaultParams: {
+    startTriggerTime: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
+    endTriggerTime: dateFormat(new Date(), false)
   }
-  // defaultParams: {
-  //   title: 's'
-  // }
 })
+
 const { getList, setSearchParams } = methods
 
 getList()
@@ -56,18 +58,17 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  push({ name: 'SCRN-C01-01-09' })
+  push({ name: 'lifeAdd' })
 }
-//一括削除ボタンを表示するかどうかを判断する
-// const selectionChanges = (selection: Recordable[]) => {
-//   alert(1)
-//   console.log('sdfsdf')
-//   deleteAllBtn.value = selection?.length > 0 ? true : false
-//   selectionsArray.value = selection
-// }
 
 //override the search method
 const search = (model) => {
+  model['startTriggerTime'] = model.triggerTime
+    ? dateFormatToGreenwich([model.triggerTime[0], model.triggerTime[1]], false).value[0]
+    : ''
+  model['endTriggerTime'] = model.notifyTime
+    ? dateFormatToGreenwich([model.triggerTime[0], model.triggerTime[1]], false).value[1]
+    : ''
   setSearchParams(model)
 }
 // const action = (row: TableData, type: string) => {

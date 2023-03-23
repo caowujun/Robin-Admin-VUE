@@ -147,11 +147,33 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
       },
       {
         path: 'schedule/index',
-        component: () => import('@/views/Schedule/index.vue'),
+        component: () => import('@/views/Schedule/List/index.vue'),
         name: 'schedule',
         meta: {
           title: t('app_menu.schedule'),
           icon: 'clarity:calendar-outline-badged'
+        }
+      },
+      {
+        path: 'schedule/add/index',
+        name: 'scheduleAdd',
+        component: () => import('@/views/Life/Schedule/index.vue'),
+        meta: {
+          title: t('app_common.add'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/schedule/add/index'
+        }
+      },
+      {
+        path: 'schedule/edit/index',
+        name: 'scheduleEdit',
+        component: () => import('@/views/Schedule/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/schedule/edit/index'
         }
       },
       {
@@ -206,25 +228,25 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         }
       },
       {
-        path: 'gasoline/add/index',
-        name: 'gasolineAdd',
-        component: () => import('@/views/Gasoline/Edit/index.vue'),
+        path: 'user/add/index',
+        name: 'userAdd',
+        component: () => import('@/views/User/Edit/index.vue'),
         meta: {
           title: t('app_common.add'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/gasoline/add/index'
+          activeMenu: '/personTools/user/add/index'
         }
       },
       {
-        path: 'gasoline/edit/index',
-        name: 'gasolineEdit',
-        component: () => import('@/views/Gasoline/Edit/index.vue'),
+        path: 'user/edit/index',
+        name: 'userEdit',
+        component: () => import('@/views/User/Edit/index.vue'),
         meta: {
           title: t('app_common.edit'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/gasoline/edit/index'
+          activeMenu: '/personTools/user/edit/index'
         }
       },
       {
@@ -237,12 +259,25 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         }
       },
       {
-        path: 'menu/index',
-        component: () => import('@/views/Menu/List/index.vue'),
-        name: 'menu',
+        path: 'role/add/index',
+        name: 'roleAdd',
+        component: () => import('@/views/Role/Edit/index.vue'),
         meta: {
-          title: t('app_menu.menuManage'),
-          icon: 'clarity:menu-line'
+          title: t('app_common.add'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/role/add/index'
+        }
+      },
+      {
+        path: 'role/edit/index',
+        name: 'roleEdit',
+        component: () => import('@/views/Role/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/role/edit/index'
         }
       },
       {
@@ -253,27 +288,78 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_menu.enumType'),
           icon: 'clarity:key-line'
         }
+      },
+      {
+        path: 'enumType/add/index',
+        name: 'enumTypeAdd',
+        component: () => import('@/views/EnumType/Edit/index.vue'),
+        meta: {
+          title: t('app_common.add'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/enumType/add/index'
+        }
+      },
+      {
+        path: 'enumType/edit/index',
+        name: 'enumTypeEdit',
+        component: () => import('@/views/EnumType/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/enumType/edit/index'
+        }
       }
     ]
   },
   {
     path: '/log',
     component: Layout,
-    redirect: '/log/index',
-    meta: {},
     name: 'log',
+    meta: {
+      title: t('app_menu.logManage'),
+      icon: 'clarity:book-line'
+    },
     children: [
       {
-        path: 'index',
-        name: 'log-index',
-        component: () => import('@/views/Log/index.vue'),
+        path: 'sysLog/index',
+        component: () => import('@/views/Log/SysLog/List/index.vue'),
+        name: 'sysLog',
         meta: {
-          title: t('app_menu.logManage'),
-          icon: 'clarity:book-line'
+          title: t('app_menu.sysLog'),
+          icon: 'clarity:bell-line'
+        }
+      },
+      {
+        path: 'operateLog/index',
+        component: () => import('@/views/OperateLog/List/index.vue'),
+        name: 'operateLog',
+        meta: {
+          title: t('app_menu.operateLog'),
+          icon: 'clarity:bell-outline-badged'
         }
       }
     ]
   }
+  // {
+  //   path: '/log',
+  //   component: Layout,
+  //   redirect: '/log/index',
+  //   meta: {},
+  //   name: 'log',
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'log-index',
+  //       component: () => import('@/views/Log/index.vue'),
+  //       meta: {
+  //         title: t('app_menu.logManage'),
+  //         icon: 'clarity:book-line'
+  //       }
+  //     }
+  //   ]
+  // },
 ]
 
 const router = createRouter({

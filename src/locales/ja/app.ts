@@ -98,9 +98,10 @@ export default {
     sysSetting: 'システム設定',
     userManage: 'ユーザー管理',
     roleManage: '権限管理',
-    menuManage: 'メニュー管理',
     enumType: '列挙管理',
-    logManage: '操作ログ'
+    logManage: '操作ログ',
+    sysLog: 'システムログ',
+    operateLog: '操作ログ'
   },
   app_dic: {
     income: '収入',
@@ -120,5 +121,17 @@ export default {
     unitPrice: '単価',
     isFillUp: '満タンかどうか',
     kilometers: 'キロすう'
+  },
+  app_schedule: {},
+  app_user: {
+    username: 'ログイン名',
+    password: 'パスワード',
+    userDisplayName: 'ユーザー名',
+    roleType: '権限',
+    email: 'メールアドレス',
+    address: '住所',
+    phone: '携帯番号',
+    admin: '管理者',
+    notAdmin: '一般ユーザー'
   }
 }

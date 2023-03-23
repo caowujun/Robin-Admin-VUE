@@ -8,6 +8,6 @@ export type UserType = {
   userDisplayName: string
   password: string
   role: string
-  roleId: string
+  roleType: string
   permissions: string | string[]
 }

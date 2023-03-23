@@ -73,7 +73,7 @@ const signIn = async () => {
           }
           // 是否使用动态路由
           if (appStore.getDynamicRouter) {
-            getRole(res.data.roleId)
+            getRole(res.data.roleType)
           } else {
             await permissionStore.generateRoutes('none').catch(() => {})
             permissionStore.getAddRouters.forEach((route) => {
@@ -92,8 +92,8 @@ const signIn = async () => {
 
 // 获取角色信息
 const getRole = async (accountRoleType: string) => {
-  // admin - 模拟前端过滤菜单，roleid=1
-  // test - 模拟前端过滤菜单，roleid=2
+  // admin - 模拟前端过滤菜单，roleType=1
+  // test - 模拟前端过滤菜单，roleType=2
   const res = filterRouter(accountRoleType) //: await getTestRoleApi(params)
   // const { wsCache } = useCache()
   const routers = res || []

@@ -7,7 +7,7 @@ const { result_code } = config
 
 const timeout = 1000
 
-const count = 91
+const count = 100
 
 let List: {
   id: string
@@ -32,17 +32,21 @@ export default [
     method: 'get',
     timeout,
     response: ({ query }) => {
-      const { pageIndex, pageSize } = query
-      // const mockList = List.filter(() => {
-      //   return true
-      // })
-      const pageList = List.filter(
+      const { pageIndex, pageSize, startTriggerTime, endTriggerTime } = query
+      console.log('life/page', startTriggerTime, endTriggerTime)
+
+      const mockList = List.filter((item) => {
+        if (startTriggerTime && startTriggerTime != '')
+          return item.triggerTime > startTriggerTime && item.triggerTime < endTriggerTime
+        else return true
+      })
+      const pageList = mockList.filter(
         (_, index) => index < pageSize * pageIndex && index >= pageSize * (pageIndex - 1)
       )
       return {
         code: result_code,
         data: {
-          total: List.length,
+          total: mockList.length,
           list: pageList
         }
       }

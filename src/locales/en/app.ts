@@ -111,9 +111,10 @@ export default {
     sysSetting: '系统设置',
     userManage: '用户管理',
     roleManage: '权限管理',
-    menuManage: '菜单管理',
     enumType: '枚举配置',
-    logManage: '操作日志'
+    logManage: '日志记录',
+    sysLog: '系统日志',
+    operateLog: '操作日志'
   },
   app_dic: {
     income: '收入',
@@ -133,5 +134,17 @@ export default {
     unitPrice: '单价',
     isFillUp: '是否加满',
     kilometers: 'Kilometers'
+  },
+  app_schedule: {},
+  app_user: {
+    username: '登录名',
+    password: '密码',
+    userDisplayName: '用户名',
+    roleType: '权限',
+    email: '邮箱',
+    address: '住址',
+    phone: '手机',
+    admin: '管理员',
+    notAdmin: '一般用户'
   }
 }

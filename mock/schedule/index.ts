@@ -11,22 +11,18 @@ const count = 100
 
 let List: {
   id: string
-  recordDate: string
-  amount: number
-  litre: number
-  isFillUp: number
-  kilometers: number
+  startTimeText: string
+  endTimeText: string
+  notes: string
 }[] = []
 
 for (let i = 0; i < count; i++) {
   List.push(
     Mock.mock({
       id: toAnyString(),
-      recordDate: '@datetime',
-      amount: 100,
-      litre: 33,
-      isFillUp: i % 2,
-      kilometers: 333
+      startTimeText: '@datetime',
+      endTimeText: '@datetime',
+      notes: i
     })
   )
 }
@@ -34,14 +30,20 @@ for (let i = 0; i < count; i++) {
 export default [
   // 列表接口
   {
-    url: '/gasoline/page',
+    url: '/schedule/page',
     method: 'get',
     timeout,
     response: ({ query }) => {
       const { pageIndex, pageSize, startTimeText, endTimeText } = query
+      console.log('schedule/page', startTimeText, endTimeText)
+
       const mockList = List.filter((item) => {
         if (startTimeText && startTimeText != '')
-          return item.recordDate > startTimeText && item.recordDate < endTimeText
+          return (
+            (item.startTimeText > startTimeText && item.endTimeText < endTimeText) ||
+            (item.startTimeText > startTimeText && item.startTimeText < endTimeText) ||
+            (item.endTimeText > startTimeText && item.endTimeText < endTimeText)
+          )
         else return true
       })
       const pageList = mockList.filter(
@@ -58,7 +60,7 @@ export default [
   },
   // 保存接口
   {
-    url: '/gasoline/save',
+    url: '/schedule/save',
     method: 'post',
     timeout,
     response: ({ body }) => {
@@ -89,7 +91,7 @@ export default [
   },
   // 详情接口
   {
-    url: '/gasoline/detail',
+    url: '/schedule/detail',
     method: 'get',
     response: ({ query }) => {
       const { id } = query
@@ -105,7 +107,7 @@ export default [
   },
   // 删除接口
   {
-    url: '/gasoline/delete',
+    url: '/schedule/delete',
     method: 'post',
     response: ({ body }) => {
       const ids = body.ids

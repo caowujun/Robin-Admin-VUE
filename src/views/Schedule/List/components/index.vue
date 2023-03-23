@@ -7,16 +7,19 @@ import { useTable } from '@/hooks/web/useTable'
 import { useRouter } from 'vue-router'
 import { columns, schema } from './config'
 import { Search } from '@/components/Search'
-import { getTableListApi, delTableListApi } from '@/api/user'
-import { CirclePlus } from '@element-plus/icons-vue'
+import { getTableListApi, delTableListApi } from '@/api/schedule'
+import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
+import { dateFormat, dateFormatToGreenwich } from '@/utils/dateFormat'
 
 const { t } = useI18n()
 const isGrid = ref(false)
 const layout = ref('inline')
 const buttonPosition = ref('left')
 const { push } = useRouter()
+const deleteAllBtn = ref(true)
+// const selectionsArray = ref<Recordable[]>([])
 const delLoading = ref(false)
 
 const { register, tableObject, methods } = useTable<TableData>({
@@ -25,41 +28,52 @@ const { register, tableObject, methods } = useTable<TableData>({
   response: {
     list: 'list',
     total: 'total'
+  },
+  defaultParams: {
+    startTimeText: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
+    endTimeText: dateFormat(new Date(), false)
   }
 })
-const { getList, setSearchParams, setProps } = methods
-//不显示多选框
-setProps({
-  selection: false
-})
+const { getList, setSearchParams } = methods
+
 getList()
 
 //to edit page
-const editFn = (row: TableSlotDefault) => {
-  push({ name: 'userEdit', query: { id: row.id } })
+const editFn = (data: TableSlotDefault) => {
+  push({ name: 'scheduleEdit', query: { id: data.row.id } })
 }
-//delete，适配全部删除和单个删除
+
 const delData = async (row: TableData | null, multiple: boolean) => {
   tableObject.currentRow = row
-  const { delList } = methods
+  const { delList, getSelections } = methods
+  const selections = await getSelections()
   delLoading.value = true
-  await delList([tableObject.currentRow?.id as string], multiple).finally(() => {
+  await delList(
+    multiple ? selections.map((v) => v.id) : [tableObject.currentRow?.id as string],
+    multiple
+  ).finally(() => {
     delLoading.value = false
   })
 }
 
 //to create page
 const toCreatePage = () => {
-  // console.log(cacheQuery('roleRouters'))
-  push({ name: 'userAdd' })
+  push({ name: 'scheduleAdd' })
 }
 
 //override the search method
 const search = (model) => {
-  // model['userName'] = model.userName
-  // model['userDisplayName'] = model.userDisplayName
+  model['startTimeText'] = model.scheduleTime
+    ? dateFormatToGreenwich([model.scheduleTime[0], model.scheduleTime[1]], false).value[0]
+    : ''
+  model['endTimeText'] = model.scheduleTime
+    ? dateFormatToGreenwich([model.scheduleTime[0], model.scheduleTime[1]], false).value[1]
+    : ''
   setSearchParams(model)
 }
+// const action = (row: TableData, type: string) => {
+//   push(`/example/example-${type}?id=${row.id}`)
+// }
 </script>
 
 <template>
@@ -76,7 +90,7 @@ const search = (model) => {
     <ElButton :icon="CirclePlus" type="primary" @click="toCreatePage">{{
       t('app_common.add')
     }}</ElButton>
-    <!-- <ElButton
+    <ElButton
       :icon="Delete"
       :loading="delLoading"
       type="danger"
@@ -84,7 +98,7 @@ const search = (model) => {
       v-if="deleteAllBtn == true"
     >
       {{ t('app_common.deleteAll') }}
-    </ElButton> -->
+    </ElButton>
   </div>
 
   <Table

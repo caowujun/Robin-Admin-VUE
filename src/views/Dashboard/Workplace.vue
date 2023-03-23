@@ -167,7 +167,7 @@ const getMonthlySales = async () => {
 
 // 获取天气
 const getWeather = async () => {
-  const res = await getWeatherApi(cacheQuery(appStore.getUserInfo)?.areaCode).catch(() => {})
+  const res = await getWeatherApi(cacheQuery(appStore.getUserInfo)?.cityCode).catch(() => {})
   console.log(res)
   if (res) {
     // weatherObj.time = res?.time

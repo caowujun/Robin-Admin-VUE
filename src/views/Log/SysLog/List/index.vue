@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ContentWrap } from '@/components/ContentWrap'
-import Index from './components/index.vue'
+import Index from '../components/Index.vue'
+
 defineOptions({
-  name: 'schedule'
+  name: 'logList'
 })
 </script>
 

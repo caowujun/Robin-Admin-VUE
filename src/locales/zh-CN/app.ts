@@ -132,6 +132,12 @@ export default {
     address: '住址',
     phone: '手机',
     admin: '管理员',
-    notAdmin: '一般用户'
+    notAdmin: '一般用户',
+    cityCode: '城市编码'
+  },
+  app_enum: {
+    enumType: '分类',
+    enumName: '枚举名',
+    enumValue: '枚举值'
   }
 }

@@ -132,6 +132,12 @@ export default {
     address: '住所',
     phone: '携帯番号',
     admin: '管理者',
-    notAdmin: '一般ユーザー'
+    notAdmin: '一般ユーザー',
+    cityCode: '都市コーディング'
+  },
+  app_enum: {
+    enumType: 'カテゴリ',
+    enumName: '列挙名',
+    enumValue: '列挙値'
   }
 }

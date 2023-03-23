@@ -65,11 +65,11 @@ export const columns = reactive<TableColumn[]>([
       )
     }
   },
-  // {
-  //   field: 'notes',
-  //   label: t('app_common.notes'),
-  //   sortable: true
-  // },
+  {
+    field: 'cityCode',
+    label: t('app_user.cityCode'),
+    sortable: true
+  },
   {
     field: 'action',
     label: t('app_common.action'),

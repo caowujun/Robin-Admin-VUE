@@ -50,6 +50,12 @@ const apiList = {
     delAll: '/log/delete',
     save: '/log/save',
     getById: '/log/getById'
+  },
+  enumType: {
+    page: '/enum/page',
+    delAll: '/enum/delete',
+    save: '/enum/save',
+    getById: '/enum/getById'
   }
 }
 

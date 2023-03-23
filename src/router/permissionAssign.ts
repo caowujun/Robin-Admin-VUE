@@ -22,9 +22,9 @@ const routes = new Map([
   ['/sysSetting/user/add/index', '1'],
   ['/sysSetting/user/edit/index', '1'],
 
-  ['/sysSetting/role/index', '1'],
-  ['/sysSetting/role/add/index', '1'],
-  ['/sysSetting/role/edit/index', '1'],
+  // ['/sysSetting/role/index', '1'],
+  // ['/sysSetting/role/add/index', '1'],
+  // ['/sysSetting/role/edit/index', '1'],
 
   ['/sysSetting/enumType/index', '1'],
   ['/sysSetting/enumType/add/index', '1'],

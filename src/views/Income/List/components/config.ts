@@ -8,7 +8,8 @@ import { h } from 'vue'
 const { t } = useI18n()
 const dictStore = useDictStoreWithOut()
 
-const categoryStatus: any = dictStore.getDictObj['moneyCategory'].map((v) => {
+debugger
+const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
   return { label: t(v.label), value: v.value }
 })
 
@@ -68,6 +69,6 @@ export const schema = reactive<FormSchema[]>([
       options: categoryStatus,
       placeholder: ' '
     },
-    value: 1
+    value: '1'
   }
 ])

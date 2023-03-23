@@ -249,37 +249,37 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           activeMenu: '/personTools/user/edit/index'
         }
       },
-      {
-        path: 'role/index',
-        component: () => import('@/views/Role/List/index.vue'),
-        name: 'role',
-        meta: {
-          title: t('app_menu.roleManage'),
-          icon: 'clarity:employee-group-line'
-        }
-      },
-      {
-        path: 'role/add/index',
-        name: 'roleAdd',
-        component: () => import('@/views/Role/Edit/index.vue'),
-        meta: {
-          title: t('app_common.add'),
-          hidden: true,
-          canTo: true,
-          activeMenu: '/personTools/role/add/index'
-        }
-      },
-      {
-        path: 'role/edit/index',
-        name: 'roleEdit',
-        component: () => import('@/views/Role/Edit/index.vue'),
-        meta: {
-          title: t('app_common.edit'),
-          hidden: true,
-          canTo: true,
-          activeMenu: '/personTools/role/edit/index'
-        }
-      },
+      // {
+      //   path: 'role/index',
+      //   component: () => import('@/views/Role/List/index.vue'),
+      //   name: 'role',
+      //   meta: {
+      //     title: t('app_menu.roleManage'),
+      //     icon: 'clarity:employee-group-line'
+      //   }
+      // },
+      // {
+      //   path: 'role/add/index',
+      //   name: 'roleAdd',
+      //   component: () => import('@/views/Role/Edit/index.vue'),
+      //   meta: {
+      //     title: t('app_common.add'),
+      //     hidden: true,
+      //     canTo: true,
+      //     activeMenu: '/personTools/role/add/index'
+      //   }
+      // },
+      // {
+      //   path: 'role/edit/index',
+      //   name: 'roleEdit',
+      //   component: () => import('@/views/Role/Edit/index.vue'),
+      //   meta: {
+      //     title: t('app_common.edit'),
+      //     hidden: true,
+      //     canTo: true,
+      //     activeMenu: '/personTools/role/edit/index'
+      //   }
+      // },
       {
         path: 'enumType/index',
         component: () => import('@/views/Enum/List/index.vue'),

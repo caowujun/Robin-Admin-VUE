@@ -18,3 +18,6 @@ export const getTableListApi = (params: any): Promise<IResponse> => {
 export const delTableListApi = (ids: string[] | number[]): Promise<IResponse> => {
   return request.post({ url: apiList.enumType.delAll, data: { ids } })
 }
+export const getEnumType = (): Promise<IResponse> => {
+  return request.get({ url: apiList.enumType.getType })
+}

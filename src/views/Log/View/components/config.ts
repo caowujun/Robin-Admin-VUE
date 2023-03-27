@@ -21,11 +21,6 @@ export const columns = reactive<TableColumn[]>([
     }
   },
   {
-    field: 'username',
-    label: t('app_user.username'),
-    sortable: true
-  },
-  {
     field: 'exceptionType',
     label: t('app_log.exceptionType'),
     sortable: true
@@ -34,6 +29,11 @@ export const columns = reactive<TableColumn[]>([
   {
     field: 'exceptionMsg',
     label: t('app_log.exceptionMsg'),
+    sortable: true
+  },
+  {
+    field: 'actionText',
+    label: t('app_log.actionText'),
     sortable: true
   },
 
@@ -47,8 +47,8 @@ export const columns = reactive<TableColumn[]>([
 
 export const schema = reactive<FormSchema[]>([
   {
-    field: 'exceptionMsg',
-    label: t('app_log.exceptionMsg'),
+    field: 'actionText',
+    label: t('app_log.actionText'),
     component: 'Input'
   }
 ])

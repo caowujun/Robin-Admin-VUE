@@ -21,36 +21,16 @@ let dictObj: Recordable = {
       label: 'tableDemo.important'
     }
   ],
-  moneyCategory: [
+  cityCode: [
     {
-      value: 0,
-      label: 'app_dic.income'
+      value: '101120601',
+      label: '潍坊'
     },
     {
-      value: 1,
-      label: 'app_dic.expenditure'
+      value: '101010100',
+      label: '北京'
     }
   ]
-  // cityCode: [
-  //   {
-  //     value: '101120601',
-  //     label: '潍坊'
-  //   },
-  //   {
-  //     value: '101010100',
-  //     label: '北京'
-  //   }
-  // ],
-  // roleType: [
-  //   {
-  //     value: '1',
-  //     label: '管理员'
-  //   },
-  //   {
-  //     value: '2',
-  //     label: '普通用户'
-  //   }
-  // ]
 }
 
 let List: {
@@ -58,43 +38,50 @@ let List: {
   enumType: string
   enumName: string
   enumValue: string
+  enumLanguage: string
 }[] = [
   {
     id: '1',
     enumType: 'ROLETYPE',
     enumName: '管理员',
-    enumValue: '1'
+    enumValue: '1',
+    enumLanguage: 'app_user.adminUser'
   },
   {
     id: '2',
     enumType: 'ROLETYPE',
-    enumName: '普通用户',
-    enumValue: '2'
+    enumName: '一般用户',
+    enumValue: '2',
+    enumLanguage: 'app_user.normalUser'
   },
   {
     id: '3',
     enumType: 'INCOME',
-    enumName: 'app_dic.expenditure',
-    enumValue: '1'
+    enumName: '收入',
+    enumValue: '1',
+    enumLanguage: 'app_money.expenditure'
   },
   {
     id: '4',
     enumType: 'INCOME',
-    enumName: 'app_dic.income',
-    enumValue: '0'
-  },
-  {
-    id: '5',
-    enumType: 'CITYCODE',
-    enumName: '潍坊',
-    enumValue: '101120601'
-  },
-  {
-    id: '6',
-    enumType: 'CITYCODE',
-    enumName: '北京',
-    enumValue: '101010100'
+    enumName: '支出',
+    enumValue: '0',
+    enumLanguage: 'app_money.income'
   }
+  // {
+  //   id: '5',
+  //   enumType: 'CITYCODE',
+  //   enumName: '潍坊',
+  //   enumValue: '101120601',
+  //   enumLanguage: '管理者'
+  // },
+  // {
+  //   id: '6',
+  //   enumType: 'CITYCODE',
+  //   enumName: '北京',
+  //   enumValue: '101010100',
+  //   enumLanguage: '北京'
+  // }
 ]
 
 interface tagObj {
@@ -103,18 +90,33 @@ interface tagObj {
 const dbdics: tagObj = {}
 
 export default [
+  // 获取枚举type的接口
+  {
+    url: '/enum/type',
+    method: 'get',
+    response: () => {
+      const enumTypes = Array.from(
+        new Set(
+          List.map((f) => {
+            return f.enumType
+          })
+        )
+      )
+      return enumTypes
+    }
+  },
   // 列表接口
   {
     url: '/enum/page',
     method: 'get',
     timeout,
     response: ({ query }) => {
-      const { pageIndex, pageSize, enumType, enumName } = query
+      const { pageIndex, pageSize, enumType } = query
       const mockList = List.filter((item) => {
         const result1 = enumType && enumType != '' ? item.enumType === enumType : true
-        const result2 = enumName && enumName != '' ? item.enumName.indexOf(enumName) > 0 : true
+        // const result2 = enumName && enumName != '' ? item.enumName.indexOf(enumName) > 0 : true
 
-        return result1 && result2
+        return result1 //&& result2
       })
       const pageList = mockList.filter(
         (_, index) => index < pageSize * pageIndex && index >= pageSize * (pageIndex - 1)

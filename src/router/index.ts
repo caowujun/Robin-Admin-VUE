@@ -131,7 +131,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.add'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/life/add/index'
+          activeMenu: '/personTools/life/index'
         }
       },
       {
@@ -142,7 +142,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.edit'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/life/edit/index'
+          activeMenu: '/personTools/life/index'
         }
       },
       {
@@ -157,12 +157,12 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
       {
         path: 'schedule/add/index',
         name: 'scheduleAdd',
-        component: () => import('@/views/Life/Schedule/index.vue'),
+        component: () => import('@/views/Schedule/Edit/index.vue'),
         meta: {
           title: t('app_common.add'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/schedule/add/index'
+          activeMenu: '/personTools/schedule/index'
         }
       },
       {
@@ -173,7 +173,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.edit'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/schedule/edit/index'
+          activeMenu: '/personTools/schedule/index'
         }
       },
       {
@@ -193,7 +193,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.add'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/gasoline/add/index'
+          activeMenu: '/personTools/gasoline/index'
         }
       },
       {
@@ -204,7 +204,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.edit'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/gasoline/edit/index'
+          activeMenu: '/personTools/gasoline/index'
         }
       }
     ]
@@ -235,7 +235,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.add'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/user/add/index'
+          activeMenu: '/personTools/user/index'
         }
       },
       {
@@ -246,7 +246,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.edit'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/user/edit/index'
+          activeMenu: '/personTools/user/index'
         }
       },
       // {
@@ -282,7 +282,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
       // },
       {
         path: 'enumType/index',
-        component: () => import('@/views/Enum/List/index.vue'),
+        component: () => import('@/views/EnumType/List/index.vue'),
         name: 'enumType',
         meta: {
           title: t('app_menu.enumType'),
@@ -297,7 +297,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.add'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/enumType/add/index'
+          activeMenu: '/personTools/enumType/index'
         }
       },
       {
@@ -308,7 +308,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           title: t('app_common.edit'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/enumType/edit/index'
+          activeMenu: '/personTools/enumType/index'
         }
       }
     ]
@@ -333,11 +333,33 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
       },
       {
         path: 'operateLog/index',
-        component: () => import('@/views/OperateLog/List/index.vue'),
+        component: () => import('@/views/Log/OperateLog/List/index.vue'),
         name: 'operateLog',
         meta: {
           title: t('app_menu.operateLog'),
           icon: 'clarity:bell-outline-badged'
+        }
+      },
+      {
+        path: 'sysLog/view/index',
+        name: 'sysLogDetail',
+        component: () => import('@/views/Log/View/index.vue'),
+        meta: {
+          title: t('app_common.detail'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/log/sysLog/view/index'
+        }
+      },
+      {
+        path: 'operationLog/view/index',
+        name: 'operationLogDetail',
+        component: () => import('@/views/Log/View/index.vue'),
+        meta: {
+          title: t('app_common.detail'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/log/operationLog/view/index'
         }
       }
     ]

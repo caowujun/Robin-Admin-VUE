@@ -5,6 +5,7 @@ export default {
   app_common: {
     action: '操作',
     delete: '削除',
+    detail: '詳細',
     confirm: '確認',
     cancel: 'キャンセル',
     add: '新規作成',
@@ -103,13 +104,12 @@ export default {
     sysLog: 'システムログ',
     operateLog: '操作ログ'
   },
-  app_dic: {
-    income: '収入',
-    expenditure: '支出'
-  },
+
   app_money: {
     amount: '金額',
-    category: 'カテゴリ'
+    category: 'カテゴリ',
+    income: '収入',
+    expenditure: '支出'
   },
   app_life: {
     triggerTime: 'トリガ時間',
@@ -131,13 +131,19 @@ export default {
     email: 'メールアドレス',
     address: '住所',
     phone: '携帯番号',
-    admin: '管理者',
-    notAdmin: '一般ユーザー',
+    adminUser: '管理者',
+    normalUser: '一般ユーザー',
     cityCode: '都市コーディング'
   },
   app_enum: {
     enumType: 'カテゴリ',
     enumName: '列挙名',
     enumValue: '列挙値'
+  },
+  app_log: {
+    actionType: '操作タイプ',
+    exceptionType: '例外タイプ',
+    exceptionMsg: '例外情報',
+    actionText: 'オペレーション情報'
   }
 }

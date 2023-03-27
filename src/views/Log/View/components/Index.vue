@@ -7,8 +7,7 @@ import { useTable } from '@/hooks/web/useTable'
 import { useRouter } from 'vue-router'
 import { columns, schema } from './config'
 import { Search } from '@/components/Search'
-import { getTableListApi, delTableListApi } from '@/api/common'
-import { CirclePlus } from '@element-plus/icons-vue'
+import { getOperationLogTableListApi as getTableListApi } from '@/api/log'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
 
@@ -17,11 +16,10 @@ const isGrid = ref(false)
 const layout = ref('inline')
 const buttonPosition = ref('left')
 const { push } = useRouter()
-const delLoading = ref(false)
 
 const { register, tableObject, methods } = useTable<TableData>({
   getListApi: getTableListApi,
-  delListApi: delTableListApi,
+  // delListApi: delTableListApi,
   response: {
     list: 'list',
     total: 'total'
@@ -35,27 +33,12 @@ setProps({
 getList()
 
 //to edit page
-const editFn = (row: TableSlotDefault) => {
-  push({ name: 'userEdit', query: { id: row.id } })
-}
-//delete，适配全部删除和单个删除
-const delData = async (row: TableData | null, multiple: boolean) => {
-  tableObject.currentRow = row
-  const { delList } = methods
-  delLoading.value = true
-  await delList([tableObject.currentRow?.id as string], multiple).finally(() => {
-    delLoading.value = false
-  })
-}
-
-//to create page
-const toCreatePage = () => {
-  push({ name: 'userAdd' })
+const viewFn = (row: TableSlotDefault) => {
+  push({ name: 'logView', query: { id: row.id } })
 }
 
 //override the search method
 const search = (model) => {
-  console.log(model)
   setSearchParams(model)
 }
 </script>
@@ -70,20 +53,6 @@ const search = (model) => {
     @reset="setSearchParams"
   />
   <ElDivider style="margin-top: 5px; margin-bottom: 15px" />
-  <div class="mb-15px">
-    <ElButton :icon="CirclePlus" type="primary" @click="toCreatePage">{{
-      t('app_common.add')
-    }}</ElButton>
-    <!-- <ElButton
-      :icon="Delete"
-      :loading="delLoading"
-      type="danger"
-      @click="delData(null, true)"
-      v-if="deleteAllBtn == true"
-    >
-      {{ t('app_common.deleteAll') }}
-    </ElButton> -->
-  </div>
 
   <Table
     fit
@@ -104,10 +73,7 @@ const search = (model) => {
     </template> -->
 
     <template #action="{ row }">
-      <el-button type="primary" link @click="editFn(row)"> {{ t('app_common.edit') }}</el-button>
-      <el-button type="primary" link @click="delData(row, false)">
-        {{ t('app_common.delete') }}</el-button
-      >
+      <el-button type="primary" link @click="viewFn(row)"> {{ t('app_common.view') }}</el-button>
     </template>
   </Table>
 </template>

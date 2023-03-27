@@ -26,7 +26,6 @@ for (let i = 0; i < count; i++) {
       recordDate: '@datetime',
       amount: random(1, 1000),
       category: i % 2,
-      // categoryTitle: i % 2 == 0 ? 'app_dic.income' : 'app_dic.expenditure',
       notes: 'test'
     })
   )

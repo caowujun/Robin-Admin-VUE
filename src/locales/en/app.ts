@@ -5,6 +5,7 @@ export default {
   app_common: {
     action: '操作',
     delete: '删除',
+    detail: '詳細',
     confirm: '确认',
     cancel: '取消',
     add: '新增',
@@ -116,13 +117,12 @@ export default {
     sysLog: '系统日志',
     operateLog: '操作日志'
   },
-  app_dic: {
-    income: '收入',
-    expenditure: '支出'
-  },
+
   app_money: {
     amount: '金额',
-    category: '类别'
+    category: '类别',
+    income: '收入',
+    expenditure: '支出'
   },
   app_life: {
     triggerTime: '触发时间',
@@ -144,13 +144,19 @@ export default {
     email: '邮箱',
     address: '住址',
     phone: '手机',
-    admin: '管理员',
-    notAdmin: '一般用户',
+    adminUser: '管理员',
+    normalUser: '一般用户',
     cityCode: '城市编码'
   },
   app_enum: {
     enumType: '分类',
     enumName: '枚举名',
     enumValue: '枚举值'
+  },
+  app_log: {
+    actionType: '操作类型',
+    exceptionType: '异常类型',
+    exceptionMsg: '异常信息',
+    actionText: '操作信息'
   }
 }

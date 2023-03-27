@@ -46,7 +46,8 @@ const apiList = {
     getById: '/menu/getById'
   },
   log: {
-    page: '/log/page',
+    sysLogPage: '/log/sysLog/Page',
+    operationLogPage: '/log/operationLog/page',
     delAll: '/log/delete',
     save: '/log/save',
     getById: '/log/getById'
@@ -55,7 +56,8 @@ const apiList = {
     page: '/enum/page',
     delAll: '/enum/delete',
     save: '/enum/save',
-    getById: '/enum/getById'
+    getById: '/enum/getById',
+    getType: '/enum/type'
   }
 }
 

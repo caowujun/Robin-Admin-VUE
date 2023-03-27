@@ -36,14 +36,14 @@ export const columns = reactive<TableColumn[]>([
     label: t('app_money.category'),
     sortable: true,
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
-      // return cellValue === '1' ? t('app_dic.income') : t('app_dic.expenditure')
+      // return cellValue === '1' ? t('app_money.income') : t('app_money.expenditure')
 
       return h(
         ElTag,
         {
           type: cellValue === 0 ? 'success' : 'warning'
         },
-        () => (cellValue === 0 ? t('app_dic.income') : t('app_dic.expenditure'))
+        () => (cellValue === 0 ? t('app_money.income') : t('app_money.expenditure'))
       )
     }
   },

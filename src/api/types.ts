@@ -10,3 +10,12 @@ export type Money = {
   category: string
   notes: string
 }
+export type Gasoline = {
+  id: string
+  amount: number
+  litre: number
+  unitPrice: number
+  kilometers: number
+  isFillUp: number
+  recordDate: string
+}

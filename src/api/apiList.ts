@@ -7,57 +7,57 @@ const apiList = {
     page: '/life/page',
     delAll: '/life/delete',
     save: '/life/save',
-    getById: '/life/getById'
+    detail: '/life/detail'
   },
   money: {
     page: '/money/page',
     delAll: '/money/delete',
     save: '/money/save',
-    getById: '/money/getById'
+    detail: '/money/detail'
   },
   gasoline: {
     page: '/gasoline/page',
     delAll: '/gasoline/delete',
     save: '/gasoline/save',
-    getById: '/gasoline/getById'
+    detail: '/gasoline/detail'
   },
   schedule: {
     page: '/schedule/page',
     delAll: '/schedule/delete',
     save: '/schedule/save',
-    getById: '/schedule/getById'
+    detail: '/schedule/detail'
   },
   user: {
     page: '/user/page',
     delAll: '/user/delete',
     save: '/user/save',
-    getById: '/user/getById'
+    detail: '/user/detail'
   },
   role: {
     page: '/role/page',
     delAll: '/role/delete',
     save: '/role/save',
-    getById: '/role/getById'
+    detail: '/role/detail'
   },
   menu: {
     page: '/menu/page',
     delAll: '/menu/delete',
     save: '/menu/save',
-    getById: '/menu/getById'
+    detail: '/menu/detail'
   },
   log: {
     sysLogPage: '/log/sysLog/Page',
     operationLogPage: '/log/operationLog/page',
     delAll: '/log/delete',
     save: '/log/save',
-    getById: '/log/getById'
+    detail: '/log/detail'
   },
   enumType: {
     page: '/enum/page',
     delAll: '/enum/delete',
     save: '/enum/save',
-    getById: '/enum/getById',
-    getType: '/enum/type'
+    detail: '/enum/detail',
+    typeList: '/enum/type'
   }
 }
 

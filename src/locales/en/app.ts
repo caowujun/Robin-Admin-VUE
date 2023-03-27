@@ -20,7 +20,6 @@ export default {
     selectText: '请选择',
     startTimeText: '开始时间',
     endTimeText: '结束时间',
-
     required: '该项为必填项',
     loginOut: '退出系统',
     document: '项目文档',
@@ -47,7 +46,10 @@ export default {
     delSuccess: '删除成功',
     recordDate: '发生日期',
     yes: 'はい',
-    no: 'いいえ'
+    no: 'いいえ',
+    noMessageAlert: 'データが存在しません。',
+    noMessageClose: '閉じる',
+    warnning: '警告'
   },
   app_dashboard: {
     am: 'Good mornning',

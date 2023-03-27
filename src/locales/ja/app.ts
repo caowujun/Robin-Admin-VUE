@@ -44,7 +44,10 @@ export default {
     delSuccess: '削除に成功しました',
     recordDate: '発生日',
     yes: 'はい',
-    no: 'いいえ'
+    no: 'いいえ',
+    noMessageAlert: 'データが存在しません。',
+    noMessageClose: '閉じる',
+    warnning: '警告'
   },
   app_dashboard: {
     am: 'おはようございます',

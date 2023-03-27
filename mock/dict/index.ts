@@ -67,6 +67,20 @@ let List: {
     enumName: '支出',
     enumValue: '0',
     enumLanguage: 'app_money.income'
+  },
+  {
+    id: '5',
+    enumType: 'STATUS',
+    enumName: '是',
+    enumValue: '1',
+    enumLanguage: 'app_common.yes'
+  },
+  {
+    id: '6',
+    enumType: 'STATUS',
+    enumName: '否',
+    enumValue: '0',
+    enumLanguage: 'app_common.no'
   }
   // {
   //   id: '5',

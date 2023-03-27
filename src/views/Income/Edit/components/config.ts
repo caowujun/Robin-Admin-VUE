@@ -7,13 +7,13 @@ import { FormSchema } from '@/types/form'
 const { t } = useI18n()
 const dictStore = useDictStoreWithOut()
 const { required } = useValidator()
-const categoryStatus: any = dictStore.getDictObj['moneyCategory'].map((v) => {
+const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
   return { label: t(v.label), value: v.value }
 })
 
 export const rules = reactive({
   recordDate: [
-    required(),
+    // required(),
     {
       type: 'date',
       required: true,
@@ -29,7 +29,7 @@ export const rules = reactive({
 export const schema = reactive<FormSchema[]>([
   {
     field: 'recordDate',
-    label: t('app_money.recordDate'),
+    label: t('app_common.recordDate'),
     component: 'DatePicker',
     componentProps: {
       type: 'datetime',
@@ -48,7 +48,10 @@ export const schema = reactive<FormSchema[]>([
   {
     field: 'amount',
     label: t('app_money.amount'),
-    component: 'InputNumber'
+    component: 'InputNumber',
+    componentProps: {
+      controlsPosition: 'right'
+    }
   },
   {
     field: 'notes',

@@ -5,9 +5,10 @@ import { useI18n } from '@/hooks/web/useI18n'
 import { useRoute, useRouter } from 'vue-router'
 import { ElButton, ElMessage } from 'element-plus'
 import { schema, rules } from './config'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { saveMoneyApi, getMoneyApi } from '@/api/money'
 import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
+import { useAppStore } from '@/store/modules/app'
 
 const { register, methods, elFormRef } = useForm({
   schema
@@ -17,6 +18,8 @@ const { query } = useRoute()
 const { push } = useRouter()
 const { setValues, getFormData } = methods
 const loading = ref(false)
+const appStore = useAppStore()
+const isMobile = computed(() => appStore.getMobile)
 
 onMounted(async () => {
   // console.log('query.id', query.id)
@@ -56,7 +59,14 @@ const reset = async () => {
 </script>
 
 <template>
-  <Form @register="register" :is-col="false" :rules="rules" :loading="loading">
+  <Form
+    @register="register"
+    :is-col="false"
+    :rules="rules"
+    :loading="loading"
+    label-width="auto"
+    :label-position="isMobile ? 'top' : 'right'"
+  >
     <template #tool>
       <div class="buttonBox">
         <ElButton @click="save" type="primary">{{ t('app_common.save') }}</ElButton>

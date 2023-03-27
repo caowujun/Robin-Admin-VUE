@@ -15,5 +15,5 @@ export const saveMoneyApi = (data: Partial<Money>): Promise<IResponse> => {
 }
 
 export const getMoneyApi = (id: string): Promise<IResponse<Money>> => {
-  return request.get({ url: apiList.money.getById, params: { id } })
+  return request.get({ url: apiList.money.detail, params: { id } })
 }

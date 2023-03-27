@@ -3,8 +3,8 @@ import { useI18n } from '@/hooks/web/useI18n'
 const { t } = useI18n()
 
 const noMessageAlert = () => {
-  ElMessageBox.confirm(t('common.noMessageAlert'), t('common.warnning'), {
-    confirmButtonText: t('common.noMessageClose'),
+  ElMessageBox.confirm(t('app_common.noMessageAlert'), t('app_common.warnning'), {
+    confirmButtonText: t('app_common.noMessageClose'),
     type: 'warning',
     showCancelButton: false,
     callback: () => {

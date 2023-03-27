@@ -93,7 +93,7 @@ export default [
   },
   // 详情接口
   {
-    url: '/money/getById',
+    url: '/money/detail',
     method: 'get',
     response: ({ query }) => {
       const { id } = query

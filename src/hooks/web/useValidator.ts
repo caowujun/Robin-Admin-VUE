@@ -1,4 +1,5 @@
 import { useI18n } from '@/hooks/web/useI18n'
+import { dateFormatSingle } from '@/utils/dateFormat'
 
 const { t } = useI18n()
 
@@ -54,11 +55,62 @@ export const useValidator = () => {
     }
   }
 
+  // 英数字とアンダースコアのみを入力できる
+  const letter_num_underline = (val: any, value: string, callback: Callback) => {
+    if (/^[A-Za-z0-9_]+$/gi.test(value)) {
+      callback()
+    } else {
+      callback(new Error(val.message))
+    }
+  }
+
+  // ・半角英数字のみ,・大小英文字と数字が混在している
+  const password_format = (val: any, value: string, callback: Callback) => {
+    if (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{4,64}$/g.test(value)) {
+      callback()
+    } else {
+      callback(new Error(val.message))
+    }
+  }
+
+  //日期比较
+  const dateCompareNow = (val: any, value: Date, callback: Callback) => {
+    if (
+      new Date(dateFormatSingle(value[1], false)) >= new Date(dateFormatSingle(new Date(), false))
+    ) {
+      callback()
+    } else {
+      callback(new Error(val.message))
+    }
+  }
+
+  //日期验证
+  const validateBirthday = (val: any, value: string, callback: Callback) => {
+    if (/^(\s*|[\d]{4}|[\d]{8})$/g.test(value)) {
+      callback()
+    } else {
+      callback(new Error(val.message))
+    }
+  }
+
+  //数字验证
+  const number = (val: any, value: string, callback: Callback) => {
+    if (/^[A-Za-z0-9_]+$/gi.test(value)) {
+      callback()
+    } else {
+      callback(new Error(val.message))
+    }
+  }
   return {
     required,
     lengthRange,
     notSpace,
     notSpecialCharacters,
-    isEqual
+    isEqual,
+    letter_num_underline,
+    password_format,
+    dateCompareNow,
+    validateBirthday,
+    number
   }
 }

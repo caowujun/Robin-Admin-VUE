@@ -6,7 +6,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElButton, ElMessage } from 'element-plus'
 import { schema, rules } from './config'
 import { computed, onMounted, ref } from 'vue'
-import { saveGasolineApi, getGasolineApi } from '@/api/gasoline'
+import { saveApi, getApi } from '@/api/gasoline'
 import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
 import { useAppStore } from '@/store/modules/app'
 
@@ -23,7 +23,7 @@ const isMobile = computed(() => appStore.getMobile)
 
 onMounted(async () => {
   if (query.id) {
-    const res: any = await getGasolineApi(query.id as string)
+    const res: any = await getApi(query.id as string)
     res ? setValues(res.data) : noMessageAlert()
   }
 })
@@ -36,7 +36,7 @@ const save = async () => {
       if (valid) {
         loading.value = true
         const result: any = await getFormData()
-        let res = await saveGasolineApi(result)
+        let res = await saveApi(result)
           .catch(() => {})
           .finally(() => {
             loading.value = false

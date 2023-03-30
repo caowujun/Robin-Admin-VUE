@@ -13,21 +13,26 @@ const { t } = useI18n()
 // })
 
 export const columns = reactive<TableColumn[]>([
-  {
-    field: 'recordDate',
-    label: t('app_common.recordDate'),
-    sortable: true,
-    form: {
-      component: 'DatePicker',
-      componentProps: {
-        type: 'datetime',
-        valueFormat: 'YYYY-MM-DD'
-      }
-    }
-  },
+  // {
+  //   field: 'createDate',
+  //   label: t('app_common.recordDate'),
+  //   sortable: true,
+  //   form: {
+  //     component: 'DatePicker',
+  //     componentProps: {
+  //       type: 'datetime',
+  //       valueFormat: 'YYYY-MM-DD'
+  //     }
+  //   }
+  // },
   {
     field: 'username',
     label: t('app_user.username'),
+    sortable: true
+  },
+  {
+    field: 'password',
+    label: t('app_user.password'),
     sortable: true
   },
   {
@@ -43,7 +48,8 @@ export const columns = reactive<TableColumn[]>([
   {
     field: 'address',
     label: t('app_user.address'),
-    sortable: true
+    sortable: true,
+    showOverflowTooltip: false
   },
   {
     field: 'phone',
@@ -65,11 +71,11 @@ export const columns = reactive<TableColumn[]>([
       )
     }
   },
-  {
-    field: 'cityCode',
-    label: t('app_user.cityCode'),
-    sortable: true
-  },
+  // {
+  //   field: 'cityCode',
+  //   label: t('app_user.cityCode'),
+  //   sortable: true
+  // },
   {
     field: 'action',
     label: t('app_common.action'),

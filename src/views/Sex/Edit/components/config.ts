@@ -21,11 +21,7 @@ export const rules = reactive({
       trigger: 'blur'
     }
   ],
-  amount: [required()],
-  litre: [required()],
-  unitPrice: [required()],
-  kilometers: [required()],
-  isFillUp: [required()]
+  battleNumber: [required()]
 })
 
 export const schema = reactive<FormSchema[]>([
@@ -49,12 +45,12 @@ export const schema = reactive<FormSchema[]>([
   {
     field: 'notes',
     label: t('app_common.notes'),
-    component: 'Input',
-    componentProps: {
-      type: 'textarea',
-      rows: '8',
-      maxlength: '512'
-    }
+    component: 'Input'
+    // componentProps: {
+    //   type: 'textarea',
+    //   rows: '3',
+    //   maxlength: '512'
+    // }
   },
   {
     field: 'tool'

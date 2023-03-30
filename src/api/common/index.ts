@@ -1,5 +1,6 @@
 import request from '@/config/axios'
 import apiList from '../apiList'
+import { EnumType } from '../types'
 
 // 获取所有字典
 export const getDictApi = (): Promise<IResponse> => {
@@ -20,4 +21,12 @@ export const delTableListApi = (ids: string[] | number[]): Promise<IResponse> =>
 }
 export const getEnumType = (): Promise<IResponse> => {
   return request.get({ url: apiList.enumType.typeList })
+}
+
+export const saveApi = (data: Partial<EnumType>): Promise<IResponse> => {
+  return request.post({ url: apiList.enumType.save, data })
+}
+
+export const getApi = (id: string): Promise<IResponse<EnumType>> => {
+  return request.get({ url: apiList.enumType.detail, params: { id } })
 }

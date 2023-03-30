@@ -24,6 +24,11 @@ export const columns = reactive<TableColumn[]>([
     sortable: true
   },
   {
+    field: 'notes',
+    label: t('app_common.notes'),
+    sortable: false
+  },
+  {
     field: 'action',
     label: t('app_common.action'),
     align: 'center',
@@ -47,8 +52,3 @@ export const schema = reactive<FormSchema[]>([
     value: [new Date(new Date().setDate(new Date().getDate() - 6)), new Date()]
   }
 ])
-
-// export const formatterApprovalStateColor = [
-//   { key: notification_approval_status.waitingApply, color: 'rgb(250, 188, 4)' },
-//   { key: notification_approval_status.waitingConfirm, color: 'rgb(102, 176, 50)' }
-// ]

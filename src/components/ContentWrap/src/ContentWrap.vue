@@ -31,3 +31,12 @@ defineProps({
     </div>
   </ElCard>
 </template>
+<style scoped lang="less">
+// .el-form {
+// width: 60%;
+// margin: 30px auto;
+// }
+:deep(.el-input__wrapper) {
+  flex-grow: 0.2;
+}
+</style>

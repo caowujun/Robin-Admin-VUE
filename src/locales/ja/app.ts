@@ -90,7 +90,12 @@ export default {
     formater_email: '正しいメールアドレスを入力してください。',
 
     logOut: 'ログアウト',
-    logOutMessage: 'ログアウトしますか？'
+    logOutMessage: 'ログアウトしますか？',
+    modifyPwdItem: 'パスワードを変更する',
+    userInfoItem: 'ユーザー情報を変更する',
+    // modifyPwdTitle: 'パスワード変更',
+    // userInfoTitle: 'ユーザー情報変更',
+    resetPwdSuccessTip: 'ログインページへ'
   },
   app_menu: {
     home: 'ダッシュボード',
@@ -141,7 +146,8 @@ export default {
   app_enum: {
     enumType: 'カテゴリ',
     enumName: '列挙名',
-    enumValue: '列挙値'
+    enumValue: '列挙値',
+    enumLanguage: '多言語パス'
   },
   app_log: {
     actionType: '操作タイプ',

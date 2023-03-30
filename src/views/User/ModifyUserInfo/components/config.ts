@@ -13,7 +13,7 @@ const roleType: any = dictStore.getDictObj['ROLETYPE'].map((v) => {
 })
 
 export const rules = reactive({
-  username: [required()],
+  // username: [required()],
   userDisplayName: [required()],
   email: [required()],
   address: [required()],
@@ -26,7 +26,10 @@ export const schema = reactive<FormSchema[]>([
   {
     field: 'username',
     label: t('app_user.username'),
-    component: 'Input'
+    component: 'Input',
+    componentProps: {
+      disabled: true
+    }
   },
   {
     field: 'userDisplayName',

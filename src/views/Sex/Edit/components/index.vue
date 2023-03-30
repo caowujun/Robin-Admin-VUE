@@ -74,9 +74,4 @@ const reset = async () => {
     </template>
   </Form>
 </template>
-<style scoped lang="less">
-// .el-form {
-//   width: 80%;
-//   margin: 30px auto;
-// }
-</style>
+<style scoped lang="less"></style>

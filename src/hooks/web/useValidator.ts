@@ -72,6 +72,13 @@ export const useValidator = () => {
       callback(new Error(val.message))
     }
   }
+  const validateConfirmPsdReg = (val: any, value: string, callback: Callback) => {
+    if (val.confirmPsd !== value) {
+      callback(new Error(val.message))
+    } else {
+      callback()
+    }
+  }
 
   //日期比较
   const dateCompareNow = (val: any, value: Date, callback: Callback) => {
@@ -109,6 +116,7 @@ export const useValidator = () => {
     isEqual,
     letter_num_underline,
     password_format,
+    validateConfirmPsdReg,
     dateCompareNow,
     validateBirthday,
     number

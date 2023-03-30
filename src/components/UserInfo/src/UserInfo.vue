@@ -41,7 +41,7 @@ const loginOut = () => {
     .catch(() => {})
 }
 const changePwd = () => {
-  push({ name: 'modifyPwd' })
+  push({ name: 'modifyPassword' })
 }
 const changeUserInfo = () => {
   push({ name: 'modifyUserInfo' })

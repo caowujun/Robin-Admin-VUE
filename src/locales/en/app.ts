@@ -21,10 +21,8 @@ export default {
     startTimeText: '开始时间',
     endTimeText: '结束时间',
     required: '该项为必填项',
-    loginOut: '退出系统',
     document: '项目文档',
     reminder: '温馨提示',
-    loginOutMessage: '是否退出本系统？',
     back: '返回',
     ok: '确定',
     reload: '重新加载',
@@ -97,11 +95,11 @@ export default {
     toLoginPage: 'ログインページにジャンプします。',
 
     logOut: 'ログアウト',
-    logOutMessage: 'ログアウトしますか？（M-N0005）',
+    logOutMessage: 'ログアウトしますか？',
     modifyPwdItem: 'パスワードを変更する',
     userInfoItem: 'ユーザー情報を変更する',
-    modifyPwdTitle: 'パスワード変更',
-    userInfoTitle: 'ユーザー情報変更',
+    // modifyPwdTitle: 'パスワード変更',
+    // userInfoTitle: 'ユーザー情報変更',
     resetPwdSuccessTip: 'ログインページへ'
   },
   app_menu: {
@@ -153,7 +151,8 @@ export default {
   app_enum: {
     enumType: '分类',
     enumName: '枚举名',
-    enumValue: '枚举值'
+    enumValue: '枚举值',
+    enumLanguage: '多语言路径'
   },
   app_log: {
     actionType: '操作类型',

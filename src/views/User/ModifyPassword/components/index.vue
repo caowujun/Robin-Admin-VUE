@@ -6,7 +6,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElButton, ElMessage } from 'element-plus'
 import { schema, rules } from './config'
 import { computed, onMounted, ref } from 'vue'
-import { saveApi, getApi } from '@/api/gasoline'
+import { saveApi, getApi } from '@/api/user'
 import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
 import { useAppStore } from '@/store/modules/app'
 
@@ -44,14 +44,14 @@ const save = async () => {
 
         if (res) {
           ElMessage.success(t('app_common.saveSuccess'))
-          push({ name: 'gasoline' })
+          push({ name: 'home' })
         }
       }
     })
 }
 
 const reset = async () => {
-  push({ name: 'gasoline' })
+  push({ name: 'home' })
 }
 // const layout = ref('inline')
 // const buttonPosition = ref('left')
@@ -65,6 +65,7 @@ const reset = async () => {
     :loading="loading"
     :label-width="isMobile ? 'auto' : '200px'"
     :label-position="isMobile ? 'top' : 'right'"
+    :width="isMobile ? 'auto' : '600px'"
   >
     <template #tool>
       <div class="buttonBox">

@@ -16,7 +16,7 @@ let List: {
   address: string
   email: string
   phone: string
-  recordDate: string
+  createDate: string
   notes: string
   // permissions: string | string[]
 }[] = [
@@ -31,7 +31,7 @@ let List: {
     address: '中国潍坊',
     email: 'test@163.com',
     phone: '13333333333',
-    recordDate: '@datetime',
+    createDate: '@datetime',
     notes: '测试管理员'
     // permissions: ['*.*.*']
   },
@@ -46,7 +46,7 @@ let List: {
     address: '中国北京',
     email: 'test123@163.com',
     phone: '13111111111',
-    recordDate: '@datetime',
+    createDate: '@datetime',
     notes: '测试普通用户'
     // permissions: ['example:dialog:create', 'example:dialog:delete']
   }

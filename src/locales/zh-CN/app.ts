@@ -90,7 +90,12 @@ export default {
     formater_email: '请输入正确的电子邮件地址。',
 
     loginOut: '退出系统',
-    logOutMessage: '是否退出本系统？'
+    logOutMessage: '是否退出本系统？',
+    modifyPwdItem: '修改密码',
+    userInfoItem: '修改用户信息',
+    // modifyPwdTitle: 'パスワード変更',
+    // userInfoTitle: 'ユーザー情報変更',
+    resetPwdSuccessTip: 'ログインページへ'
   },
   app_menu: {
     home: '面板',
@@ -141,7 +146,8 @@ export default {
   app_enum: {
     enumType: '分类',
     enumName: '枚举名',
-    enumValue: '枚举值'
+    enumValue: '枚举值',
+    enumLanguage: '多语言路径'
   },
   app_log: {
     actionType: '操作类型',

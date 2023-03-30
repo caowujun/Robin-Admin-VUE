@@ -64,7 +64,7 @@ const reset = async () => {
     :is-col="false"
     :rules="rules"
     :loading="loading"
-    label-width="auto"
+    :label-width="isMobile ? 'auto' : '200px'"
     :label-position="isMobile ? 'top' : 'right'"
   >
     <template #tool>

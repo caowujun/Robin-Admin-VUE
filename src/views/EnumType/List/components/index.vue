@@ -36,7 +36,7 @@ getList()
 
 //to edit page
 const editFn = (row: TableSlotDefault) => {
-  push({ name: 'userEdit', query: { id: row.id } })
+  push({ name: 'enumTypeEdit', query: { id: row.id } })
 }
 //delete，适配全部删除和单个删除
 const delData = async (row: TableData | null, multiple: boolean) => {
@@ -50,7 +50,7 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  push({ name: 'userAdd' })
+  push({ name: 'enumTypeAdd' })
 }
 
 //override the search method

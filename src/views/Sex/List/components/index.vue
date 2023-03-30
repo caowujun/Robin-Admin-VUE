@@ -39,8 +39,9 @@ const { getList, setSearchParams } = methods
 getList()
 
 //to edit page
-const editFn = (data: TableSlotDefault) => {
-  push({ name: 'sexEdit', query: { id: data.row.id } })
+const editFn = (row: TableSlotDefault) => {
+  debugger
+  push({ name: 'sexEdit', query: { id: row.id } })
 }
 
 const delData = async (row: TableData | null, multiple: boolean) => {

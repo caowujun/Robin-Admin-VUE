@@ -56,12 +56,12 @@ export const schema = reactive<FormSchema[]>([
   {
     field: 'notes',
     label: t('app_common.notes'),
-    component: 'Input',
-    componentProps: {
-      type: 'textarea',
-      rows: '8',
-      maxlength: '512'
-    }
+    component: 'Input'
+    // componentProps: {
+    //   type: 'textarea',
+    //   rows: '8',
+    //   maxlength: '512'
+    // }
   },
   {
     field: 'tool'

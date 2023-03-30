@@ -16,6 +16,7 @@ let List: {
   litre: number
   isFillUp: number
   kilometers: number
+  notes: string
 }[] = []
 
 for (let i = 0; i < count; i++) {
@@ -26,7 +27,8 @@ for (let i = 0; i < count; i++) {
       amount: 100,
       litre: 33,
       isFillUp: i % 2,
-      kilometers: 333
+      kilometers: 333,
+      notes: 'test' + i
     })
   )
 }

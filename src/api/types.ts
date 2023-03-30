@@ -20,3 +20,24 @@ export type Gasoline = {
   isFillUp: number
   recordDate: string
 }
+export type User = {
+  id: string
+  username: number
+  userDisplayName: number
+  password: number
+  role: number
+  roleType: number
+  address: number
+  email: number
+  phone: number
+  notes: number
+  recordDate: string
+}
+export type EnumType = {
+  id: string
+  enumName: string
+  enumType: string
+  enumValue: number
+  enumLanguage: string
+  notes: number
+}

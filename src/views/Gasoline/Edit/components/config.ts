@@ -78,12 +78,17 @@ export const schema = reactive<FormSchema[]>([
       options: status,
       placeholder: t('common.selectText')
     },
-    value: '1',
-    formItemProps: {
-      style: {
-        minWidth: '1580px'
-      }
-    }
+    value: '1'
+  },
+  {
+    field: 'notes',
+    label: t('app_common.notes'),
+    component: 'Input'
+    // componentProps: {
+    //   type: 'textarea',
+    //   rows: '3',
+    //   maxlength: '512'
+    // }
   },
   {
     field: 'tool'

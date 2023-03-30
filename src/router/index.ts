@@ -57,6 +57,42 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
 
 export const asyncRouterMap: AppRouteRecordRaw[] = [
   {
+    path: '/modifyUserInfo',
+    component: Layout,
+    redirect: '/modifyUserInfo/index',
+    name: 'modifyUserInfo',
+    meta: { hidden: true, canTo: true },
+    children: [
+      {
+        path: 'index',
+        name: 'modifyUserInfo-index',
+        component: () => import('@/views/User/ModifyUserInfo/index.vue'),
+        meta: {
+          title: t('app_login.userInfoItem'),
+          icon: 'clarity:avatar-solid'
+        }
+      }
+    ]
+  },
+  {
+    path: '/modifyPassword',
+    component: Layout,
+    redirect: '/modifyPassword/index',
+    name: 'modifyPassword',
+    meta: { hidden: true, canTo: true },
+    children: [
+      {
+        path: 'index',
+        name: 'modifyPassword-index',
+        component: () => import('@/views/User/ModifyPassword/index.vue'),
+        meta: {
+          title: t('app_login.modifyPwdItem'),
+          icon: 'clarity:paste-solid'
+        }
+      }
+    ]
+  },
+  {
     path: '/home',
     component: Layout,
     redirect: '/home/index',

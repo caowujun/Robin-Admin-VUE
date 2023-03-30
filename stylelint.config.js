@@ -16,6 +16,7 @@ module.exports = {
         ignoreAtRules: ['function', 'if', 'each', 'include', 'mixin']
       }
     ],
+    'selector-class-pattern': null,
     'no-empty-source': null,
     'named-grid-areas-no-invalid': null,
     'unicode-bom': 'never',

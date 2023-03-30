@@ -332,7 +332,7 @@ getAllApi()
       <ElCard shadow="never" class="mt-20px">
         <template #header>
           <div class="flex justify-between">
-            <span>{{ t('app_menu.life') }}</span>
+            <span>{{ t('app_menu.sex') }}</span>
             <!-- <ElLink type="primary" :underline="false">{{ t('workplace.more') }}</ElLink> -->
           </div>
         </template>

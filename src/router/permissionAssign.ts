@@ -1,9 +1,9 @@
 const routes = new Map([
   ['/home/index', '1,2'],
   ['/personTools', '1,2'],
-  ['/personTools/life/index', '1,2'],
-  ['/personTools/life/add/index', '1,2'],
-  ['/personTools/life/edit/index', '1,2'],
+  ['/personTools/sex/index', '1,2'],
+  ['/personTools/sex/add/index', '1,2'],
+  ['/personTools/sex/edit/index', '1,2'],
 
   ['/personTools/schedule/index', '1,2'],
   ['/personTools/schedule/add/index', '1,2'],

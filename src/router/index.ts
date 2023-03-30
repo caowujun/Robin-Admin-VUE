@@ -115,34 +115,34 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         }
       },
       {
-        path: 'life/index',
-        component: () => import('@/views/Life/List/index.vue'),
-        name: 'life',
+        path: 'sex/index',
+        component: () => import('@/views/Sex/List/index.vue'),
+        name: 'sex',
         meta: {
-          title: t('app_menu.life'),
+          title: t('app_menu.sex'),
           icon: 'clarity:resource-pool-outline-alerted'
         }
       },
       {
-        path: 'life/add/index',
-        name: 'lifeAdd',
-        component: () => import('@/views/Life/Edit/index.vue'),
+        path: 'sex/add/index',
+        name: 'sexAdd',
+        component: () => import('@/views/Sex/Edit/index.vue'),
         meta: {
           title: t('app_common.add'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/life/index'
+          activeMenu: '/personTools/sex/index'
         }
       },
       {
-        path: 'life/edit/index',
-        name: 'lifeEdit',
-        component: () => import('@/views/Life/Edit/index.vue'),
+        path: 'sex/edit/index',
+        name: 'sexEdit',
+        component: () => import('@/views/Sex/Edit/index.vue'),
         meta: {
           title: t('app_common.edit'),
           hidden: true,
           canTo: true,
-          activeMenu: '/personTools/life/index'
+          activeMenu: '/personTools/sex/index'
         }
       },
       {

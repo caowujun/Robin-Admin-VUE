@@ -7,8 +7,8 @@ const { t } = useI18n()
 
 export const columns = reactive<TableColumn[]>([
   {
-    field: 'triggerTime',
-    label: t('app_life.triggerTime'),
+    field: 'recordDate',
+    label: t('app_common.recordDate'),
     sortable: true,
     form: {
       component: 'DatePicker',
@@ -19,8 +19,8 @@ export const columns = reactive<TableColumn[]>([
     }
   },
   {
-    field: 'triggerNumber',
-    label: t('app_life.triggerNumber'),
+    field: 'battleNumber',
+    label: t('app_sex.battleNumber'),
     sortable: true
   },
   {
@@ -33,8 +33,8 @@ export const columns = reactive<TableColumn[]>([
 
 export const schema = reactive<FormSchema[]>([
   {
-    field: 'triggerTime',
-    label: t('app_life.triggerTime'),
+    field: 'recordDate',
+    label: t('app_common.recordDate'),
     component: 'DatePicker',
     componentProps: {
       type: 'daterange',

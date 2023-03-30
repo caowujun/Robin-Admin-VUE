@@ -1,7 +1,8 @@
-export type Life = {
+export type Sex = {
   id: string
-  triggerTime: string
-  triggerNumber: number
+  recordDate: string
+  battleNumber: number
+  notes: string
 }
 export type Money = {
   id: string

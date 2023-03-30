@@ -95,7 +95,7 @@ export default {
   app_menu: {
     home: 'ダッシュボード',
     personTools: '個人管理',
-    life: '運動記録',
+    sex: '運動記録',
     schedule: 'スケジュール管理',
     income: '収支記録',
     gasoline: '燃費記録',
@@ -114,9 +114,9 @@ export default {
     income: '収入',
     expenditure: '支出'
   },
-  app_life: {
-    triggerTime: 'トリガ時間',
-    triggerNumber: 'トリガ回数'
+  app_sex: {
+    // triggerTime: 'トリガ時間',
+    battleNumber: '回数'
   },
   app_gasoline: {
     amount: '金額',

@@ -11,16 +11,18 @@ const count = 100
 
 let List: {
   id: string
-  triggerTime: string
-  triggerNumber: number
+  recordDate: string
+  battleNumber: number
+  notes: string
 }[] = []
 
 for (let i = 0; i < count; i++) {
   List.push(
     Mock.mock({
       id: toAnyString(),
-      triggerTime: '@datetime',
-      triggerNumber: i
+      recordDate: '@datetime',
+      battleNumber: i,
+      notes: 'test' + i
     })
   )
 }
@@ -28,16 +30,15 @@ for (let i = 0; i < count; i++) {
 export default [
   // 列表接口
   {
-    url: '/life/page',
+    url: '/sex/page',
     method: 'get',
     timeout,
     response: ({ query }) => {
-      const { pageIndex, pageSize, startTriggerTime, endTriggerTime } = query
-      console.log('life/page', startTriggerTime, endTriggerTime)
+      const { pageIndex, pageSize, startBattleTime, endBattleTime } = query
 
       const mockList = List.filter((item) => {
-        if (startTriggerTime && startTriggerTime != '')
-          return item.triggerTime > startTriggerTime && item.triggerTime < endTriggerTime
+        if (startBattleTime && startBattleTime != '')
+          return item.recordDate > startBattleTime && item.recordDate < endBattleTime
         else return true
       })
       const pageList = mockList.filter(
@@ -54,7 +55,7 @@ export default [
   },
   // 保存接口
   {
-    url: '/life/save',
+    url: '/sex/save',
     method: 'post',
     timeout,
     response: ({ body }) => {
@@ -85,7 +86,7 @@ export default [
   },
   // 详情接口
   {
-    url: '/life/detail',
+    url: '/sex/detail',
     method: 'get',
     response: ({ query }) => {
       const { id } = query
@@ -101,8 +102,8 @@ export default [
   },
   // 删除接口
   {
-    url: '/life/delete',
-    method: 'post',
+    url: '/battle/delete',
+    sex: 'post',
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

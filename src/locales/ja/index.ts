@@ -436,22 +436,5 @@ export default {
   inputPasswordDemo: {
     title: '密码输入框',
     inputPasswordDes: '基于 ElementPlus 的 Input 组件二次封装'
-  },
-  menu: {
-    home: 'ダッシュボード',
-    personTools: '個人管理',
-    life: '生活記録',
-    schedule: 'スケジュール',
-    income: '収益記録',
-    gasoline: '給油記録',
-    sysSetting: 'システム設定',
-    userManage: 'ユーザー管理',
-    roleManage: '権限管理',
-    menuManage: 'メニュー管理',
-    enumType: 'Enum Configuration',
-    logManage: '操作ログ'
-  },
-  app: {
-    appTitle: '空には城がある'
   }
 }

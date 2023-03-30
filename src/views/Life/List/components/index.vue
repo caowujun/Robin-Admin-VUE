@@ -29,8 +29,8 @@ const { register, tableObject, methods } = useTable<TableData>({
     total: 'total'
   },
   defaultParams: {
-    startTriggerTime: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
-    endTriggerTime: dateFormat(new Date(), false)
+    startBattleTime: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
+    endBattleTime: dateFormat(new Date(), false)
   }
 })
 
@@ -40,7 +40,7 @@ getList()
 
 //to edit page
 const editFn = (data: TableSlotDefault) => {
-  push({ name: 'lifeEdit', query: { id: data.row.id } })
+  push({ name: 'sexEdit', query: { id: data.row.id } })
 }
 
 const delData = async (row: TableData | null, multiple: boolean) => {
@@ -58,16 +58,16 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  push({ name: 'lifeAdd' })
+  push({ name: 'sexAdd' })
 }
 
 //override the search method
 const search = (model) => {
-  model['startTriggerTime'] = model.triggerTime
-    ? dateFormatToGreenwich([model.triggerTime[0], model.triggerTime[1]], false).value[0]
+  model['startBattleTime'] = model.recordDate
+    ? dateFormatToGreenwich([model.recordDate[0], model.recordDate[1]], false).value[0]
     : ''
-  model['endTriggerTime'] = model.notifyTime
-    ? dateFormatToGreenwich([model.triggerTime[0], model.triggerTime[1]], false).value[1]
+  model['endBattleTime'] = model.recordDate
+    ? dateFormatToGreenwich([model.recordDate[0], model.recordDate[1]], false).value[1]
     : ''
   setSearchParams(model)
 }

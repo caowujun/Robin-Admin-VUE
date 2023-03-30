@@ -3,11 +3,11 @@ const apiList = {
     login: '/user/login',
     loginOut: '/user/loginOut'
   },
-  life: {
-    page: '/life/page',
-    delAll: '/life/delete',
-    save: '/life/save',
-    detail: '/life/detail'
+  sex: {
+    page: '/sex/page',
+    delAll: '/sex/delete',
+    save: '/sex/save',
+    detail: '/sex/detail'
   },
   money: {
     page: '/money/page',

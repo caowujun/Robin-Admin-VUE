@@ -55,7 +55,8 @@ export default {
     today: 'Today',
     yesterday: 'Yesterday',
     now: 'Now',
-    happyDay: 'Wish you happy every day!'
+    happyDay: 'Wish you happy every day!',
+    introduction: 'Learning related articles'
   },
   app_login: {
     login: 'Login',
@@ -115,7 +116,8 @@ export default {
     enumType: '枚举配置',
     logManage: '日志记录',
     sysLog: '系统日志',
-    operateLog: '操作日志'
+    operateLog: '操作日志',
+    article: 'Article Share'
   },
 
   app_money: {
@@ -159,5 +161,14 @@ export default {
     exceptionType: '异常类型',
     exceptionMsg: '异常信息',
     actionText: '操作信息'
+  },
+  app_article: {
+    java: 'Java',
+    react: 'React',
+    vue: 'Vue',
+    unclassified: 'Unclassified',
+    articleName: 'Article Name',
+    articleType: 'Article Type',
+    articleUrl: 'Article Path'
   }
 }

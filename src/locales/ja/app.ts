@@ -55,7 +55,8 @@ export default {
     today: '今日',
     yesterday: '昨日',
     now: '現在',
-    happyDay: '毎日楽しんでね!'
+    happyDay: '毎日楽しんでね!',
+    introduction: '学習関連記事'
   },
   app_login: {
     login: 'ログイン',
@@ -110,7 +111,8 @@ export default {
     enumType: '列挙管理',
     logManage: '操作ログ',
     sysLog: 'システムログ',
-    operateLog: '操作ログ'
+    operateLog: '操作ログ',
+    article: '記事の共有'
   },
 
   app_money: {
@@ -154,5 +156,14 @@ export default {
     exceptionType: '例外タイプ',
     exceptionMsg: '例外情報',
     actionText: 'オペレーション情報'
+  },
+  app_article: {
+    java: 'Java',
+    react: 'React',
+    vue: 'Vue',
+    unclassified: '未分類',
+    articleName: '記事の名前',
+    articleType: '記事の種類',
+    articleUrl: '記事のパス'
   }
 }

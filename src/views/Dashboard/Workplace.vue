@@ -26,13 +26,17 @@ import {
 import type { WorkplaceTotal, Project, Dynamic, Team } from '@/api/dashboard/workplace/types'
 import { set } from 'lodash-es'
 import { useAppStore } from '@/store/modules/app'
+import { useRouter } from 'vue-router'
+
+const { push } = useRouter()
+
 const { t } = useI18n()
 // const { wsCache } = useCache()
 const appStore = useAppStore()
 const loading = ref(true)
 //判定早上，中午，晚上
 const hello = ref('')
-debugger
+
 hello.value =
   (new Date().getHours() < 12 ? t('app_dashboard.am') : t('app_dashboard.pm')) +
   '，' +
@@ -200,6 +204,9 @@ const getAllApi = async () => {
   ])
   loading.value = false
 }
+const toArticle = (articleType) => {
+  push({ name: 'article', query: { articleType: articleType } })
+}
 
 getAllApi()
 </script>
@@ -283,6 +290,7 @@ getAllApi()
               :md="12"
               :sm="24"
               :xs="24"
+              @click="toArticle(item.articleType)"
             >
               <ElCard shadow="hover">
                 <div class="flex items-center">

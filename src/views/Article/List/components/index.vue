@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { useI18n } from '@/hooks/web/useI18n'
 import { Table } from '@/components/Table'
-import { ref } from 'vue'
+import { onMounted, ref, unref } from 'vue'
 import { ElButton, ElDivider } from 'element-plus'
 import { useTable } from '@/hooks/web/useTable'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { columns, schema } from './config'
 import { Search } from '@/components/Search'
-import { getTableListApi, delTableListApi } from '@/api/sex'
+import { getTableListApi, delTableListApi } from '@/api/article'
 import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
-import { dateFormat, dateFormatToGreenwich } from '@/utils/dateFormat'
+import { useDictStoreWithOut } from '@/store/modules/dict'
+import { FormExpose } from '@/components/Form'
 
+const { query } = useRoute()
 const { t } = useI18n()
 const isGrid = ref(false)
 const layout = ref('inline')
@@ -20,6 +22,7 @@ const buttonPosition = ref('left')
 const { push } = useRouter()
 const deleteAllBtn = ref(true)
 const delLoading = ref(false)
+const dictStore = useDictStoreWithOut()
 
 const { register, tableObject, methods } = useTable<TableData>({
   getListApi: getTableListApi,
@@ -28,19 +31,28 @@ const { register, tableObject, methods } = useTable<TableData>({
     list: 'list',
     total: 'total'
   },
-  defaultParams: {
-    startBattleTime: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
-    endBattleTime: dateFormat(new Date(), false)
-  }
+  defaultParams: {}
 })
-
 const { getList, setSearchParams } = methods
+const formRef = ref<FormExpose>()
 
-getList()
+onMounted(async () => {
+  if (
+    query?.articleType &&
+    dictStore.getDictObj['ARTICLESHARE'].findIndex(
+      (f) => parseInt(f.value) === parseInt(query?.articleType as string)
+    ) > 0
+  ) {
+    setSearchParams({ articleType: query?.articleType })
+  } else {
+    getList()
+  }
+  unref(formRef)?.setValues({ articleType: query?.articleType })
+})
 
 //to edit page
 const editFn = (row: TableSlotDefault) => {
-  push({ name: 'sexEdit', query: { id: row.id } })
+  push({ name: 'articleEdit', query: { id: row.id } })
 }
 
 const delData = async (row: TableData | null, multiple: boolean) => {
@@ -58,17 +70,11 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  push({ name: 'sexAdd' })
+  push({ name: 'articleAdd' })
 }
 
 //override the search method
 const search = (model) => {
-  model['startBattleTime'] = model.recordDate
-    ? dateFormatToGreenwich([model.recordDate[0], model.recordDate[1]], false).value[0]
-    : ''
-  model['endBattleTime'] = model.recordDate
-    ? dateFormatToGreenwich([model.recordDate[0], model.recordDate[1]], false).value[1]
-    : ''
   setSearchParams(model)
 }
 // const action = (row: TableData, type: string) => {
@@ -84,6 +90,7 @@ const search = (model) => {
     :button-position="buttonPosition"
     @search="search"
     @reset="setSearchParams"
+    ref="formRef"
   />
   <ElDivider style="margin-top: 5px; margin-bottom: 15px" />
   <div class="mb-15px">

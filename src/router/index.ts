@@ -242,6 +242,37 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           canTo: true,
           activeMenu: '/personTools/gasoline/index'
         }
+      },
+      {
+        path: 'article/index',
+        component: () => import('@/views/Article/List/index.vue'),
+        name: 'article',
+        meta: {
+          title: t('app_menu.article'),
+          icon: 'clarity:bookmark-line'
+        }
+      },
+      {
+        path: 'article/add/index',
+        name: 'articleAdd',
+        component: () => import('@/views/Article/Edit/index.vue'),
+        meta: {
+          title: t('app_common.add'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/article/index'
+        }
+      },
+      {
+        path: 'article/edit/index',
+        name: 'articleEdit',
+        component: () => import('@/views/Article/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/article/index'
+        }
       }
     ]
   },

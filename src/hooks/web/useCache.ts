@@ -42,6 +42,18 @@ export const cacheQuery = (key: string): any => {
 }
 
 export const updateCache = (key: string, value: any): any => {
-  useCache().wsCache.replace(key, value)
-  useCache_local().wsCache_local.replace(key, value)
+  useCache_local().wsCache_local.get(key) &&
+    useCache_local().wsCache_local.replace(key, {
+      ...useCache_local().wsCache_local.get(key),
+      ...value
+    })
+
+  useCache().wsCache.get(key) &&
+    useCache().wsCache.replace(key, { ...useCache().wsCache.get(key), ...value })
+}
+
+export const replaceCache = (key: string, value: any): any => {
+  useCache_local().wsCache_local.get(key) && useCache_local().wsCache_local.replace(key, value)
+
+  useCache().wsCache.get(key) && useCache().wsCache.replace(key, value)
 }

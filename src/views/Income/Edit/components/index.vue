@@ -6,7 +6,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElButton, ElMessage } from 'element-plus'
 import { schema, rules } from './config'
 import { computed, onMounted, ref } from 'vue'
-import { saveMoneyApi, getMoneyApi } from '@/api/money'
+import { saveApi, getApi } from '@/api/money'
 import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
 import { useAppStore } from '@/store/modules/app'
 
@@ -22,10 +22,8 @@ const appStore = useAppStore()
 const isMobile = computed(() => appStore.getMobile)
 
 onMounted(async () => {
-  // console.log('query.id', query.id)
-
   if (query.id) {
-    const res: any = await getMoneyApi(query.id as string)
+    const res: any = await getApi(query.id as string)
     res ? setValues(res.data) : noMessageAlert()
     // console.log(res)
   }
@@ -39,7 +37,7 @@ const save = async () => {
       if (valid) {
         loading.value = true
         const result: any = await getFormData()
-        let res = await saveMoneyApi(result)
+        let res = await saveApi(result)
           .catch(() => {})
           .finally(() => {
             loading.value = false
@@ -64,7 +62,7 @@ const reset = async () => {
     :is-col="false"
     :rules="rules"
     :loading="loading"
-    :label-width="isMobile ? 'auto' : '200px'"
+    :label-width="isMobile ? 'auto' : appStore.getLabelWidth"
     :label-position="isMobile ? 'top' : 'right'"
   >
     <template #tool>

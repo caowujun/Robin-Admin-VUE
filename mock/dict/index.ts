@@ -39,63 +39,88 @@ let List: {
   enumName: string
   enumValue: string
   enumLanguage: string
+  notes: string
 }[] = [
   {
     id: '1',
     enumType: 'ROLETYPE',
     enumName: '管理员',
     enumValue: '1',
-    enumLanguage: 'app_user.adminUser'
+    enumLanguage: 'app_user.adminUser',
+    notes: ''
   },
   {
     id: '2',
     enumType: 'ROLETYPE',
     enumName: '一般用户',
     enumValue: '2',
-    enumLanguage: 'app_user.normalUser'
+    enumLanguage: 'app_user.normalUser',
+    notes: ''
   },
   {
     id: '3',
     enumType: 'INCOME',
     enumName: '收入',
     enumValue: '1',
-    enumLanguage: 'app_money.expenditure'
+    enumLanguage: 'app_money.expenditure',
+    notes: ''
   },
   {
     id: '4',
     enumType: 'INCOME',
     enumName: '支出',
     enumValue: '0',
-    enumLanguage: 'app_money.income'
+    enumLanguage: 'app_money.income',
+    notes: ''
   },
   {
     id: '5',
     enumType: 'STATUS',
     enumName: '是',
     enumValue: '1',
-    enumLanguage: 'app_common.yes'
+    enumLanguage: 'app_common.yes',
+    notes: ''
   },
   {
     id: '6',
     enumType: 'STATUS',
     enumName: '否',
     enumValue: '0',
-    enumLanguage: 'app_common.no'
+    enumLanguage: 'app_common.no',
+    notes: ''
+  },
+  {
+    id: '7',
+    enumType: 'ARTICLESHARE',
+    enumName: 'Unclassified',
+    enumValue: '1',
+    enumLanguage: 'app_article.unclassified',
+    notes: 'logos:compose-multiplatform'
+  },
+  {
+    id: '8',
+    enumType: 'ARTICLESHARE',
+    enumName: 'Java',
+    enumValue: '2',
+    enumLanguage: 'app_article.java',
+    notes: 'logos:java'
+  },
+  {
+    id: '9',
+    enumType: 'ARTICLESHARE',
+    enumName: 'Vue',
+    enumValue: '3',
+    enumLanguage: 'app_article.vue',
+    notes: 'logos:vue'
+  },
+  {
+    id: '10',
+    enumType: 'ARTICLESHARE',
+    enumName: 'React',
+    enumValue: '4',
+    enumLanguage: 'app_article.react',
+    notes: 'logos:react'
   }
-  // {
-  //   id: '5',
-  //   enumType: 'CITYCODE',
-  //   enumName: '潍坊',
-  //   enumValue: '101120601',
-  //   enumLanguage: '管理者'
-  // },
-  // {
-  //   id: '6',
-  //   enumType: 'CITYCODE',
-  //   enumName: '北京',
-  //   enumValue: '101010100',
-  //   enumLanguage: '北京'
-  // }
 ]
 
 interface tagObj {

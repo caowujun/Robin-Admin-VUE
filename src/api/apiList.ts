@@ -58,6 +58,12 @@ const apiList = {
     save: '/enum/save',
     detail: '/enum/detail',
     typeList: '/enum/type'
+  },
+  article: {
+    page: '/article/page',
+    delAll: '/article/delete',
+    save: '/article/save',
+    detail: '/article/detail'
   }
 }
 

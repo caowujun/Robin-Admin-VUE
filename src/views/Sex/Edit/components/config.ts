@@ -21,7 +21,8 @@ export const rules = reactive({
       trigger: 'blur'
     }
   ],
-  battleNumber: [required()]
+  battleNumber: [required()],
+  notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
 })
 
 export const schema = reactive<FormSchema[]>([

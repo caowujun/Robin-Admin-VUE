@@ -2,49 +2,31 @@
 import { Form } from '@/components/Form'
 import { useForm } from '@/hooks/web/useForm'
 import { useI18n } from '@/hooks/web/useI18n'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ElButton, ElMessage } from 'element-plus'
 import { schema, rules } from './config'
 import { computed, onMounted, ref } from 'vue'
-// import { changeUserPasswordApi } from '@/api/user'
-// import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
+import { saveApi, getApi } from '@/api/article'
+import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
 import { useAppStore } from '@/store/modules/app'
-import { changeUserPasswordApi } from '@/api/user'
 
 const { register, methods, elFormRef } = useForm({
   schema
 })
 const { t } = useI18n()
-// const { query } = useRoute()
+const { query } = useRoute()
 const { push } = useRouter()
-const { getFormData } = methods
+const { setValues, getFormData } = methods
 const loading = ref(false)
 const appStore = useAppStore()
 const isMobile = computed(() => appStore.getMobile)
 
-// watch(
-//   form,
-//   async (newValue) => {
-//     if (newValue.newPasswordAgain) {
-//       const _rules = Object.assign(passwordSameValidation, { confirmPsd: newValue.newPassword })
-//       rules.newPasswordAgain.splice(0, 1, _rules)
-//     }
-//     setValues({
-//       currentPassword: newValue.currentPassword,
-//       newPassword: newValue.newPassword,
-//       newPasswordAgain: newValue.newPasswordAgain
-//     })
-//   },
-//   {
-//     immediate: true,
-//     deep: true
-//   }
-// )
 onMounted(async () => {
-  // if (query.id) {
-  //   const res: any = await getApi(query.id as string)
-  //   res ? setValues(res.data) : noMessageAlert()
-  // }
+  if (query.id) {
+    const res: any = await getApi(query.id as string)
+    res ? setValues(res.data) : noMessageAlert()
+    // console.log(res)
+  }
 })
 const save = async () => {
   if (!elFormRef) return
@@ -55,7 +37,7 @@ const save = async () => {
       if (valid) {
         loading.value = true
         const result: any = await getFormData()
-        let res = await changeUserPasswordApi(result)
+        let res = await saveApi(result)
           .catch(() => {})
           .finally(() => {
             loading.value = false
@@ -63,17 +45,15 @@ const save = async () => {
 
         if (res) {
           ElMessage.success(t('app_common.saveSuccess'))
-          push({ name: 'home' })
+          push({ name: 'income' })
         }
       }
     })
 }
 
 const reset = async () => {
-  push({ name: 'home' })
+  push({ name: 'income' })
 }
-// const layout = ref('inline')
-// const buttonPosition = ref('left')
 </script>
 
 <template>
@@ -93,4 +73,3 @@ const reset = async () => {
     </template>
   </Form>
 </template>
-<style scoped lang="less"></style>

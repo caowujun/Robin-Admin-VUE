@@ -10,10 +10,10 @@ export const delTableListApi = (ids: string[] | number[]): Promise<IResponse> =>
   return request.post({ url: apiList.money.delAll, data: { ids } })
 }
 
-export const saveMoneyApi = (data: Partial<Money>): Promise<IResponse> => {
+export const saveApi = (data: Partial<Money>): Promise<IResponse> => {
   return request.post({ url: apiList.money.save, data })
 }
 
-export const getMoneyApi = (id: string): Promise<IResponse<Money>> => {
+export const getApi = (id: string): Promise<IResponse<Money>> => {
   return request.get({ url: apiList.money.detail, params: { id } })
 }

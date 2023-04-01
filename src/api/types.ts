@@ -32,6 +32,7 @@ export type User = {
   phone: number
   notes: number
   recordDate: string
+  cityCode: string
 }
 export type EnumType = {
   id: string
@@ -39,5 +40,35 @@ export type EnumType = {
   enumType: string
   enumValue: number
   enumLanguage: string
+  notes: string
+}
+
+export type ChangeUserPassword = {
+  id: string
+  currentPassword: number
+  newPassword: number
+  newPasswordAgain: number
+}
+
+export type ChangeUseInfo = {
+  id: string
+  // username: number
+  userDisplayName: number
+  // password: number
+  // role: number
+  roleType: number
+  address: number
+  email: number
+  phone: number
   notes: number
+  cityCode: string
+
+  // recordDate: string
+}
+export type Article = {
+  id: string
+  articleType: number
+  articleName: string
+  articleUrl: string
+  notes: string
 }

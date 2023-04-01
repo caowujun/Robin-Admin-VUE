@@ -19,6 +19,10 @@ const routes = new Map([
   ['/personTools/gasoline/add/index', '1,2'],
   ['/personTools/gasoline/edit/index', '1,2'],
 
+  ['/personTools/article/index', '1,2'],
+  ['/personTools/article/add/index', '1,2'],
+  ['/personTools/article/edit/index', '1,2'],
+
   ['/sysSetting', '1'],
   ['/sysSetting/user/index', '1'],
   ['/sysSetting/user/add/index', '1'],

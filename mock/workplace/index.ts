@@ -31,48 +31,66 @@ export default [
       return {
         code: result_code,
         data: [
+          // {
+          //   name: 'Github',
+          //   icon: 'akar-icons:github-fill',
+          //   message: 'workplace.introduction',
+          //   personal: 'Archer',
+          //   time: new Date()
+          // },
           {
-            name: 'Github',
-            icon: 'akar-icons:github-fill',
-            message: 'workplace.introduction',
-            personal: 'Archer',
-            time: new Date()
+            name: 'Unclassified',
+            icon: 'logos:compose-multiplatform',
+            message: 'app_dashboard.introduction',
+            personal: 'admin',
+            time: new Date(),
+            articleType: 1
+          },
+          {
+            name: 'Java',
+            icon: 'logos:java',
+            message: 'app_dashboard.introduction',
+            personal: 'admin',
+            time: new Date(),
+            articleType: 2
           },
           {
             name: 'Vue',
             icon: 'logos:vue',
-            message: 'workplace.introduction',
+            message: 'app_dashboard.introduction',
             personal: 'Archer',
-            time: new Date()
+            time: new Date(),
+            articleType: 3
           },
-          {
-            name: 'Angular',
-            icon: 'logos:angular-icon',
-            message: 'workplace.introduction',
-            personal: 'Archer',
-            time: new Date()
-          },
+          // {
+          //   name: 'Angular',
+          //   icon: 'logos:angular-icon',
+          //   message: 'workplace.introduction',
+          //   personal: 'Archer',
+          //   time: new Date()
+          // },
           {
             name: 'React',
             icon: 'logos:react',
-            message: 'workplace.introduction',
+            message: 'app_dashboard.introduction',
             personal: 'Archer',
-            time: new Date()
-          },
-          {
-            name: 'Webpack',
-            icon: 'logos:webpack',
-            message: 'workplace.introduction',
-            personal: 'Archer',
-            time: new Date()
-          },
-          {
-            name: 'Vite',
-            icon: 'vscode-icons:file-type-vite',
-            message: 'workplace.introduction',
-            personal: 'Archer',
-            time: new Date()
+            time: new Date(),
+            articleType: 4
           }
+          // {
+          //   name: 'Webpack',
+          //   icon: 'logos:webpack',
+          //   message: 'workplace.introduction',
+          //   personal: 'Archer',
+          //   time: new Date()
+          // },
+          // {
+          //   name: 'Vite',
+          //   icon: 'vscode-icons:file-type-vite',
+          //   message: 'workplace.introduction',
+          //   personal: 'Archer',
+          //   time: new Date()
+          // }
         ]
       }
     }

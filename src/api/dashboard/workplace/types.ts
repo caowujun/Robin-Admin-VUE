@@ -10,6 +10,7 @@ export type Project = {
   message: string
   personal: string
   time: Date | number | string
+  articleType: number
 }
 
 export type Dynamic = {

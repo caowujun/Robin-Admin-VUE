@@ -61,9 +61,6 @@ const signIn = async () => {
         const res = await loginApi(formData)
 
         if (res) {
-          // wsCache.set(appStore.getUserInfo, res.data)
-          appStore.setUserDisplayName(res.data?.userDisplayName)
-
           //選出されると、保存状況はローカルに保存され、有効期間は1か月です
           if (remember?.value === true) {
             wsCache_local.set('remember', remember.value)

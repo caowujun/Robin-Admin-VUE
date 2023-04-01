@@ -64,9 +64,8 @@ const reset = async () => {
     :is-col="false"
     :rules="rules"
     :loading="loading"
-    :label-width="isMobile ? 'auto' : '200px'"
+    :label-width="isMobile ? 'auto' : appStore.getLabelWidth"
     :label-position="isMobile ? 'top' : 'right'"
-    :width="isMobile ? 'auto' : '600px'"
   >
     <template #tool>
       <div class="buttonBox">

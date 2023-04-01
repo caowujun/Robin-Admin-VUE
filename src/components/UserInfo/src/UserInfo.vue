@@ -60,7 +60,7 @@ const changeUserInfo = () => {
         class="w-[calc(var(--logo-height)-25px)] rounded-[50%]"
       />
       <span class="<lg:hidden text-14px pl-[5px] text-[var(--top-header-text-color)]">
-        {{ appStore.getUserDisplayName || cacheQuery(appStore.getUserInfo)?.UserDisplayName }}</span
+        {{ appStore.getUserDisplayName || cacheQuery(appStore.getUserInfo)?.userDisplayName }}</span
       >
     </div>
     <template #dropdown>

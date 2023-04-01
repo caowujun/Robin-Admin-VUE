@@ -8,7 +8,6 @@ import { h } from 'vue'
 const { t } = useI18n()
 const dictStore = useDictStoreWithOut()
 
-debugger
 const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
   return { label: t(v.label), value: v.value }
 })

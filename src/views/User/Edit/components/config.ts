@@ -19,7 +19,8 @@ export const rules = reactive({
   address: [required()],
   phone: [required()],
   roleType: [required()],
-  cityCode: [required()]
+  cityCode: [required()],
+  notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
 })
 
 export const schema = reactive<FormSchema[]>([

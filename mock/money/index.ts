@@ -8,7 +8,7 @@ const { result_code } = config
 
 const timeout = 1000
 
-const count = 91
+const count = 11
 
 let List: {
   id: string

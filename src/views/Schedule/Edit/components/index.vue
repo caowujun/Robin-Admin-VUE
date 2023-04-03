@@ -9,7 +9,7 @@ import { computed, onMounted, ref } from 'vue'
 import { saveApi, getApi } from '@/api/schedule'
 import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
 import { useAppStore } from '@/store/modules/app'
-import { dateFormatToGreenwich } from '@/utils/dateFormat'
+// import { dateFormat } from '@/utils/dateFormat'
 
 const { register, methods, elFormRef } = useForm({
   schema
@@ -38,12 +38,15 @@ const save = async () => {
       if (valid) {
         loading.value = true
         const result: any = await getFormData()
-        result['scheduleStartDate'] = result.scheduleDate
-          ? dateFormatToGreenwich([result.scheduleDate[0], result.scheduleDate[1]], false).value[0]
-          : ''
-        result['scheduleEndDate'] = result.scheduleDate
-          ? dateFormatToGreenwich([result.scheduleDate[0], result.scheduleDate[1]], false).value[1]
-          : ''
+        console.log(result)
+        // result['scheduleStartDate'] =
+        //   result.scheduleStartDate && result.scheduleStartDate.indexOf('00:00:00') < 0
+        //     ? dateFormat(result.scheduleStartDate, true, false)
+        //     : ''
+        // result['scheduleEndDate'] =
+        //   result.scheduleEndDate && result.scheduleEndDate.indexOf('00:00:00') < 0
+        //     ? result.scheduleEndDate.replace('00:00:00', '23:59:59')
+        //     : ''
         console.log(result)
         let res = await saveApi(result)
           .catch(() => {})
@@ -53,7 +56,7 @@ const save = async () => {
 
         if (res) {
           ElMessage.success(t('app_common.saveSuccess'))
-          push({ name: 'income' })
+          push({ name: 'schedule' })
         }
       }
     })

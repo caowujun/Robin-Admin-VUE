@@ -14,7 +14,7 @@ export const columns = reactive<TableColumn[]>([
       component: 'DatePicker',
       componentProps: {
         type: 'datetime',
-        valueFormat: 'YYYY-MM-DD HH:mm:ss'
+        valueFormat: 'YYYY-MM-DD'
       }
     }
   },

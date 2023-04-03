@@ -7,7 +7,7 @@ const { result_code } = config
 
 const timeout = 1000
 
-const count = 100
+const count = 11
 
 let List: {
   id: string
@@ -41,10 +41,11 @@ export default [
         if (scheduleStartDate && scheduleStartDate != '')
           return (
             (item.scheduleStartDate > scheduleStartDate &&
-              item.scheduleEndDate < scheduleEndDate) ||
-            (item.scheduleStartDate > scheduleStartDate &&
               item.scheduleStartDate < scheduleEndDate) ||
-            (item.scheduleEndDate > scheduleStartDate && item.scheduleEndDate < scheduleEndDate)
+            (item.scheduleEndDate > scheduleStartDate && item.scheduleEndDate < scheduleEndDate) ||
+            (item.scheduleStartDate < scheduleStartDate &&
+              item.scheduleEndDate > scheduleEndDate) ||
+            (item.scheduleStartDate > scheduleStartDate && item.scheduleEndDate < scheduleEndDate)
           )
         else return true
       })

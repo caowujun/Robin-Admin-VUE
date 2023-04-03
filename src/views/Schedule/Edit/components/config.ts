@@ -6,33 +6,43 @@ import { FormSchema } from '@/types/form'
 const { t } = useI18n()
 
 export const rules = reactive({
-  scheduleDate: [
+  scheduleStartDate: [
     {
-      type: 'date',
+      type: 'datetime',
       required: true,
       message: t('common.required'),
       trigger: 'blur'
     }
   ],
-  // category: [required()],
-  // amount: [required()],
+  // scheduleEndDate: [
+  //   {
+  //     type: 'datetime',
+  //     required: true,
+  //     message: t('common.required'),
+  //     trigger: 'blur'
+  //   }
+  // ],
   notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
 })
 
 export const schema = reactive<FormSchema[]>([
   {
-    field: 'scheduleDate',
-    label: t('app_schedule.scheduleDate'),
+    field: 'scheduleStartDate',
+    label: t('app_common.startTimeText'),
     component: 'DatePicker',
     componentProps: {
-      type: 'daterange',
-      startPlaceholder: ' ',
-      endPlaceholder: ' '
-    },
-    formItemProps: {
-      style: {}
+      type: 'datetime',
+      valueFormat: 'YYYY-MM-DD HH:mm:ss'
     }
-    // value: [new Date(), new Date()]
+  },
+  {
+    field: 'scheduleEndDate',
+    label: t('app_common.endTimeText'),
+    component: 'DatePicker',
+    componentProps: {
+      type: 'datetime',
+      valueFormat: 'YYYY-MM-DD HH:mm:ss'
+    }
   },
   {
     field: 'notes',

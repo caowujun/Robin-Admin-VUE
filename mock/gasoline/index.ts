@@ -7,31 +7,28 @@ const { result_code } = config
 
 const timeout = 1000
 
-const count = 2
-
 let List: {
   id: string
   recordDate: string
   amount: number
   litre: number
+  unitPrice: number
   isFillUp: number
   kilometers: number
   notes: string
 }[] = []
-
-for (let i = 0; i < count; i++) {
-  List.push(
-    Mock.mock({
-      id: toAnyString(),
-      recordDate: '@datetime',
-      amount: 100,
-      litre: 33,
-      isFillUp: i % 2,
-      kilometers: 333,
-      notes: 'test' + i
-    })
-  )
-}
+List.push(
+  Mock.mock({
+    id: toAnyString(),
+    recordDate: '2023-03-27',
+    amount: 329.52,
+    litre: 40.04,
+    isFillUp: 1,
+    kilometers: 34444,
+    unitPrice: 8.23,
+    notes: ''
+  })
+)
 
 export default [
   // 列表接口

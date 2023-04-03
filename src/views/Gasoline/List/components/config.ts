@@ -40,11 +40,16 @@ export const columns = reactive<TableColumn[]>([
     sortable: true
   },
   {
+    field: 'unitPrice',
+    label: t('app_gasoline.unitPrice'),
+    sortable: true
+  },
+  {
     field: 'isFillUp',
     label: t('app_gasoline.isFillUp'),
     sortable: true,
-    formatter: (_: Recordable, __: TableColumn, cellValue: string) => {
-      return cellValue === '1' ? t('app_common.yes') : t('app_common.no')
+    formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
+      return cellValue === 1 ? t('app_common.yes') : t('app_common.no')
       // return t(dictStore.getDictObj['STATUS'].find((f) => parseInt(f.value) === cellValue)?.label)
       // return h(
       //   ElTag,

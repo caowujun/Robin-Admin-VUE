@@ -81,6 +81,9 @@ const search = (model) => {
 // const action = (row: TableData, type: string) => {
 //   push(`/example/example-${type}?id=${row.id}`)
 // }
+const articleOpenClick = async (data: TableSlotDefault) => {
+  window.open(data.row.articleUrl)
+}
 </script>
 
 <template>
@@ -127,7 +130,14 @@ const search = (model) => {
     <!-- <template #createdDateTime="data">
       {{ data.row.createdDateTime && dateFormatSingle(new Date(data.row.createdDateTime), true) }}
     </template> -->
-
+    <template #articleUrl="data">
+      <a
+        @click="articleOpenClick(data as TableSlotDefault)"
+        style="color: #409eff; cursor: pointer"
+      >
+        {{ data.row.articleUrl }}</a
+      >
+    </template>
     <template #action="{ row }">
       <el-button type="primary" link @click="editFn(row)"> {{ t('app_common.edit') }}</el-button>
       <el-button type="primary" link @click="delData(row, false)">

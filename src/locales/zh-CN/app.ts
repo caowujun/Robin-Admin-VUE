@@ -132,7 +132,11 @@ export default {
     isFillUp: '是否加满',
     kilometers: '公里数'
   },
-  app_schedule: {},
+  app_schedule: {
+    scheduleDate: '日程时间'
+    // scheduleStartDate: '日程开始时间',
+    // scheduleEndDate: '日程结束时间'
+  },
   app_user: {
     username: '登录名',
     password: '密码',

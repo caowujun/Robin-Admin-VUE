@@ -45,14 +45,14 @@ const save = async () => {
 
         if (res) {
           ElMessage.success(t('app_common.saveSuccess'))
-          push({ name: 'income' })
+          push({ name: 'article' })
         }
       }
     })
 }
 
 const reset = async () => {
-  push({ name: 'income' })
+  push({ name: 'article' })
 }
 </script>
 

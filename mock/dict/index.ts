@@ -37,7 +37,7 @@ let List: {
   id: string
   enumType: string
   enumName: string
-  enumValue: string
+  enumValue: number
   enumLanguage: string
   notes: string
 }[] = [
@@ -45,7 +45,7 @@ let List: {
     id: '1',
     enumType: 'ROLETYPE',
     enumName: '管理员',
-    enumValue: '1',
+    enumValue: 1,
     enumLanguage: 'app_user.adminUser',
     notes: ''
   },
@@ -53,7 +53,7 @@ let List: {
     id: '2',
     enumType: 'ROLETYPE',
     enumName: '一般用户',
-    enumValue: '2',
+    enumValue: 2,
     enumLanguage: 'app_user.normalUser',
     notes: ''
   },
@@ -61,7 +61,7 @@ let List: {
     id: '3',
     enumType: 'INCOME',
     enumName: '收入',
-    enumValue: '1',
+    enumValue: 1,
     enumLanguage: 'app_money.expenditure',
     notes: ''
   },
@@ -69,7 +69,7 @@ let List: {
     id: '4',
     enumType: 'INCOME',
     enumName: '支出',
-    enumValue: '0',
+    enumValue: 0,
     enumLanguage: 'app_money.income',
     notes: ''
   },
@@ -77,7 +77,7 @@ let List: {
     id: '5',
     enumType: 'STATUS',
     enumName: '是',
-    enumValue: '1',
+    enumValue: 1,
     enumLanguage: 'app_common.yes',
     notes: ''
   },
@@ -85,7 +85,7 @@ let List: {
     id: '6',
     enumType: 'STATUS',
     enumName: '否',
-    enumValue: '0',
+    enumValue: 0,
     enumLanguage: 'app_common.no',
     notes: ''
   },
@@ -93,7 +93,7 @@ let List: {
     id: '7',
     enumType: 'ARTICLESHARE',
     enumName: 'Unclassified',
-    enumValue: '1',
+    enumValue: 1,
     enumLanguage: 'app_article.unclassified',
     notes: 'logos:compose-multiplatform'
   },
@@ -101,7 +101,7 @@ let List: {
     id: '8',
     enumType: 'ARTICLESHARE',
     enumName: 'Java',
-    enumValue: '2',
+    enumValue: 2,
     enumLanguage: 'app_article.java',
     notes: 'logos:java'
   },
@@ -109,7 +109,7 @@ let List: {
     id: '9',
     enumType: 'ARTICLESHARE',
     enumName: 'Vue',
-    enumValue: '3',
+    enumValue: 3,
     enumLanguage: 'app_article.vue',
     notes: 'logos:vue'
   },
@@ -117,7 +117,7 @@ let List: {
     id: '10',
     enumType: 'ARTICLESHARE',
     enumName: 'React',
-    enumValue: '4',
+    enumValue: 4,
     enumLanguage: 'app_article.react',
     notes: 'logos:react'
   }
@@ -258,7 +258,7 @@ export default [
         dbdics[item] = List.filter((f) => f.enumType === item).map((g) => {
           return {
             value: g.enumValue,
-            label: g.enumName
+            label: g.enumLanguage
           }
         })
       })

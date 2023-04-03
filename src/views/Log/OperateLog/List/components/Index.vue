@@ -51,7 +51,7 @@ const search = (model) => {
     :layout="layout"
     :button-position="buttonPosition"
     @search="search"
-    @reset="setSearchParams"
+    @reset="search"
   />
   <ElDivider style="margin-top: 5px; margin-bottom: 15px" />
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from '@/hooks/web/useI18n'
 import { Table } from '@/components/Table'
-import { onMounted, ref, unref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { ElButton, ElDivider } from 'element-plus'
 import { useTable } from '@/hooks/web/useTable'
 import { useRoute, useRouter } from 'vue-router'
@@ -12,7 +12,6 @@ import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
 import { useDictStoreWithOut } from '@/store/modules/dict'
-import { FormExpose } from '@/components/Form'
 
 const { query } = useRoute()
 const { t } = useI18n()
@@ -34,8 +33,10 @@ const { register, tableObject, methods } = useTable<TableData>({
   defaultParams: {}
 })
 const { getList, setSearchParams } = methods
-const formRef = ref<FormExpose>()
-
+//查询
+// const searchForm = ref({})
+//从主页进来，如果不用onMounted,可以实现给Search组件赋值，但是使用了就不行。（onMounted 钩子可以用来在组件完成初始渲染并创建 DOM 节点后运行代码）
+//还一个办法就是在Search组件直接使用：model={ articleType: query?.articleType }
 onMounted(async () => {
   if (
     query?.articleType &&
@@ -43,11 +44,11 @@ onMounted(async () => {
       (f) => parseInt(f.value) === parseInt(query?.articleType as string)
     ) > 0
   ) {
+    // searchForm.value = { articleType: query?.articleType }
     setSearchParams({ articleType: query?.articleType })
   } else {
     getList()
   }
-  unref(formRef)?.setValues({ articleType: query?.articleType })
 })
 
 //to edit page
@@ -84,12 +85,13 @@ const search = (model) => {
 
 <template>
   <Search
+    :model="{ articleType: query?.articleType }"
     :schema="schema"
     :is-col="isGrid"
     :layout="layout"
     :button-position="buttonPosition"
     @search="search"
-    @reset="setSearchParams"
+    @reset="search"
     ref="formRef"
   />
   <ElDivider style="margin-top: 5px; margin-bottom: 15px" />

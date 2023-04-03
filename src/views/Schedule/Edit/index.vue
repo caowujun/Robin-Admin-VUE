@@ -2,7 +2,7 @@
 import { ContentWrap } from '@/components/ContentWrap'
 import Index from './components/index.vue'
 defineOptions({
-  name: 'scheduleList'
+  name: 'scheduleEdit'
 })
 </script>
 

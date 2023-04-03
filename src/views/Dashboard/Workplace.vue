@@ -290,12 +290,11 @@ getAllApi()
               :md="12"
               :sm="24"
               :xs="24"
-              @click="toArticle(item.articleType)"
             >
-              <ElCard shadow="hover">
+              <ElCard shadow="hover" @click="toArticle(item.articleType)" style="cursor: pointer">
                 <div class="flex items-center">
                   <Icon :icon="item.icon" :size="25" class="mr-10px" />
-                  <span class="text-16px">{{ item.name }}</span>
+                  <span class="text-16px">{{ t(item.name) }}</span>
                 </div>
                 <div class="mt-15px text-14px text-gray-400">{{ t(item.message) }}</div>
                 <div class="mt-20px text-12px text-gray-400 flex justify-between">

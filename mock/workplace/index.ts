@@ -39,7 +39,7 @@ export default [
           //   time: new Date()
           // },
           {
-            name: 'Unclassified',
+            name: 'app_article.unclassified',
             icon: 'logos:compose-multiplatform',
             message: 'app_dashboard.introduction',
             personal: 'admin',
@@ -47,7 +47,7 @@ export default [
             articleType: 1
           },
           {
-            name: 'Java',
+            name: 'app_article.java',
             icon: 'logos:java',
             message: 'app_dashboard.introduction',
             personal: 'admin',
@@ -55,7 +55,7 @@ export default [
             articleType: 2
           },
           {
-            name: 'Vue',
+            name: 'app_article.vue',
             icon: 'logos:vue',
             message: 'app_dashboard.introduction',
             personal: 'Archer',
@@ -70,7 +70,7 @@ export default [
           //   time: new Date()
           // },
           {
-            name: 'React',
+            name: 'app_article.react',
             icon: 'logos:react',
             message: 'app_dashboard.introduction',
             personal: 'Archer',

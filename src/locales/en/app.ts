@@ -137,7 +137,11 @@ export default {
     isFillUp: '是否加满',
     kilometers: 'Kilometers'
   },
-  app_schedule: {},
+  app_schedule: {
+    scheduleDate: 'Schedule'
+    // scheduleStartDate: 'Schedule Start Time',
+    // scheduleEndDate: 'Schedule End Time'
+  },
   app_user: {
     username: '登录名',
     password: '密码',

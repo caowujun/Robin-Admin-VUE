@@ -30,8 +30,8 @@ const { register, tableObject, methods } = useTable<TableData>({
     total: 'total'
   },
   defaultParams: {
-    startTimeText: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
-    endTimeText: dateFormat(new Date(), false)
+    scheduleStartDate: dateFormat(new Date(new Date().setDate(new Date().getDate() - 6)), true),
+    scheduleEndDate: dateFormat(new Date(), false)
   }
 })
 const { getList, setSearchParams } = methods
@@ -63,12 +63,15 @@ const toCreatePage = () => {
 
 //override the search method
 const search = (model) => {
-  model['startTimeText'] = model.scheduleTime
-    ? dateFormatToGreenwich([model.scheduleTime[0], model.scheduleTime[1]], false).value[0]
+  console.log(model)
+  model['scheduleStartDate'] = model.scheduleDate
+    ? dateFormatToGreenwich([model.scheduleDate[0], model.scheduleDate[1]], false).value[0]
     : ''
-  model['endTimeText'] = model.scheduleTime
-    ? dateFormatToGreenwich([model.scheduleTime[0], model.scheduleTime[1]], false).value[1]
+  model['scheduleEndDate'] = model.scheduleDate
+    ? dateFormatToGreenwich([model.scheduleDate[0], model.scheduleDate[1]], false).value[1]
     : ''
+
+  console.log(model)
   setSearchParams(model)
 }
 // const action = (row: TableData, type: string) => {
@@ -83,7 +86,7 @@ const search = (model) => {
     :layout="layout"
     :button-position="buttonPosition"
     @search="search"
-    @reset="setSearchParams"
+    @reset="search"
   />
   <ElDivider style="margin-top: 5px; margin-bottom: 15px" />
   <div class="mb-15px">

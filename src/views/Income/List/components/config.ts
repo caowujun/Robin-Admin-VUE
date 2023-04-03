@@ -11,6 +11,7 @@ const dictStore = useDictStoreWithOut()
 const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
   return { label: t(v.label), value: v.value }
 })
+console.log(categoryStatus)
 
 export const columns = reactive<TableColumn[]>([
   {
@@ -36,7 +37,7 @@ export const columns = reactive<TableColumn[]>([
     sortable: true,
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
       // return cellValue === '1' ? t('app_money.income') : t('app_money.expenditure')
-
+      // return t(dictStore.getDictObj['INCOME'].find((f) => parseInt(f.value) === cellValue)?.label)
       return h(
         ElTag,
         {
@@ -68,6 +69,6 @@ export const schema = reactive<FormSchema[]>([
       options: categoryStatus,
       placeholder: ' '
     },
-    value: '1'
+    value: 1
   }
 ])

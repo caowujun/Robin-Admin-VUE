@@ -132,7 +132,11 @@ export default {
     isFillUp: '満タンかどうか',
     kilometers: 'キロすう'
   },
-  app_schedule: {},
+  app_schedule: {
+    scheduleDate: 'スケジュール'
+    // scheduleStartDate: 'スケジュール開始時間',
+    // scheduleEndDate: 'スケジュール終了時間'
+  },
   app_user: {
     username: 'ログイン名',
     password: 'パスワード',

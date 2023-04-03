@@ -28,8 +28,9 @@ export const columns = reactive<TableColumn[]>([
     sortable: true,
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
       // console.log(dictStore.getDictObj['ARTICLESHARE'].find((f) => parseInt(f.value) === cellValue))
-      return dictStore.getDictObj['ARTICLESHARE'].find((f) => parseInt(f.value) === cellValue)
-        ?.label
+      return t(
+        dictStore.getDictObj['ARTICLESHARE'].find((f) => parseInt(f.value) === cellValue)?.label
+      )
     }
   },
   {

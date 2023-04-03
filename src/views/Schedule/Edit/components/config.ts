@@ -1,52 +1,28 @@
 import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
-import { TableColumn } from '@/types/table'
+// import { useValidator } from '@/hooks/web/useValidator'
 import { FormSchema } from '@/types/form'
 
 const { t } = useI18n()
 
-export const columns = reactive<TableColumn[]>([
-  {
-    field: 'startTimeText',
-    label: t('app_common.startTimeText'),
-    sortable: true,
-    form: {
-      component: 'DatePicker',
-      componentProps: {
-        type: 'datetime',
-        valueFormat: 'YYYY-MM-DD HH:mm:ss'
-      }
+export const rules = reactive({
+  scheduleDate: [
+    {
+      type: 'date',
+      required: true,
+      message: t('common.required'),
+      trigger: 'blur'
     }
-  },
-  {
-    field: 'endTimeText',
-    label: t('app_common.endTimeText'),
-    sortable: true,
-    form: {
-      component: 'DatePicker',
-      componentProps: {
-        type: 'datetime',
-        valueFormat: 'YYYY-MM-DD HH:mm:ss'
-      }
-    }
-  },
-  {
-    field: 'notes',
-    label: t('app_common.notes'),
-    sortable: true
-  },
-  {
-    field: 'action',
-    label: t('app_common.action'),
-    align: 'center',
-    headerAlign: 'center'
-  }
-])
+  ],
+  // category: [required()],
+  // amount: [required()],
+  notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
+})
 
 export const schema = reactive<FormSchema[]>([
   {
-    field: 'startTimeText',
-    label: t('app_common.recordDate'),
+    field: 'scheduleDate',
+    label: t('app_schedule.scheduleDate'),
     component: 'DatePicker',
     componentProps: {
       type: 'daterange',
@@ -55,12 +31,15 @@ export const schema = reactive<FormSchema[]>([
     },
     formItemProps: {
       style: {}
-    },
-    value: [new Date(new Date().setDate(new Date().getDate() - 6)), new Date()]
+    }
+    // value: [new Date(), new Date()]
+  },
+  {
+    field: 'notes',
+    label: t('app_common.notes'),
+    component: 'Input'
+  },
+  {
+    field: 'tool'
   }
 ])
-
-// export const formatterApprovalStateColor = [
-//   { key: notification_approval_status.waitingApply, color: 'rgb(250, 188, 4)' },
-//   { key: notification_approval_status.waitingConfirm, color: 'rgb(102, 176, 50)' }
-// ]

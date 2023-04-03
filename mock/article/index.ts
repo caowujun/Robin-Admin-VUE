@@ -21,7 +21,7 @@ for (let i = 0; i < count; i++) {
   List.push(
     Mock.mock({
       id: toAnyString(),
-      articleName: i,
+      articleName: 'test' + i,
       articleType: 1,
       articleUrl: 'http://www.' + i + '.com',
       notes: 'test' + i
@@ -37,10 +37,17 @@ export default [
     timeout,
     response: ({ query }) => {
       const { pageIndex, pageSize, articleType, articleName } = query
+      console.log(articleName)
       const mockList = List.filter((item) => {
-        const result1 =
-          articleName && articleName != '' ? item.articleName.indexOf(articleName) > 0 : true
-        const result2 = articleType && articleType != '' ? item.articleType === articleType : true
+        let result1 = true
+        if (articleName) {
+          result1 = item.articleName?.indexOf(articleName) > 0
+        }
+        let result2 = true
+        if (articleType) {
+          result2 = item.articleType === articleType
+        }
+
         return result1 && result2
       })
       const pageList = mockList.filter(

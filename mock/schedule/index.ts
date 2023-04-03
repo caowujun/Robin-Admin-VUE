@@ -11,8 +11,8 @@ const count = 100
 
 let List: {
   id: string
-  startTimeText: string
-  endTimeText: string
+  scheduleStartDate: string
+  scheduleEndDate: string
   notes: string
 }[] = []
 
@@ -20,8 +20,8 @@ for (let i = 0; i < count; i++) {
   List.push(
     Mock.mock({
       id: toAnyString(),
-      startTimeText: '@datetime',
-      endTimeText: '@datetime',
+      scheduleStartDate: '@datetime',
+      scheduleEndDate: '@datetime',
       notes: i
     })
   )
@@ -34,15 +34,17 @@ export default [
     method: 'get',
     timeout,
     response: ({ query }) => {
-      const { pageIndex, pageSize, startTimeText, endTimeText } = query
-      console.log('schedule/page', startTimeText, endTimeText)
+      const { pageIndex, pageSize, scheduleStartDate, scheduleEndDate } = query
+      console.log('schedule/page', scheduleStartDate, scheduleEndDate)
 
       const mockList = List.filter((item) => {
-        if (startTimeText && startTimeText != '')
+        if (scheduleStartDate && scheduleStartDate != '')
           return (
-            (item.startTimeText > startTimeText && item.endTimeText < endTimeText) ||
-            (item.startTimeText > startTimeText && item.startTimeText < endTimeText) ||
-            (item.endTimeText > startTimeText && item.endTimeText < endTimeText)
+            (item.scheduleStartDate > scheduleStartDate &&
+              item.scheduleEndDate < scheduleEndDate) ||
+            (item.scheduleStartDate > scheduleStartDate &&
+              item.scheduleStartDate < scheduleEndDate) ||
+            (item.scheduleEndDate > scheduleStartDate && item.scheduleEndDate < scheduleEndDate)
           )
         else return true
       })

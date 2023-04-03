@@ -79,7 +79,7 @@ export const schema = reactive<FormSchema[]>([
       options: status,
       placeholder: t('common.selectText')
     },
-    value: '1'
+    value: 1
   },
   {
     field: 'notes',

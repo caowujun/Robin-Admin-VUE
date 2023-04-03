@@ -72,3 +72,9 @@ export type Article = {
   articleUrl: string
   notes: string
 }
+export type Schedule = {
+  id: string
+  scheduleStartDate: number
+  scheduleEndDate: string
+  notes: string
+}

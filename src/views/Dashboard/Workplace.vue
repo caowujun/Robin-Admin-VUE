@@ -277,7 +277,9 @@ getAllApi()
         <template #header>
           <div class="flex justify-between">
             <span>{{ t('workplace.project') }}</span>
-            <ElLink type="primary" :underline="false">{{ t('workplace.more') }}</ElLink>
+            <ElLink type="primary" :underline="false" @click="toArticle('')">{{
+              t('workplace.more')
+            }}</ElLink>
           </div>
         </template>
         <ElSkeleton :loading="loading" animated>

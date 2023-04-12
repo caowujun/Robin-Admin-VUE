@@ -31,6 +31,22 @@ List.push(
     notes: 'test'
   })
 )
+List.push(
+  Mock.mock({
+    id: toAnyString(),
+    recordDate: '2023-04-08 12:00:00',
+    battleNumber: 1,
+    notes: 'test'
+  })
+)
+List.push(
+  Mock.mock({
+    id: toAnyString(),
+    recordDate: '2023-04-11 12:00:00',
+    battleNumber: 1,
+    notes: 'test'
+  })
+)
 // for (let i = 0; i < count; i++) {
 //   List.push(
 //     Mock.mock({

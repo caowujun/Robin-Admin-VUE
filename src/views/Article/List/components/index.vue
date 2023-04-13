@@ -33,18 +33,19 @@ const { register, tableObject, methods } = useTable<TableData>({
   defaultParams: {}
 })
 const { getList, setSearchParams } = methods
-//查询
-// const searchForm = ref({})
-//从主页进来，如果不用onMounted,可以实现给Search组件赋值，但是使用了就不行。（onMounted 钩子可以用来在组件完成初始渲染并创建 DOM 节点后运行代码）
-//还一个办法就是在Search组件直接使用：model={ articleType: query?.articleType }
-onMounted(async () => {
-  if (
-    query?.articleType &&
+
+//articleType是否合规
+const checkArticleType = (): boolean => {
+  return (
     dictStore.getDictObj['ARTICLESHARE'].findIndex(
-      (f) => parseInt(f.value) === parseInt(query?.articleType as string)
+      (f) => f.value === parseInt(query?.articleType as string)
     ) > 0
-  ) {
-    // searchForm.value = { articleType: query?.articleType }
+  )
+}
+//（onMounted 钩子可以用来在组件完成初始渲染并创建 DOM 节点后运行代码，这个时候在设置search组件的model已经晚了）
+//所以model的设值和内容的查询分开,在Search组件直接使用：model={ articleType: query?.articleType }
+onMounted(async () => {
+  if (query?.articleType && checkArticleType()) {
     setSearchParams({ articleType: query?.articleType })
   } else {
     getList()
@@ -88,7 +89,7 @@ const articleOpenClick = async (data: TableSlotDefault) => {
 
 <template>
   <Search
-    :model="{ articleType: query?.articleType }"
+    :model="{ articleType: checkArticleType() ?parseInt(query?.articleType as string):'' }"
     :schema="schema"
     :is-col="isGrid"
     :layout="layout"

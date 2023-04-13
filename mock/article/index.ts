@@ -7,7 +7,7 @@ const { result_code } = config
 
 const timeout = 1000
 
-const count = 2
+const count = 11
 
 let List: {
   id: string
@@ -22,7 +22,7 @@ for (let i = 0; i < count; i++) {
     Mock.mock({
       id: toAnyString(),
       articleName: 'test' + i,
-      articleType: 1,
+      articleType: (i % 4) + 1,
       articleUrl: 'http://www.' + i + '.com',
       notes: 'test' + i
     })
@@ -41,11 +41,11 @@ export default [
       const mockList = List.filter((item) => {
         let result1 = true
         if (articleName) {
-          result1 = item.articleName?.indexOf(articleName) > 0
+          result1 = item.articleName?.indexOf(articleName) > -1
         }
         let result2 = true
         if (articleType) {
-          result2 = item.articleType === articleType
+          result2 = Number.parseInt(item.articleType.toString()) === Number.parseInt(articleType)
         }
 
         return result1 && result2

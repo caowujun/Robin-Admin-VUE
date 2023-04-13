@@ -21,7 +21,7 @@ let dictObj: Recordable = {
       label: 'tableDemo.important'
     }
   ],
-  cityCode: [
+  CITYCODE: [
     {
       value: '101120601',
       label: '潍坊'

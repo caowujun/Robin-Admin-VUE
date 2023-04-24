@@ -17,3 +17,5 @@ pnpm install vue-router@4
 pnpm install  eslint
 pnpm install  prettier
 ```
+
+## 1.9.8 的 package.json 文件更新了版本，但是更新后有个问题，多语言在页面显示不出来，所以回滚到了 1.9.7 的版本。

@@ -1,7 +1,6 @@
 const routes = new Map([
   ['/home/index', '1,2'],
-  ['/modifyUserInfo/index', '1,2'],
-  ['/modifyPassword/index', '1,2'],
+
   ['/personTools', '1,2'],
   ['/personTools/sex/index', '1,2'],
   ['/personTools/sex/add/index', '1,2'],
@@ -28,9 +27,9 @@ const routes = new Map([
   ['/sysSetting/user/add/index', '1'],
   ['/sysSetting/user/edit/index', '1'],
 
-  // ['/sysSetting/role/index', '1'],
-  // ['/sysSetting/role/add/index', '1'],
-  // ['/sysSetting/role/edit/index', '1'],
+  ['/sysSetting/role/index', '1'],
+  ['/sysSetting/role/add/index', '1'],
+  ['/sysSetting/role/edit/index', '1'],
 
   ['/sysSetting/enumType/index', '1'],
   ['/sysSetting/enumType/add/index', '1'],
@@ -38,7 +37,9 @@ const routes = new Map([
 
   ['/log', '1'],
   ['/log/sysLog/index', '1'],
-  ['/log/operateLog/index', '1']
+  ['/log/operateLog/index', '1'],
+  ['/modifyUserInfo/index', '1,2'],
+  ['/modifyPassword/index', '1,2']
 ])
 
 const filterRouter = (role: string): Array<string> => {

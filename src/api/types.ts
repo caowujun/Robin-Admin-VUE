@@ -34,6 +34,13 @@ export type User = {
   recordDate: string
   cityCode: string
 }
+export type Role = {
+  id: string
+  recordDate: string
+  roleName: string
+  notes: string
+}
+
 export type EnumType = {
   id: string
   enumName: string

@@ -133,8 +133,8 @@ export default [
   },
   // 删除接口
   {
-    url: '/battle/delete',
-    sex: 'post',
+    url: '/sex/delete',
+    method: 'post',
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

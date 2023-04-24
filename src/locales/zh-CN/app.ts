@@ -169,5 +169,8 @@ export default {
     articleName: '文章名称',
     articleType: '文章分类',
     articleUrl: '文章路径'
+  },
+  app_role: {
+    roleName: '角色名'
   }
 }

@@ -57,42 +57,6 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
 
 export const asyncRouterMap: AppRouteRecordRaw[] = [
   {
-    path: '/modifyUserInfo',
-    component: Layout,
-    redirect: '/modifyUserInfo/index',
-    name: 'modifyUserInfo',
-    meta: { hidden: true, canTo: true },
-    children: [
-      {
-        path: 'index',
-        name: 'modifyUserInfo-index',
-        component: () => import('@/views/User/ModifyUserInfo/index.vue'),
-        meta: {
-          title: t('app_login.userInfoItem'),
-          icon: 'clarity:avatar-solid'
-        }
-      }
-    ]
-  },
-  {
-    path: '/modifyPassword',
-    component: Layout,
-    redirect: '/modifyPassword/index',
-    name: 'modifyPassword',
-    meta: { hidden: true, canTo: true },
-    children: [
-      {
-        path: 'index',
-        name: 'modifyPassword-index',
-        component: () => import('@/views/User/ModifyPassword/index.vue'),
-        meta: {
-          title: t('app_login.modifyPwdItem'),
-          icon: 'clarity:paste-solid'
-        }
-      }
-    ]
-  },
-  {
     path: '/home',
     component: Layout,
     redirect: '/home/index',
@@ -316,37 +280,37 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           activeMenu: '/personTools/user/index'
         }
       },
-      // {
-      //   path: 'role/index',
-      //   component: () => import('@/views/Role/List/index.vue'),
-      //   name: 'role',
-      //   meta: {
-      //     title: t('app_menu.roleManage'),
-      //     icon: 'clarity:employee-group-line'
-      //   }
-      // },
-      // {
-      //   path: 'role/add/index',
-      //   name: 'roleAdd',
-      //   component: () => import('@/views/Role/Edit/index.vue'),
-      //   meta: {
-      //     title: t('app_common.add'),
-      //     hidden: true,
-      //     canTo: true,
-      //     activeMenu: '/personTools/role/add/index'
-      //   }
-      // },
-      // {
-      //   path: 'role/edit/index',
-      //   name: 'roleEdit',
-      //   component: () => import('@/views/Role/Edit/index.vue'),
-      //   meta: {
-      //     title: t('app_common.edit'),
-      //     hidden: true,
-      //     canTo: true,
-      //     activeMenu: '/personTools/role/edit/index'
-      //   }
-      // },
+      {
+        path: 'role/index',
+        component: () => import('@/views/Role/List/index.vue'),
+        name: 'role',
+        meta: {
+          title: t('app_menu.roleManage'),
+          icon: 'clarity:employee-group-line'
+        }
+      },
+      {
+        path: 'role/add/index',
+        name: 'roleAdd',
+        component: () => import('@/views/Role/Edit/index.vue'),
+        meta: {
+          title: t('app_common.add'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/role/add/index'
+        }
+      },
+      {
+        path: 'role/edit/index',
+        name: 'roleEdit',
+        component: () => import('@/views/Role/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/role/edit/index'
+        }
+      },
       {
         path: 'enumType/index',
         component: () => import('@/views/EnumType/List/index.vue'),
@@ -427,6 +391,42 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           hidden: true,
           canTo: true,
           activeMenu: '/log/operationLog/view/index'
+        }
+      }
+    ]
+  },
+  {
+    path: '/modifyUserInfo',
+    component: Layout,
+    redirect: '/modifyUserInfo/index',
+    name: 'modifyUserInfo',
+    meta: { hidden: true, canTo: true },
+    children: [
+      {
+        path: 'index',
+        name: 'modifyUserInfo-index',
+        component: () => import('@/views/User/ModifyUserInfo/index.vue'),
+        meta: {
+          title: t('app_login.userInfoItem'),
+          icon: 'clarity:avatar-solid'
+        }
+      }
+    ]
+  },
+  {
+    path: '/modifyPassword',
+    component: Layout,
+    redirect: '/modifyPassword/index',
+    name: 'modifyPassword',
+    meta: { hidden: true, canTo: true },
+    children: [
+      {
+        path: 'index',
+        name: 'modifyPassword-index',
+        component: () => import('@/views/User/ModifyPassword/index.vue'),
+        meta: {
+          title: t('app_login.modifyPwdItem'),
+          icon: 'clarity:paste-solid'
         }
       }
     ]

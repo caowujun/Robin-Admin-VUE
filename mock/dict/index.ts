@@ -41,22 +41,22 @@ let List: {
   enumLanguage: string
   notes: string
 }[] = [
-  {
-    id: '1',
-    enumType: 'ROLETYPE',
-    enumName: '管理员',
-    enumValue: 1,
-    enumLanguage: 'app_user.adminUser',
-    notes: ''
-  },
-  {
-    id: '2',
-    enumType: 'ROLETYPE',
-    enumName: '一般用户',
-    enumValue: 2,
-    enumLanguage: 'app_user.normalUser',
-    notes: ''
-  },
+  // {
+  //   id: '1',
+  //   enumType: 'ROLETYPE',
+  //   enumName: '管理员',
+  //   enumValue: 1,
+  //   enumLanguage: 'app_user.adminUser',
+  //   notes: ''
+  // },
+  // {
+  //   id: '2',
+  //   enumType: 'ROLETYPE',
+  //   enumName: '一般用户',
+  //   enumValue: 2,
+  //   enumLanguage: 'app_user.normalUser',
+  //   notes: ''
+  // },
   {
     id: '3',
     enumType: 'INCOME',

@@ -12,7 +12,7 @@ const timeout = 1000
 let List: {
   id: string
   recordDate: string
-  roleName: number
+  roleName: string
   notes: string
 }[] = []
 List.push(
@@ -123,6 +123,22 @@ export default [
           data: 'success'
         }
       }
+    }
+  },
+  // 列表接口
+  {
+    url: '/role/list',
+    method: 'get',
+    timeout,
+    response: ({ query }) => {
+      const { roleName } = query
+
+      const mockList = List.filter((item) => {
+        if (roleName && item.roleName.indexOf(roleName) < 0) return false
+        return true
+      })
+
+      return mockList
     }
   }
 ] as MockMethod[]

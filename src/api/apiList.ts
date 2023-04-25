@@ -31,13 +31,15 @@ const apiList = {
     page: '/user/page',
     delAll: '/user/delete',
     save: '/user/save',
-    detail: '/user/detail'
+    detail: '/user/detail',
+    list: 'user/list'
   },
   role: {
     page: '/role/page',
     delAll: '/role/delete',
     save: '/role/save',
-    detail: '/role/detail'
+    detail: '/role/detail',
+    list: 'role/list'
   },
   menu: {
     page: '/menu/page',

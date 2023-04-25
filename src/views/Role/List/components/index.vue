@@ -33,7 +33,7 @@ getList()
 
 //to edit page
 const editFn = (row: TableSlotDefault) => {
-  push({ name: 'roledit', query: { id: row.id } })
+  push({ name: 'roleEdit', query: { id: row.id } })
 }
 //delete，适配全部删除和单个删除
 const delData = async (row: TableData | null, multiple: boolean) => {

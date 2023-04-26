@@ -11,6 +11,11 @@ export const columns = reactive<TableColumn[]>([
     sortable: true
   },
   {
+    field: 'roleValue',
+    label: t('app_role.roleValue'),
+    sortable: true
+  },
+  {
     field: 'notes',
     label: t('app_common.notes'),
     sortable: false

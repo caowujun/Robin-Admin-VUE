@@ -20,6 +20,7 @@ List.push(
     id: toAnyString(),
     recordDate: '2023-03-30 12:00:00',
     roleName: '管理员',
+    roleValue: 1,
     notes: 'test'
   })
 )
@@ -28,6 +29,7 @@ List.push(
     id: toAnyString(),
     recordDate: '2023-04-02 12:00:00',
     roleName: '普通用户',
+    roleValue: 2,
     notes: 'test'
   })
 )

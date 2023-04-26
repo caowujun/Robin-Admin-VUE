@@ -2,17 +2,20 @@ import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 // import { useValidator } from '@/hooks/web/useValidator'
 import { FormSchema } from '@/types/form'
+import { useValidator } from '@/hooks/web/useValidator'
+const { required } = useValidator()
 
 const { t } = useI18n()
 
 export const rules = reactive({
   scheduleStartDate: [
-    {
-      type: 'datetime',
-      required: true,
-      message: t('common.required'),
-      trigger: 'blur'
-    }
+    // {
+    //   type: 'datetime',
+    //   required: true,
+    //   message: t('common.required'),
+    //   trigger: 'blur'
+    // }
+    required()
   ],
   // scheduleEndDate: [
   //   {

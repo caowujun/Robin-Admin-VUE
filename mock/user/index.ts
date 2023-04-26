@@ -11,7 +11,7 @@ let List: {
   userDisplayName: string
   password: string
   role: string
-  roleType: string
+  roleType: number
   cityCode: string
   address: string
   email: string
@@ -26,7 +26,7 @@ let List: {
     userDisplayName: '管理员',
     password: 'admin',
     role: 'admin',
-    roleType: '1',
+    roleType: 1,
     cityCode: '101120601',
     address: '中国潍坊',
     email: 'test@163.com',
@@ -41,7 +41,7 @@ let List: {
     userDisplayName: '普通用户',
     password: 'test',
     role: 'test',
-    roleType: '2',
+    roleType: 2,
     cityCode: '101120601',
     address: '中国北京',
     email: 'test123@163.com',

@@ -13,14 +13,15 @@ const status: any = dictStore.getDictObj['STATUS'].map((v) => {
 })
 
 export const rules = reactive({
-  recordDate: [
-    {
-      type: 'date',
-      required: true,
-      message: t('common.required'),
-      trigger: 'blur'
-    }
-  ],
+  // recordDate: [
+  //   {
+  //     type: 'date',
+  //     required: true,
+  //     message: t('common.required'),
+  //     trigger: 'blur'
+  //   }
+  // ],
+  recordDate: [required()],
   amount: [required()],
   litre: [required()],
   unitPrice: [required()],
@@ -79,7 +80,7 @@ export const schema = reactive<FormSchema[]>([
       options: status,
       placeholder: t('common.selectText')
     },
-    value: 1
+    value: status[0].value
   },
   {
     field: 'notes',

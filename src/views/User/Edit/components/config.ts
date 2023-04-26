@@ -13,8 +13,9 @@ const { required } = useValidator()
 const roleList: any = await getListApi('')
 
 const roleType: any = roleList.map((v) => {
-  return { label: t(v.roleName), value: v.id }
+  return { label: t(v.roleName), value: v.roleValue }
 })
+
 export const rules = reactive({
   username: [required()],
   userDisplayName: [required()],

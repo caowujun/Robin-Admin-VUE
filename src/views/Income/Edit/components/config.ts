@@ -12,15 +12,15 @@ const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
 })
 
 export const rules = reactive({
-  recordDate: [
-    // required(),
-    {
-      type: 'date',
-      required: true,
-      message: t('common.required'),
-      trigger: 'blur'
-    }
-  ],
+  // recordDate: [
+  //   {
+  //     type: 'date',
+  //     required: true,
+  //     message: t('common.required'),
+  //     trigger: 'blur'
+  //   }
+  // ],
+  recordDate: [required()],
   category: [required()],
   amount: [required()],
   notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]

@@ -1,15 +1,21 @@
 import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { useValidator } from '@/hooks/web/useValidator'
-import { useDictStoreWithOut } from '@/store/modules/dict'
+// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { FormSchema } from '@/types/form'
+import { getListApi } from '@/api/role'
 
 const { t } = useI18n()
-const dictStore = useDictStoreWithOut()
+// const dictStore = useDictStoreWithOut()
 const { required } = useValidator()
 
-const roleType: any = dictStore.getDictObj['ROLETYPE'].map((v) => {
-  return { label: t(v.label), value: v.value }
+// const roleType: any = dictStore.getDictObj['ROLETYPE'].map((v) => {
+//   return { label: t(v.label), value: v.value }
+// })
+const roleList: any = await getListApi('')
+
+const roleType: any = roleList.map((v) => {
+  return { label: t(v.roleName), value: v.roleValue }
 })
 
 export const rules = reactive({
@@ -59,7 +65,7 @@ export const schema = reactive<FormSchema[]>([
       options: roleType,
       placeholder: t('common.selectText')
     },
-    value: '2'
+    value: roleType[0].value
   },
   {
     field: 'cityCode',

@@ -13,14 +13,15 @@ const { required } = useValidator()
 // })
 
 export const rules = reactive({
-  recordDate: [
-    {
-      type: 'date',
-      required: true,
-      message: t('common.required'),
-      trigger: 'blur'
-    }
-  ],
+  // recordDate: [
+  //   {
+  //     type: 'date',
+  //     required: true,
+  //     message: t('common.required'),
+  //     trigger: 'blur'
+  //   }
+  // ],
+  recordDate: [required()],
   battleNumber: [required()],
   notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
 })

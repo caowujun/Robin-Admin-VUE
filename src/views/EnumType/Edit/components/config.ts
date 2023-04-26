@@ -14,6 +14,7 @@ const { required } = useValidator()
 
 export const rules = reactive({
   enumType: [required()],
+  enumName: [required()],
   enumLanguage: [required()],
   enumValue: [required()],
   notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]

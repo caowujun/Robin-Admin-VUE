@@ -30,11 +30,11 @@ export const columns = reactive<TableColumn[]>([
     label: t('app_user.username'),
     sortable: true
   },
-  {
-    field: 'password',
-    label: t('app_user.password'),
-    sortable: true
-  },
+  // {
+  //   field: 'password',
+  //   label: t('app_user.password'),
+  //   sortable: true
+  // },
   {
     field: 'userDisplayName',
     label: t('app_user.userDisplayName'),
@@ -62,12 +62,13 @@ export const columns = reactive<TableColumn[]>([
     sortable: true,
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
       // return cellValue === '1' ? t('app_money.income') : t('app_money.expenditure')
+
       return h(
         ElTag,
         {
-          type: cellValue === 0 ? 'success' : 'warning'
+          type: cellValue === 1 ? 'success' : 'warning'
         },
-        () => (cellValue === 0 ? t('app_user.adminUser') : t('app_user.normalUser'))
+        () => (cellValue === 1 ? t('app_user.adminUser') : t('app_user.normalUser'))
       )
     }
   },

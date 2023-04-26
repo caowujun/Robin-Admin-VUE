@@ -118,7 +118,7 @@ export default [
       if (!ids) {
         return {
           code: '500',
-          message: '请选择需要删除的数据'
+          message: '请选择需要删除的数据111'
         }
       } else {
         let i = List.length

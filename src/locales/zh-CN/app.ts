@@ -47,7 +47,8 @@ export default {
     no: '否',
     noMessageAlert: 'データが存在しません。',
     noMessageClose: '閉じる',
-    warnning: '警告'
+    warnning: '警告',
+    noDataSelectedClose: '请选择需要删除的数据。'
   },
   app_dashboard: {
     am: '上午好',

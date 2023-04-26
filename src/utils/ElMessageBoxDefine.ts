@@ -1,4 +1,4 @@
-import { ElMessageBox } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { useI18n } from '@/hooks/web/useI18n'
 const { t } = useI18n()
 
@@ -12,4 +12,11 @@ const noMessageAlert = () => {
     }
   })
 }
-export { noMessageAlert }
+const noDataSelectedWarnning = () => {
+  ElMessage({
+    showClose: true,
+    message: t('app_common.noDataSelectedClose'),
+    type: 'warning'
+  })
+}
+export { noMessageAlert, noDataSelectedWarnning }

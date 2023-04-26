@@ -11,6 +11,7 @@ import { getTableListApi, delTableListApi } from '@/api/money'
 import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
+import { noDataSelectedWarnning } from '@/utils/ElMessageBoxDefine'
 // import { cacheQuery } from '@/hooks/web/useCache'
 
 const { t } = useI18n()
@@ -45,6 +46,10 @@ const delData = async (row: TableData | null, multiple: boolean) => {
   tableObject.currentRow = row
   const { delList, getSelections } = methods
   const selections = await getSelections()
+  if (multiple && selections.length == 0) {
+    noDataSelectedWarnning()
+    return
+  }
   delLoading.value = true
   await delList(
     multiple ? selections.map((v) => v.id) : [tableObject.currentRow?.id as string],

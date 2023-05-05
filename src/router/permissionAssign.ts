@@ -35,6 +35,10 @@ const routes = new Map([
   ['/sysSetting/enumType/add/index', '1'],
   ['/sysSetting/enumType/edit/index', '1'],
 
+  ['/sysSetting/cityCode/index', '1'],
+  ['/sysSetting/cityCode/add/index', '1'],
+  ['/sysSetting/cityCode/edit/index', '1'],
+
   ['/log', '1'],
   ['/log/sysLog/index', '1'],
   ['/log/operateLog/index', '1'],

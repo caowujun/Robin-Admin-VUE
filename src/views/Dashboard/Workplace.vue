@@ -168,10 +168,11 @@ const getMonthlySales = async () => {
     ])
   }
 }
-
 // 获取天气
 const getWeather = async () => {
-  const res = await getWeatherApi(cacheQuery(appStore.getUserInfo)?.cityCode).catch(() => {})
+  const res = await getWeatherApi(cacheQuery(appStore.getUserInfo)?.cityCode ?? '101010100').catch(
+    () => {}
+  )
   console.log(res)
   if (res) {
     // weatherObj.time = res?.time
@@ -187,9 +188,28 @@ const getWeather = async () => {
       res?.data?.forecast[0]?.type
     }，${t('app_dashboard.now')}${res?.data?.wendu}℃，${
       res?.data?.forecast[0]?.low?.split(' ')[1]
-    }-${res?.data?.forecast[0]?.high?.split(' ')[1]}。`
+    }-${res?.data?.forecast[0]?.high?.split(' ')[1]}，${res?.data?.forecast[0]?.fx}${
+      res?.data?.forecast[0]?.fl
+    }，${t('app_dashboard.quality')}${res?.data?.quality}。`
   }
 }
+// // 获取天气
+// const getWeather = async () => {
+//   navigator.geolocation.getCurrentPosition((p) => {
+//     console.log(p)
+//     getWeatherApi(p.coords.longitude + ',' + p.coords.latitude, 'a580a69c104d4fcc9d446cdfdc3c2632')
+//       .then((r) => {
+//         console.log(r)
+//         if (r) {
+//           console.log(1, r.now)
+//           weather.value = `${t('app_dashboard.now')},${r.now?.windDir}${
+//             r.now?.windScale
+//           }级,体感温度${r.now?.feelsLike}℃，天气${r.now?.text}。`
+//         }
+//       })
+//       .catch(() => {})
+//   })
+// }
 
 const getAllApi = async () => {
   await Promise.all([

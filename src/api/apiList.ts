@@ -66,6 +66,14 @@ const apiList = {
     delAll: '/article/delete',
     save: '/article/save',
     detail: '/article/detail'
+  },
+  citycode: {
+    page: '/citycode/page',
+    delAll: '/citycode/delete',
+    save: '/citycode/save',
+    detail: '/citycode/detail',
+    filter: '/citycode/filter',
+    byCode: '/citycode/byCode'
   }
 }
 

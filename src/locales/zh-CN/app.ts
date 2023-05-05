@@ -56,6 +56,7 @@ export default {
     today: '今天',
     yesterday: '昨天',
     now: '现在',
+    quality: '空气质量',
     happyDay: '祝你开心每一天!',
     introduction: '学习相关文章'
   },
@@ -113,7 +114,8 @@ export default {
     logManage: '日志记录',
     sysLog: '系统日志',
     operateLog: '操作日志',
-    article: '文章分享'
+    article: '文章分享',
+    cityCode: '城市编码'
   },
 
   app_money: {
@@ -174,5 +176,11 @@ export default {
   app_role: {
     roleName: '角色名',
     roleValue: '角色值'
+  },
+  app_citycode: {
+    code: '编码',
+    city: '城市',
+    areaSecond: '二级区域',
+    areaFirst: '一级区域'
   }
 }

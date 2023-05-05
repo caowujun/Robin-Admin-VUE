@@ -24,20 +24,21 @@ export type User = {
   id: string
   username: number
   userDisplayName: number
-  password: number
-  role: number
+  password: string
+  role: string
   roleType: number
-  address: number
-  email: number
-  phone: number
-  notes: number
-  recordDate: string
+  address: string
+  email: string
+  phone: string
+  notes: string
+  // recordDate: string
   cityCode: string
 }
 export type Role = {
   id: string
-  recordDate: string
+  // recordDate: string
   roleName: string
+  roleType: number
   notes: string
 }
 
@@ -84,4 +85,10 @@ export type Schedule = {
   scheduleStartDate: number
   scheduleEndDate: string
   notes: string
+}
+export type CityCode = {
+  code: string
+  city: number
+  areaSecond: string
+  areaFirst: string
 }

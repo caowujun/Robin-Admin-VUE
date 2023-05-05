@@ -341,6 +341,38 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
           canTo: true,
           activeMenu: '/personTools/enumType/index'
         }
+      },
+      {
+        path: 'cityCode/index',
+        component: () => import('@/views/CityCode/List/index.vue'),
+        name: 'cityCode',
+        meta: {
+          // alwaysShow: true,
+          title: t('app_menu.cityCode'),
+          icon: 'clarity:key-line'
+        }
+      },
+      {
+        path: 'cityCode/add/index',
+        name: 'cityCodeAdd',
+        component: () => import('@/views/CityCode/Edit/index.vue'),
+        meta: {
+          title: t('app_common.add'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/cityCode/index'
+        }
+      },
+      {
+        path: 'cityCode/edit/index',
+        name: 'cityCodeEdit',
+        component: () => import('@/views/CityCode/Edit/index.vue'),
+        meta: {
+          title: t('app_common.edit'),
+          hidden: true,
+          canTo: true,
+          activeMenu: '/personTools/cityCode/index'
+        }
       }
     ]
   },

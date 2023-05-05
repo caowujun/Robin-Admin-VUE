@@ -42,7 +42,7 @@ let List: {
     password: 'test',
     role: 'test',
     roleType: 2,
-    cityCode: '101120601',
+    cityCode: '101010100',
     address: '中国北京',
     email: 'test123@163.com',
     phone: '13111111111',

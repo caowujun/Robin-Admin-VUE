@@ -37,6 +37,15 @@ List.push(
     areaFirst: '山东'
   })
 )
+List.push(
+  Mock.mock({
+    id: '101010100',
+    city: '北京',
+    code: '101010100',
+    areaSecond: '北京',
+    areaFirst: '北京'
+  })
+)
 export default [
   // 列表接口
   {
@@ -109,6 +118,7 @@ export default [
   {
     url: '/citycode/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -125,6 +135,7 @@ export default [
   {
     url: '/citycode/byCode',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { code } = query
       for (const example of List) {
@@ -141,6 +152,7 @@ export default [
   {
     url: '/citycode/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

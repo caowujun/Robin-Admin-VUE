@@ -90,6 +90,7 @@ export default [
   {
     url: '/gasoline/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -106,6 +107,7 @@ export default [
   {
     url: '/gasoline/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

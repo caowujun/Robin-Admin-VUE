@@ -18,7 +18,7 @@ let List: {
 List.push(
   Mock.mock({
     id: toAnyString(),
-    recordDate: '2023-03-30 12:00:00',
+    recordDate: '2023-05-02',
     battleNumber: 1,
     notes: 'test'
   })
@@ -26,27 +26,12 @@ List.push(
 List.push(
   Mock.mock({
     id: toAnyString(),
-    recordDate: '2023-04-02 12:00:00',
+    recordDate: '2023-05-05',
     battleNumber: 1,
     notes: 'test'
   })
 )
-List.push(
-  Mock.mock({
-    id: toAnyString(),
-    recordDate: '2023-04-08 12:00:00',
-    battleNumber: 1,
-    notes: 'test'
-  })
-)
-List.push(
-  Mock.mock({
-    id: toAnyString(),
-    recordDate: '2023-04-11 12:00:00',
-    battleNumber: 1,
-    notes: 'test'
-  })
-)
+
 // for (let i = 0; i < count; i++) {
 //   List.push(
 //     Mock.mock({
@@ -119,6 +104,7 @@ export default [
   {
     url: '/sex/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -135,6 +121,7 @@ export default [
   {
     url: '/sex/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {
@@ -153,6 +140,26 @@ export default [
           code: result_code,
           data: 'success'
         }
+      }
+    }
+  },
+  // 列表接口
+  {
+    url: '/sex/chart',
+    method: 'get',
+    timeout,
+    response: () => {
+      return {
+        code: result_code,
+        data: [
+          { value: 13253, name: 'analysis.monday' },
+          { value: 34235, name: 'analysis.tuesday' },
+          { value: 26321, name: 'analysis.wednesday' },
+          { value: 12340, name: 'analysis.thursday' },
+          { value: 24643, name: 'analysis.friday' },
+          { value: 1322, name: 'analysis.saturday' },
+          { value: 1324, name: 'analysis.sunday' }
+        ]
       }
     }
   }

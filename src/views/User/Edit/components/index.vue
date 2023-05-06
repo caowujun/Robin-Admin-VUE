@@ -33,10 +33,8 @@ onMounted(async () => {
   if (query.id) {
     const res: any = await getApi(query.id as string)
     res ? setValues(res.data) : noMessageAlert()
-    console.log(res.data)
     const cityCode: any = await getByCodeApi(res.data.cityCode).catch(() => {})
     if (cityCode) {
-      console.log('cityCode', cityCode)
       options.value = [
         {
           value: cityCode.data.code,
@@ -55,45 +53,12 @@ const remoteMethod = (query: string) => {
       loading.value = false
       const res: any = await getCityCodeApi(query).catch(() => {})
 
-      console.log('save', res)
       options.value = res?.map((v) => {
         return { label: v.city + ',' + v.areaSecond + ',' + v.areaFirst, value: v.code }
       })
     }, 100)
   }
-  // else {
-  //   options.value = []
-  // }
 }
-// const filter = (query: string) => {
-//   const { setSchema } = methods
-//   if (query) {
-//     loading.value = true
-//     setTimeout(() => {
-//       loading.value = false
-//       // options.value = list.value.filter((item) => {
-//       //   return item.label.toLowerCase().includes(query.toLowerCase())
-//       // })
-//       getCityCodeApi(query).then((res) => {
-//         setSchema([
-//           {
-//             field: 'cityCode',
-//             path: 'componentProps.options',
-//             value: res.data
-//           }
-//         ])
-//       })
-//     }, 200)
-//   } else {
-//     setSchema([
-//       {
-//         field: 'cityCode',
-//         path: 'componentProps.options',
-//         value: []
-//       }
-//     ])
-//   }
-// }
 const save = async () => {
   if (!elFormRef) return
 

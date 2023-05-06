@@ -97,6 +97,7 @@ export default [
   {
     url: '/article/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -113,6 +114,7 @@ export default [
   {
     url: '/article/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

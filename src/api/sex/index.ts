@@ -17,3 +17,7 @@ export const saveApi = (data: Partial<Sex>): Promise<IResponse> => {
 export const getApi = (id: string): Promise<IResponse<Sex>> => {
   return request.get({ url: apiList.sex.detail, params: { id } })
 }
+
+export const chartApi = (date: string): Promise<IResponse<Sex>> => {
+  return request.get({ url: apiList.sex.chart, params: { date } })
+}

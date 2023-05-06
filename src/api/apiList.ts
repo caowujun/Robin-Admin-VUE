@@ -7,7 +7,8 @@ const apiList = {
     page: '/sex/page',
     delAll: '/sex/delete',
     save: '/sex/save',
-    detail: '/sex/detail'
+    detail: '/sex/detail',
+    chart: '/sex/chart'
   },
   money: {
     page: '/money/page',

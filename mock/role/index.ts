@@ -91,6 +91,7 @@ export default [
   {
     url: '/role/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -107,6 +108,7 @@ export default [
   {
     url: '/role/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

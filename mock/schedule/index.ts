@@ -96,6 +96,7 @@ export default [
   {
     url: '/schedule/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -112,6 +113,7 @@ export default [
   {
     url: '/schedule/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

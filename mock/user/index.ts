@@ -116,6 +116,7 @@ export default [
   {
     url: '/user/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -132,6 +133,7 @@ export default [
   {
     url: '/user/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {
@@ -157,6 +159,7 @@ export default [
   {
     url: '/user/list',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { username } = query
 

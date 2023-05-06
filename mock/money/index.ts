@@ -95,6 +95,7 @@ export default [
   {
     url: '/money/detail',
     method: 'get',
+    timeout,
     response: ({ query }) => {
       const { id } = query
       for (const example of List) {
@@ -111,6 +112,7 @@ export default [
   {
     url: '/money/delete',
     method: 'post',
+    timeout,
     response: ({ body }) => {
       const ids = body.ids
       if (!ids) {

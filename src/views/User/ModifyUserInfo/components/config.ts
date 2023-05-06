@@ -25,7 +25,7 @@ export const rules = reactive({
   address: [required()],
   phone: [required()],
   roleType: [required()],
-  cityCode: [required()]
+  notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
 })
 
 export const schema = reactive<FormSchema[]>([
@@ -69,8 +69,8 @@ export const schema = reactive<FormSchema[]>([
   },
   {
     field: 'cityCode',
-    label: t('app_user.cityCode'),
-    component: 'Input'
+    label: t('app_user.cityCode')
+    // component: 'Input'
   },
   {
     field: 'notes',

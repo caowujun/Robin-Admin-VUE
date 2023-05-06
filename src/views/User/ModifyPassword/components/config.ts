@@ -33,7 +33,7 @@ export const schema = reactive<FormSchema[]>([
     label: t('app_login.currentPassword'),
     component: 'Input',
     componentProps: {
-      disabled: true
+      // disabled: true
     }
   },
   {

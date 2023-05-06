@@ -4,11 +4,7 @@ import { config } from './config'
 
 import { cacheQuery } from '@/hooks/web/useCache'
 
-import { useAppStore } from '@/store/modules/app'
-
 const { default_headers } = config
-
-const appStore = useAppStore()
 
 const request = (option: any) => {
   const { url, method, params, data, headersType, responseType } = option
@@ -20,8 +16,7 @@ const request = (option: any) => {
     responseType: responseType,
     headers: {
       'Content-Type': headersType || default_headers,
-      Authorization:
-        cacheQuery(appStore.getUserInfo)?.jwt && 'Bearer ' + cacheQuery(appStore.getUserInfo)?.jwt
+      Authorization: cacheQuery('jwt') && 'Bearer ' + cacheQuery('jwt')
     }
   })
 }

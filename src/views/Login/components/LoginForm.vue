@@ -61,6 +61,11 @@ const signIn = async () => {
         const res = await loginApi(formData)
 
         if (res) {
+          wsCache.set(
+            'jwt',
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYXN0TmFtZSI6IuadjiIsImZpcnN0TmFtZSI6IumdmeWLkiIsImlzcyI6IlNDU0siLCJ1c2VyVHlwZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjgzMjY5MjI1LCJ1c2VySWQiOjM0NjMzMTQ2MDI4Nzk5MTgwOSwibWVhbnNOYW1lIjoi6LuK5qSF5a2QIiwiZW1haWwiOiJ3YW5nbmFreEAxNjMuY29tIn0.-V-3x3LdkD0637Nt808bqMF7rwkFqzS3pym_l4VMkxY'
+          )
+
           //選出されると、保存状況はローカルに保存され、有効期間は1か月です
           if (remember?.value === true) {
             wsCache_local.set('remember', remember.value)

@@ -74,6 +74,7 @@ const signIn = async () => {
             wsCache.set(appStore.getUserInfo, res.data)
           }
           // 是否使用动态路由
+          console.log('appStore.getDynamicRouter', appStore.getDynamicRouter)
           if (appStore.getDynamicRouter) {
             getRole(res.data.roleType)
           } else {
@@ -94,6 +95,7 @@ const signIn = async () => {
 
 // 获取角色信息
 const getRole = async (accountRoleType: string) => {
+  alert(1)
   // admin - 模拟前端过滤菜单，roleType=1
   // test - 模拟前端过滤菜单，roleType=2
   const res = filterRouter(accountRoleType) //: await getTestRoleApi(params)

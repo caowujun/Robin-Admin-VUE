@@ -30,7 +30,7 @@ let List: {
     cityCode: '101120601',
     address: '中国潍坊',
     email: 'test@163.com',
-    phone: '13333333333',
+    phone: '',
     createDate: '@datetime',
     notes: '测试管理员'
     // permissions: ['*.*.*']

@@ -38,7 +38,6 @@ const save = async () => {
       if (valid) {
         loading.value = true
         const result: any = await getFormData()
-        console.log(result)
         // result['scheduleStartDate'] =
         //   result.scheduleStartDate && result.scheduleStartDate.indexOf('00:00:00') < 0
         //     ? dateFormat(result.scheduleStartDate, true, false)
@@ -47,7 +46,6 @@ const save = async () => {
         //   result.scheduleEndDate && result.scheduleEndDate.indexOf('00:00:00') < 0
         //     ? result.scheduleEndDate.replace('00:00:00', '23:59:59')
         //     : ''
-        console.log(result)
         let res = await saveApi(result)
           .catch(() => {})
           .finally(() => {

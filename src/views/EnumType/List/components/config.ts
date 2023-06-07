@@ -14,7 +14,6 @@ const enumTypes =
   res.map((v) => {
     return { label: v, value: v }
   })
-console.log(enumTypes)
 export const columns = reactive<TableColumn[]>([
   {
     field: 'enumType',

@@ -5,13 +5,13 @@ import { onMounted, ref } from 'vue'
 import { ElButton, ElDivider } from 'element-plus'
 import { useTable } from '@/hooks/web/useTable'
 import { useRoute, useRouter } from 'vue-router'
-import { columns, schema } from './config'
+import { articleType, columns, schema } from './config'
 import { Search } from '@/components/Search'
 import { getTableListApi, delTableListApi } from '@/api/article'
 import { CirclePlus, Delete } from '@element-plus/icons-vue'
 import { TableSlotDefault } from '@/types/table'
 import { TableData } from '@/api/table/types'
-import { useDictStoreWithOut } from '@/store/modules/dict'
+// import { useDictStoreWithOut } from '@/store/modules/dict'
 
 const { query } = useRoute()
 const { t } = useI18n()
@@ -21,7 +21,7 @@ const buttonPosition = ref('left')
 const { push } = useRouter()
 const deleteAllBtn = ref(true)
 const delLoading = ref(false)
-const dictStore = useDictStoreWithOut()
+// const dictStore = useDictStoreWithOut()
 
 const { register, tableObject, methods } = useTable<TableData>({
   getListApi: getTableListApi,
@@ -36,11 +36,7 @@ const { getList, setSearchParams } = methods
 
 //articleType是否合规
 const checkArticleType = (): boolean => {
-  return (
-    dictStore.getDictObj['ARTICLESHARE'].findIndex(
-      (f) => f.value === parseInt(query?.articleType as string)
-    ) > 0
-  )
+  return articleType.findIndex((f) => f.value === parseInt(query?.articleType as string)) > 0
 }
 //（onMounted 钩子可以用来在组件完成初始渲染并创建 DOM 节点后运行代码，这个时候在设置search组件的model已经晚了）
 //所以model的设值和内容的查询分开,在Search组件直接使用：model={ articleType: query?.articleType }

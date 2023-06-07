@@ -119,6 +119,7 @@ export default {
   },
 
   app_money: {
+    list: '收支记录一览',
     amount: '金额',
     category: '类别',
     income: '收入',

@@ -55,7 +55,6 @@ const toCreatePage = () => {
 
 //override the search method
 const search = (model) => {
-  console.log(model)
   setSearchParams(model)
 }
 </script>

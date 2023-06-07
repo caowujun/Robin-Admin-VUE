@@ -37,7 +37,6 @@ export default [
     timeout,
     response: ({ query }) => {
       const { pageIndex, pageSize, articleType, articleName } = query
-      console.log(articleName)
       const mockList = List.filter((item) => {
         let result1 = true
         if (articleName) {

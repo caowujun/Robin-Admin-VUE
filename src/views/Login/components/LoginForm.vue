@@ -74,7 +74,7 @@ const signIn = async () => {
             wsCache.set(appStore.getUserInfo, res.data)
           }
           // 是否使用动态路由
-          console.log('appStore.getDynamicRouter', appStore.getDynamicRouter)
+
           if (appStore.getDynamicRouter) {
             getRole(res.data.roleType)
           } else {
@@ -95,22 +95,25 @@ const signIn = async () => {
 
 // 获取角色信息
 const getRole = async (accountRoleType: string) => {
-  alert(1)
   // admin - 模拟前端过滤菜单，roleType=1
   // test - 模拟前端过滤菜单，roleType=2
   const res = filterRouter(accountRoleType) //: await getTestRoleApi(params)
   // const { wsCache } = useCache()
   const routers = res || []
+
   //路由加到缓存
   wsCache.set('roleRouters', routers)
   remember.value && wsCache_local.set('roleRouters', routers)
   //1代表是前端过滤，2代表是后端过滤
   await permissionStore.generateRoutes(1, routers).catch(() => {})
   permissionStore.getAddRouters.forEach((route) => {
+    console.log(permissionStore.getAddRouters)
     addRoute(route as RouteRecordRaw) // 动态添加可访问路由表
   })
   permissionStore.setIsAddRouters(true)
-  push({ path: redirect.value || permissionStore.addRouters[0].path })
+  push({ name: 'incomeIndex' })
+
+  // push({ path: redirect.value || permissionStore.addRouters[0].path })
 }
 
 // 去注册页面

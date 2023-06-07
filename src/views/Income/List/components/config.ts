@@ -2,17 +2,28 @@ import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
-import { useDictStoreWithOut } from '@/store/modules/dict'
+// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { ElTag } from 'element-plus'
 import { h } from 'vue'
+import { getEnumByType } from '@/api/common'
 const { t } = useI18n()
-const dictStore = useDictStoreWithOut()
+// const dictStore = useDictStoreWithOut()
 
-const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
+// const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
+//   return { label: t(v.label), value: v.value }
+// })
+//下面的代码会先下拉选出来个1然后替换为支出，所以不用
+// const categoryStatus: any = ref([])
+// getEnumByType('INCOME').then((res) => {
+//   categoryStatus.value = res.data.map((v) => {
+//     return { label: t(v.label), value: v.value }
+//   })
+// })
+
+const res: any = await getEnumByType('INCOME')
+const categoryStatus: any = res.data.map((v) => {
   return { label: t(v.label), value: v.value }
 })
-console.log(categoryStatus)
-
 export const columns = reactive<TableColumn[]>([
   {
     field: 'recordDate',
@@ -36,8 +47,6 @@ export const columns = reactive<TableColumn[]>([
     label: t('app_money.category'),
     sortable: true,
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
-      // return cellValue === '1' ? t('app_money.income') : t('app_money.expenditure')
-      // return t(dictStore.getDictObj['INCOME'].find((f) => parseInt(f.value) === cellValue)?.label)
       return h(
         ElTag,
         {

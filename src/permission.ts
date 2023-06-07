@@ -4,16 +4,16 @@ import type { RouteRecordRaw } from 'vue-router'
 import { useTitle } from '@/hooks/web/useTitle'
 import { useNProgress } from '@/hooks/web/useNProgress'
 import { usePermissionStoreWithOut } from '@/store/modules/permission'
-import { useDictStoreWithOut } from '@/store/modules/dict'
+// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { usePageLoading } from '@/hooks/web/usePageLoading'
-import { getDictApi } from '@/api/common'
+// import { getDictApi } from '@/api/common'
 import { cacheQuery } from '@/hooks/web/useCache'
 
 const permissionStore = usePermissionStoreWithOut()
 
 const appStore = useAppStoreWithOut()
 
-const dictStore = useDictStoreWithOut()
+// const dictStore = useDictStoreWithOut()
 
 const { start, done } = useNProgress()
 
@@ -25,19 +25,20 @@ router.beforeEach(async (to, from, next) => {
   start()
   loadStart()
   console.log(to.path)
+
   const userInfo = cacheQuery(appStore.getUserInfo) // wsCache.get(appStore.getUserInfo)
   if (userInfo && userInfo.username) {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      if (!dictStore.getIsSetDict) {
-        // 获取所有字典
-        const res = await getDictApi()
-        if (res) {
-          dictStore.setDictObj(res.data)
-          dictStore.setIsSetDict(true)
-        }
-      }
+      // if (!dictStore.getIsSetDict) {
+      //   // 获取所有字典
+      //   const res = await getDictApi()
+      //   if (res) {
+      //     dictStore.setDictObj(res.data)
+      //     dictStore.setIsSetDict(true)
+      //   }
+      // }
       if (permissionStore.getIsAddRouters) {
         next()
         return

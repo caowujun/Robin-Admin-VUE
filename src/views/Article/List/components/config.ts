@@ -2,15 +2,19 @@ import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
-import { useDictStoreWithOut } from '@/store/modules/dict'
+import { getEnumByType } from '@/api/common'
+// import { useDictStoreWithOut } from '@/store/modules/dict'
 
 const { t } = useI18n()
-const dictStore = useDictStoreWithOut()
+// const dictStore = useDictStoreWithOut()
 
-const articleType: any = dictStore.getDictObj['ARTICLESHARE'].map((v) => {
+// const articleType: any = dictStore.getDictObj['ARTICLESHARE'].map((v) => {
+//   return { label: t(v.label), value: v.value }
+// })
+const res: any = await getEnumByType('ARTICLESHARE')
+export const articleType: any = res.data.map((v) => {
   return { label: t(v.label), value: v.value }
 })
-
 export const columns = reactive<TableColumn[]>([
   {
     field: 'articleName',
@@ -28,9 +32,7 @@ export const columns = reactive<TableColumn[]>([
     sortable: true,
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
       // console.log(dictStore.getDictObj['ARTICLESHARE'].find((f) => parseInt(f.value) === cellValue))
-      return t(
-        dictStore.getDictObj['ARTICLESHARE'].find((f) => parseInt(f.value) === cellValue)?.label
-      )
+      return articleType.find((f) => parseInt(f.value) === cellValue)?.label
     }
   },
   {

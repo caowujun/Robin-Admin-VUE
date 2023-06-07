@@ -1,16 +1,21 @@
 import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { useValidator } from '@/hooks/web/useValidator'
-import { useDictStoreWithOut } from '@/store/modules/dict'
+// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { FormSchema } from '@/types/form'
+import { getEnumByType } from '@/api/common'
 
 const { t } = useI18n()
-const dictStore = useDictStoreWithOut()
+// const dictStore = useDictStoreWithOut()
 const { required } = useValidator()
-const articleType: any = dictStore.getDictObj['ARTICLESHARE'].map((v) => {
+// const articleType: any = dictStore.getDictObj['ARTICLESHARE'].map((v) => {
+//   return { label: t(v.label), value: v.value }
+// })
+
+const res: any = await getEnumByType('ARTICLESHARE')
+const articleType: any = res.data.map((v) => {
   return { label: t(v.label), value: v.value }
 })
-
 export const rules = reactive({
   articleName: [required()],
   articleUrl: [required()],

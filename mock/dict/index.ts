@@ -6,33 +6,6 @@ const { result_code } = config
 
 const timeout = 1000
 
-let dictObj: Recordable = {
-  importance: [
-    {
-      value: 0,
-      label: 'tableDemo.commonly'
-    },
-    {
-      value: 1,
-      label: 'tableDemo.good'
-    },
-    {
-      value: 2,
-      label: 'tableDemo.important'
-    }
-  ],
-  CITYCODE: [
-    {
-      value: '101120601',
-      label: '潍坊'
-    },
-    {
-      value: '101010100',
-      label: '北京'
-    }
-  ]
-}
-
 let List: {
   id: string
   enumType: string
@@ -41,22 +14,6 @@ let List: {
   enumLanguage: string
   notes: string
 }[] = [
-  // {
-  //   id: '1',
-  //   enumType: 'ROLETYPE',
-  //   enumName: '管理员',
-  //   enumValue: 1,
-  //   enumLanguage: 'app_user.adminUser',
-  //   notes: ''
-  // },
-  // {
-  //   id: '2',
-  //   enumType: 'ROLETYPE',
-  //   enumName: '一般用户',
-  //   enumValue: 2,
-  //   enumLanguage: 'app_user.normalUser',
-  //   notes: ''
-  // },
   {
     id: '3',
     enumType: 'INCOME',
@@ -122,11 +79,6 @@ let List: {
     notes: 'logos:react'
   }
 ]
-
-interface tagObj {
-  [key: string]: any
-}
-const dbdics: tagObj = {}
 
 export default [
   // 获取枚举type的接口
@@ -242,45 +194,46 @@ export default [
     }
   },
   // 字典接口
+  // {
+  //   url: '/dict/list',
+  //   method: 'get',
+  //   timeout,
+  //   response: () => {
+  //     const enumTypes = Array.from(
+  //       new Set(
+  //         List.map((f) => {
+  //           return f.enumType
+  //         })
+  //       )
+  //     )
+  //     enumTypes.forEach((item) => {
+  //       dbdics[item] = List.filter((f) => f.enumType === item).map((g) => {
+  //         return {
+  //           value: g.enumValue,
+  //           label: g.enumLanguage
+  //         }
+  //       })
+  //     })
+  //     dictObj = { ...dictObj, ...dbdics }
+  //     return {
+  //       code: result_code,
+  //       data: dictObj
+  //     }
+  //   }
+  // },
+  // // 获取某个字典
   {
-    url: '/dict/list',
+    url: '/enum/enums',
     method: 'get',
     timeout,
-    response: () => {
-      const enumTypes = Array.from(
-        new Set(
-          List.map((f) => {
-            return f.enumType
-          })
-        )
-      )
-      enumTypes.forEach((item) => {
-        dbdics[item] = List.filter((f) => f.enumType === item).map((g) => {
-          return {
-            value: g.enumValue,
-            label: g.enumLanguage
-          }
-        })
-      })
-      dictObj = { ...dictObj, ...dbdics }
-      return {
-        code: result_code,
-        data: dictObj
-      }
-    }
-  },
-  // 获取某个字典
-  {
-    url: '/dict/one',
-    method: 'get',
-    timeout,
-    response: (enumType: string) => {
+    response: ({ query }) => {
+      const { enumType } = query
       return {
         code: result_code,
         data: List.filter((f) => f.enumType === enumType).map((item) => {
           return {
             value: item.enumValue,
-            label: item.enumName
+            label: item.enumLanguage
           }
         })
       }

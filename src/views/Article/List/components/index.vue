@@ -36,7 +36,7 @@ const { getList, setSearchParams } = methods
 
 //articleType是否合规
 const checkArticleType = (): boolean => {
-  return articleType.findIndex((f) => f.value === parseInt(query?.articleType as string)) > 0
+  return articleType.findIndex((f) => f.value === parseInt(query?.articleType as string)) > -1
 }
 //（onMounted 钩子可以用来在组件完成初始渲染并创建 DOM 节点后运行代码，这个时候在设置search组件的model已经晚了）
 //所以model的设值和内容的查询分开,在Search组件直接使用：model={ articleType: query?.articleType }

@@ -40,8 +40,9 @@ const routes = new Map([
   ['/sysSetting/cityCode/edit/index', '1'],
 
   ['/log', '1'],
-  ['/log/sysLog/index', '1'],
-  ['/log/operateLog/index', '1'],
+  ['/log/sysLog', '1'],
+  ['/log/operateLog', '1'],
+
   ['/modifyUserInfo/index', '1,2'],
   ['/modifyPassword/index', '1,2']
 ])

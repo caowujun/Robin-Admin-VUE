@@ -2,9 +2,8 @@
 import { useI18n } from '@/hooks/web/useI18n'
 import { Table } from '@/components/Table'
 import { ref } from 'vue'
-import { ElButton, ElDivider } from 'element-plus'
+import { ElButton, ElDivider, ElDialog } from 'element-plus'
 import { useTable } from '@/hooks/web/useTable'
-import { useRouter } from 'vue-router'
 import { columns, schema } from './config'
 import { Search } from '@/components/Search'
 import { getOperationLogTableListApi as getTableListApi } from '@/api/log'
@@ -16,7 +15,8 @@ const { t } = useI18n()
 const isGrid = ref(false)
 const layout = ref('inline')
 const buttonPosition = ref('left')
-const { push } = useRouter()
+const dialogVisible = ref(false)
+const log = ref('')
 
 const { register, tableObject, methods } = useTable<TableData>({
   getListApi: getTableListApi,
@@ -35,7 +35,10 @@ getList()
 
 //to edit page
 const viewFn = (row: TableSlotDefault) => {
-  push({ name: 'logView', query: { id: row.id } })
+  console.log(row)
+
+  log.value = row.actionText
+  dialogVisible.value = true
 }
 
 //override the search method
@@ -77,6 +80,17 @@ const search = (model) => {
       <el-button type="primary" link @click="viewFn(row)"> {{ t('app_common.detail') }}</el-button>
     </template>
   </Table>
+  <el-dialog v-model="dialogVisible" :title="t('app_common.detail')" width="30%">
+    <span>{{ log }}</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <!-- <el-button @click="dialogVisible = false">Cancel</el-button> -->
+        <el-button type="primary" @click="dialogVisible = false">
+          {{ t('app_common.cancel') }}
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <style lang="less" scoped>

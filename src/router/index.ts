@@ -417,20 +417,20 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_menu.sysLog'),
           icon: 'clarity:bell-line'
-        },
-        children: [
-          {
-            path: 'view/index',
-            name: 'sysLogDetail',
-            component: () => import('@/views/Log/View/index.vue'),
-            meta: {
-              title: t('app_common.detail'),
-              hidden: true,
-              canTo: true,
-              activeMenu: '/log/sysLog'
-            }
-          }
-        ]
+        }
+        // children: [
+        //   {
+        //     path: 'view/index',
+        //     name: 'sysLogDetail',
+        //     component: () => import('@/views/Log/View/index.vue'),
+        //     meta: {
+        //       title: t('app_common.detail'),
+        //       hidden: true,
+        //       canTo: true,
+        //       activeMenu: '/log/sysLog'
+        //     }
+        //   }
+        // ]
       },
       {
         path: 'operateLog',
@@ -439,20 +439,20 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         meta: {
           title: t('app_menu.operateLog'),
           icon: 'clarity:bell-outline-badged'
-        },
-        children: [
-          {
-            path: 'view/index',
-            name: 'operationLogDetail',
-            component: () => import('@/views/Log/View/index.vue'),
-            meta: {
-              title: t('app_common.detail'),
-              hidden: true,
-              canTo: true,
-              activeMenu: '/log/operateLog'
-            }
-          }
-        ]
+        }
+        // children: [
+        //   {
+        //     path: 'view/index',
+        //     name: 'operationLogDetail',
+        //     component: () => import('@/views/Log/View/index.vue'),
+        //     meta: {
+        //       title: t('app_common.detail'),
+        //       hidden: true,
+        //       canTo: true,
+        //       activeMenu: '/log/operateLog'
+        //     }
+        //   }
+        // ]
       }
     ]
   },

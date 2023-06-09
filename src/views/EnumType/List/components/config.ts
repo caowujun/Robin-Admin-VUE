@@ -2,11 +2,9 @@ import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
-// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { getEnumType } from '@/api/common'
 
 const { t } = useI18n()
-// const dictStore = useDictStoreWithOut()
 
 const res: any = await getEnumType()
 const enumTypes =

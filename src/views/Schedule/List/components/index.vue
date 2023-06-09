@@ -19,7 +19,6 @@ const layout = ref('inline')
 const buttonPosition = ref('left')
 const { push } = useRouter()
 const deleteAllBtn = ref(true)
-// const selectionsArray = ref<Recordable[]>([])
 const delLoading = ref(false)
 
 const { register, tableObject, methods } = useTable<TableData>({
@@ -75,9 +74,6 @@ const search = (model) => {
   console.log(model)
   setSearchParams(model)
 }
-// const action = (row: TableData, type: string) => {
-//   push(`/example/example-${type}?id=${row.id}`)
-// }
 </script>
 
 <template>

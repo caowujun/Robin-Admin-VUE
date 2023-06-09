@@ -7,9 +7,6 @@ import { getListApi } from '@/api/role'
 const { t } = useI18n()
 const { required } = useValidator()
 
-// const roleType: any = dictStore.getDictObj['ROLETYPE'].map((v) => {
-//   return { label: t(v.label), value: v.value }
-// })
 const roleList: any = await getListApi('')
 
 const roleType: any = roleList.map((v) => {
@@ -23,7 +20,6 @@ export const rules = reactive({
   address: [required()],
   phone: [required()],
   roleType: [required()],
-  // cityCode: [required()],
   notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
 })
 
@@ -66,7 +62,6 @@ export const schema = reactive<FormSchema[]>([
   {
     field: 'cityCode',
     label: t('app_user.cityCode')
-    // component: 'Select'
   },
   {
     field: 'notes',

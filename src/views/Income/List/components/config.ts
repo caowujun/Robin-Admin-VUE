@@ -2,23 +2,10 @@ import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
-// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { ElTag } from 'element-plus'
 import { h } from 'vue'
 import { getEnumByType } from '@/api/common'
 const { t } = useI18n()
-// const dictStore = useDictStoreWithOut()
-
-// const categoryStatus: any = dictStore.getDictObj['INCOME'].map((v) => {
-//   return { label: t(v.label), value: v.value }
-// })
-//下面的代码会先下拉选出来个1然后替换为支出，所以不用
-// const categoryStatus: any = ref([])
-// getEnumByType('INCOME').then((res) => {
-//   categoryStatus.value = res.data.map((v) => {
-//     return { label: t(v.label), value: v.value }
-//   })
-// })
 
 const res: any = await getEnumByType('INCOME')
 const categoryStatus: any = res.data.map((v) => {

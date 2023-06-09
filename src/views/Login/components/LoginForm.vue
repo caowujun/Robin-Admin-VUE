@@ -14,8 +14,6 @@ import { UserType } from '@/api/login/types'
 import { schema_login as schema, rules_login as rules } from './index'
 import filterRouter from '@/router/permissionAssign'
 
-// const emit = defineEmits(['to-register'])
-
 const appStore = useAppStore()
 
 const permissionStore = usePermissionStore()
@@ -26,15 +24,11 @@ const { wsCache } = useCache()
 const { wsCache_local } = useCache_local()
 const { t } = useI18n()
 
-// const iconSize = 30
-
 const remember = ref(false)
 
 const { register, elFormRef, methods } = useForm()
 
 const loading = ref(false)
-
-// const iconColor = '#999'
 
 const redirect = ref<string>('')
 

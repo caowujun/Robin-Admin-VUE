@@ -50,14 +50,11 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  // console.log(cacheQuery('roleRouters'))
   push({ name: 'userAdd' })
 }
 
 //override the search method
 const search = (model) => {
-  // model['userName'] = model.userName
-  // model['userDisplayName'] = model.userDisplayName
   setSearchParams(model)
 }
 </script>

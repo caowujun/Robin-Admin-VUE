@@ -6,8 +6,6 @@ import { useRouter } from 'vue-router'
 import { ElButton, ElMessage } from 'element-plus'
 import { schema, rules } from './config'
 import { computed, onMounted, ref } from 'vue'
-// import { changeUserPasswordApi } from '@/api/user'
-// import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
 import { useAppStore } from '@/store/modules/app'
 import { changeUserPasswordApi } from '@/api/user'
 
@@ -15,7 +13,6 @@ const { register, methods, elFormRef } = useForm({
   schema
 })
 const { t } = useI18n()
-// const { query } = useRoute()
 const { push } = useRouter()
 const { getFormData } = methods
 const loading = ref(false)

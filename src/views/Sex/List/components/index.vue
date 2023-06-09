@@ -72,9 +72,6 @@ const search = (model) => {
     : ''
   setSearchParams(model)
 }
-// const action = (row: TableData, type: string) => {
-//   push(`/example/example-${type}?id=${row.id}`)
-// }
 </script>
 
 <template>

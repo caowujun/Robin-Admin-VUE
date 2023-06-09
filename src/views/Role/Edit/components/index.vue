@@ -27,6 +27,7 @@ onMounted(async () => {
     res ? setValues(res.data) : noMessageAlert()
   }
 })
+//save
 const save = async () => {
   if (!elFormRef) return
 
@@ -49,12 +50,10 @@ const save = async () => {
       }
     })
 }
-
+//back to list
 const reset = async () => {
   push({ name: 'role' })
 }
-// const layout = ref('inline')
-// const buttonPosition = ref('left')
 </script>
 
 <template>

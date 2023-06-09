@@ -2,39 +2,17 @@ import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
-// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { ElTag } from 'element-plus'
 import { h } from 'vue'
 const { t } = useI18n()
-// const dictStore = useDictStoreWithOut()
-
-// const cityCode: any = dictStore.getDictObj['cityCode'].map((v) => {
-//   return { label: t(v.label), value: v.value }
-// })
 
 export const columns = reactive<TableColumn[]>([
-  // {
-  //   field: 'createDate',
-  //   label: t('app_common.recordDate'),
-  //   sortable: true,
-  //   form: {
-  //     component: 'DatePicker',
-  //     componentProps: {
-  //       type: 'datetime',
-  //       valueFormat: 'YYYY-MM-DD'
-  //     }
-  //   }
-  // },
   {
     field: 'username',
     label: t('app_user.username'),
     sortable: true
   },
-  // {
-  //   field: 'password',
-  //   label: t('app_user.password'),
-  //   sortable: true
-  // },
+
   {
     field: 'userDisplayName',
     label: t('app_user.userDisplayName'),
@@ -72,11 +50,7 @@ export const columns = reactive<TableColumn[]>([
       )
     }
   },
-  // {
-  //   field: 'cityCode',
-  //   label: t('app_user.cityCode'),
-  //   sortable: true
-  // },
+
   {
     field: 'action',
     label: t('app_common.action'),

@@ -59,14 +59,6 @@ const schema_login = reactive<FormSchema[]>([
       span: 24
     }
   },
-  // {
-  //   field: 'other',
-  //   component: 'Divider',
-  //   label: t('login.otherLogin'),
-  //   componentProps: {
-  //     contentPosition: 'center'
-  //   }
-  // },
   {
     field: 'otherIcon',
     colProps: {

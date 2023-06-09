@@ -2,14 +2,8 @@ import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
-// import { useDictStoreWithOut } from '@/store/modules/dict'
 
 const { t } = useI18n()
-// const dictStore = useDictStoreWithOut()
-
-// const categoryStatus: any = dictStore.getDictObj['moneyCategory'].map((v) => {
-//   return { label: t(v.label), value: v.value }
-// })
 
 export const columns = reactive<TableColumn[]>([
   {

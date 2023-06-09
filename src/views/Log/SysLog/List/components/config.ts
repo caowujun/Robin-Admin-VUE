@@ -3,8 +3,6 @@ import { useI18n } from '@/hooks/web/useI18n'
 import { TableColumn } from '@/types/table'
 import { FormSchema } from '@/types/form'
 
-// import { ElTag } from 'element-plus'
-// import { h } from 'vue'
 const { t } = useI18n()
 
 export const columns = reactive<TableColumn[]>([

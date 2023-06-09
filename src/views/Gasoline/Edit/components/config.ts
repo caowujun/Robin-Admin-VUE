@@ -1,36 +1,18 @@
 import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { useValidator } from '@/hooks/web/useValidator'
-// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { FormSchema } from '@/types/form'
 import { getEnumByType } from '@/api/common'
 
 const { t } = useI18n()
-// const dictStore = useDictStoreWithOut()
 const { required } = useValidator()
 
-// const status: any = dictStore.getDictObj['STATUS'].map((v) => {
-//   return { label: t(v.label), value: v.value }
-// })
 const res: any = await getEnumByType('STATUS')
 const status: any = res.data.map((v) => {
   return { label: t(v.enumLanguage), value: v.enumValue }
 })
-// const status: any = ref([])
-// getEnumByType('STATUS').then((res) => {
-//   res.data.map((v) => {
-//     return { label: t(v.enumLanguage), value: v.enumValue }
-//   })
-// })
+
 export const rules = reactive({
-  // recordDate: [
-  //   {
-  //     type: 'date',
-  //     required: true,
-  //     message: t('common.required'),
-  //     trigger: 'blur'
-  //   }
-  // ],
   recordDate: [required()],
   amount: [required()],
   litre: [required()],
@@ -96,11 +78,6 @@ export const schema = reactive<FormSchema[]>([
     field: 'notes',
     label: t('app_common.notes'),
     component: 'Input'
-    // componentProps: {
-    //   type: 'textarea',
-    //   rows: '3',
-    //   maxlength: '512'
-    // }
   },
   {
     field: 'tool'

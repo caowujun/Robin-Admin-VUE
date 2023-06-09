@@ -25,9 +25,9 @@ onMounted(async () => {
   if (query.id) {
     const res: any = await getApi(query.id as string)
     res ? setValues(res.data) : noMessageAlert()
-    // console.log(res)
   }
 })
+//save
 const save = async () => {
   if (!elFormRef) return
 
@@ -50,7 +50,7 @@ const save = async () => {
       }
     })
 }
-
+//back to list
 const reset = async () => {
   push({ name: 'income' })
 }

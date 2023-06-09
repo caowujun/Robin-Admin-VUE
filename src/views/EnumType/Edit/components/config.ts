@@ -1,16 +1,10 @@
 import { reactive } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { useValidator } from '@/hooks/web/useValidator'
-// import { useDictStoreWithOut } from '@/store/modules/dict'
 import { FormSchema } from '@/types/form'
 
 const { t } = useI18n()
-// const dictStore = useDictStoreWithOut()
 const { required } = useValidator()
-
-// const status: any = dictStore.getDictObj['STATUS'].map((v) => {
-//   return { label: t(v.label), value: v.value }
-// })
 
 export const rules = reactive({
   enumType: [required()],

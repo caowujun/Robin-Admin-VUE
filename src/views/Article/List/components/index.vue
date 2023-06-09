@@ -21,7 +21,6 @@ const buttonPosition = ref('left')
 const { push } = useRouter()
 const deleteAllBtn = ref(true)
 const delLoading = ref(false)
-// const dictStore = useDictStoreWithOut()
 
 const { register, tableObject, methods } = useTable<TableData>({
   getListApi: getTableListApi,

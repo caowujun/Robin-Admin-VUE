@@ -8,23 +8,8 @@ const { required } = useValidator()
 const { t } = useI18n()
 
 export const rules = reactive({
-  scheduleStartDate: [
-    // {
-    //   type: 'datetime',
-    //   required: true,
-    //   message: t('common.required'),
-    //   trigger: 'blur'
-    // }
-    required()
-  ],
-  // scheduleEndDate: [
-  //   {
-  //     type: 'datetime',
-  //     required: true,
-  //     message: t('common.required'),
-  //     trigger: 'blur'
-  //   }
-  // ],
+  scheduleStartDate: [required()],
+
   notes: [{ min: 1, max: 512, message: t('app_common.length_notes') }]
 })
 

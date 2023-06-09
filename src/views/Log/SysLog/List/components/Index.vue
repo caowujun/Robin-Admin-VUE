@@ -19,7 +19,6 @@ const { push } = useRouter()
 
 const { register, tableObject, methods } = useTable<TableData>({
   getListApi: getTableListApi,
-  // delListApi: delTableListApi,
   response: {
     list: 'list',
     total: 'total'

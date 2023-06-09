@@ -9,7 +9,6 @@ import { computed, onMounted, ref } from 'vue'
 import { saveApi, getApi } from '@/api/schedule'
 import { noMessageAlert } from '@/utils/ElMessageBoxDefine'
 import { useAppStore } from '@/store/modules/app'
-// import { dateFormat } from '@/utils/dateFormat'
 
 const { register, methods, elFormRef } = useForm({
   schema
@@ -26,7 +25,6 @@ onMounted(async () => {
   if (query.id) {
     const res: any = await getApi(query.id as string)
     res ? setValues(res.data) : noMessageAlert()
-    // console.log(res)
   }
 })
 const save = async () => {
@@ -38,14 +36,6 @@ const save = async () => {
       if (valid) {
         loading.value = true
         const result: any = await getFormData()
-        // result['scheduleStartDate'] =
-        //   result.scheduleStartDate && result.scheduleStartDate.indexOf('00:00:00') < 0
-        //     ? dateFormat(result.scheduleStartDate, true, false)
-        //     : ''
-        // result['scheduleEndDate'] =
-        //   result.scheduleEndDate && result.scheduleEndDate.indexOf('00:00:00') < 0
-        //     ? result.scheduleEndDate.replace('00:00:00', '23:59:59')
-        //     : ''
         let res = await saveApi(result)
           .catch(() => {})
           .finally(() => {

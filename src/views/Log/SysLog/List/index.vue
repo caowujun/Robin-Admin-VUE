@@ -3,7 +3,7 @@ import { ContentWrap } from '@/components/ContentWrap'
 import Index from './components/Index.vue'
 
 defineOptions({
-  name: 'logList'
+  name: 'logList1'
 })
 </script>
 

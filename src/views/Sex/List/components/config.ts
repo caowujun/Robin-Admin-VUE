@@ -20,7 +20,7 @@ export const columns = reactive<TableColumn[]>([
   },
   {
     field: 'battleNumber',
-    label: t('app_sex.battleNumber'),
+    label: t('app_battle.battleNumber'),
     sortable: true
   },
   {

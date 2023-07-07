@@ -24,7 +24,7 @@ export const schema = reactive<FormSchema[]>([
   },
   {
     field: 'battleNumber',
-    label: t('app_sex.battleNumber'),
+    label: t('app_battle.battleNumber'),
     component: 'InputNumber',
     componentProps: {
       controlsPosition: 'right'

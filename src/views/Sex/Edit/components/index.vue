@@ -44,14 +44,14 @@ const save = async () => {
 
         if (res) {
           ElMessage.success(t('app_common.saveSuccess'))
-          push({ name: 'sex' })
+          push({ name: 'battle' })
         }
       }
     })
 }
 
 const reset = async () => {
-  push({ name: 'sex' })
+  push({ name: 'battle' })
 }
 // const layout = ref('inline')
 // const buttonPosition = ref('left')

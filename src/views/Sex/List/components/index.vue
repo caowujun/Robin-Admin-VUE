@@ -40,7 +40,7 @@ getList()
 
 //to edit page
 const editFn = (row: TableSlotDefault) => {
-  push({ name: 'sexEdit', query: { id: row.id } })
+  push({ name: 'battleEdit', query: { id: row.id } })
 }
 
 const delData = async (row: TableData | null, multiple: boolean) => {
@@ -59,7 +59,7 @@ const delData = async (row: TableData | null, multiple: boolean) => {
 
 //to create page
 const toCreatePage = () => {
-  push({ name: 'sexAdd' })
+  push({ name: 'battleAdd' })
 }
 
 //override the search method

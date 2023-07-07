@@ -119,34 +119,34 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
       },
 
       {
-        path: 'sex',
-        component: () => import('@/views/Sex/List/index.vue'),
-        name: 'sex',
+        path: 'battle',
+        component: () => import('@/views/battle/List/index.vue'),
+        name: 'battle',
         meta: {
-          title: t('app_menu.sex'),
+          title: t('app_menu.battle'),
           icon: 'clarity:resource-pool-outline-alerted'
         },
         children: [
           {
             path: 'add/index',
-            name: 'sexAdd',
-            component: () => import('@/views/Sex/Edit/index.vue'),
+            name: 'battleAdd',
+            component: () => import('@/views/battle/Edit/index.vue'),
             meta: {
               title: t('app_common.add'),
               hidden: true,
               canTo: true,
-              activeMenu: '/personTools/sex'
+              activeMenu: '/personTools/battle'
             }
           },
           {
             path: 'edit/index',
-            name: 'sexEdit',
-            component: () => import('@/views/Sex/Edit/index.vue'),
+            name: 'battleEdit',
+            component: () => import('@/views/battle/Edit/index.vue'),
             meta: {
               title: t('app_common.edit'),
               hidden: true,
               canTo: true,
-              activeMenu: '/personTools/sex'
+              activeMenu: '/personTools/battle'
             }
           }
         ]

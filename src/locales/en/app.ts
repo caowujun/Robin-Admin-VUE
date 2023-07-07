@@ -106,7 +106,7 @@ export default {
   app_menu: {
     home: '面板',
     personTools: '个人管理',
-    sex: '运动记录',
+    battle: '运动记录',
     schedule: '日程管理',
     income: '收支记录',
     gasoline: '加油记录',
@@ -126,7 +126,7 @@ export default {
     income: '收入',
     expenditure: '支出'
   },
-  app_sex: {
+  app_battle: {
     // triggerTime: '触发时间',
     battleNumber: '次数'
   },

@@ -1,4 +1,4 @@
-export type Sex = {
+export type battle = {
   id: string
   recordDate: string
   battleNumber: number

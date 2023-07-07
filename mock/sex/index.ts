@@ -46,7 +46,7 @@ List.push(
 export default [
   // 列表接口
   {
-    url: '/sex/page',
+    url: '/battle/page',
     method: 'get',
     timeout,
     response: ({ query }) => {
@@ -71,7 +71,7 @@ export default [
   },
   // 保存接口
   {
-    url: '/sex/save',
+    url: '/battle/save',
     method: 'post',
     timeout,
     response: ({ body }) => {
@@ -102,7 +102,7 @@ export default [
   },
   // 详情接口
   {
-    url: '/sex/detail',
+    url: '/battle/detail',
     method: 'get',
     timeout,
     response: ({ query }) => {
@@ -119,7 +119,7 @@ export default [
   },
   // 删除接口
   {
-    url: '/sex/delete',
+    url: '/battle/delete',
     method: 'post',
     timeout,
     response: ({ body }) => {
@@ -145,7 +145,7 @@ export default [
   },
   // 列表接口
   {
-    url: '/sex/chart',
+    url: '/battle/chart',
     method: 'get',
     timeout,
     response: () => {

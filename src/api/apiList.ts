@@ -3,12 +3,12 @@ const apiList = {
     login: '/user/login',
     loginOut: '/user/loginOut'
   },
-  sex: {
-    page: '/sex/page',
-    delAll: '/sex/delete',
-    save: '/sex/save',
-    detail: '/sex/detail',
-    chart: '/sex/chart'
+  battle: {
+    page: '/battle/page',
+    delAll: '/battle/delete',
+    save: '/battle/save',
+    detail: '/battle/detail',
+    chart: '/battle/chart'
   },
   money: {
     page: '/money/page',
